@@ -21,23 +21,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/user/authenticate', [LoginController::class, 'authenticate']);
 
 Route::middleware(['auth'])->group(function () {
+
     Route::post('/logout', [LoginController::class, 'logout']);
 
-    Route::get('/profile', [UserController::class, 'profile']);
-    Route::resource('departments', DepartmentController::class);
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('videos', VideoController::class);
-    Route::resource('work_logs', Work_logController::class);
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
+
+
+    Route::resource('departments', DepartmentController::class);
+
+    Route::resource('roles', RoleController::class);
+
+    Route::resource('users', UserController::class);
+
+    Route::get('/profile', [UserController::class, 'profile']);
+
+    Route::resource('videos', VideoController::class);
+
+    Route::resource('work_logs', Work_logController::class);
 
     Route::get('send-email', function () {
         $user = [

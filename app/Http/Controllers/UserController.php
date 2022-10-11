@@ -44,7 +44,9 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
-
+        if ($request->user()->cannot('create', User::class)) {
+            abort(403);
+        };
         $request->validated();
 
         User::create([
@@ -62,7 +64,6 @@ class UserController extends Controller
             'contract_end_date' => $request->contract_end_date,
             'hourly_rate' => $request->hourly_rate,
         ]);
-
         return redirect(route('users.index'));
     }
 
