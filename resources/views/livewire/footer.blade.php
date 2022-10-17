@@ -1,3 +1,5 @@
-<div>
-    {{-- Do your work, then step back. --}}
-</div>
+<footer>
+    <p>
+        &copy; Intern Manager - DDL
+    </p>
+</footer>
