@@ -35,7 +35,7 @@ class Work_logController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

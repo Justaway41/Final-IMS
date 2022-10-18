@@ -3,6 +3,18 @@
 @section('content')
 
 <div class="w-100 bg-light d-flex justify-content-center align-items-center">
+  <div class="pb-3">
+    @if ($errors->any())
+        <div class="danger">
+          Something Went Wrong
+        </div>
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+    @endif
+  </div>
     <form class="w-75">
       
         @csrf
@@ -21,13 +33,9 @@
           <button onclick="timeCalculator()">Calculate Hours</button>
           <div class="form-group">
             <label for="exampleInputEmail1">Total Time</label>
-            <input type="number" class="form-control" id="totalTime" aria-describedby="emailHelp" value ="{{ old('total_time') }}"  name="end_time">
+            <input type="number" class="form-control" id="totalTime" aria-describedby="emailHelp" value ="{{ old('total_time') }}"  name="end_time" readonly>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Total Hours</label>
-            <div class="totalhours">
-
-            </div>
+        
           </div>  
           <div>
 
