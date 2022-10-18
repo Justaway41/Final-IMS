@@ -13,7 +13,12 @@
                     Dashboard
                 </li>
                 </a> 
-                <li>Worklog</li>
+                <li>
+                    <a href="{{ route('Work_log.create') }}">
+                        Worklog
+                    </a>
+                
+                </li>
                 <a href="/profile">
                     <li>Profile</li>
                     </a>

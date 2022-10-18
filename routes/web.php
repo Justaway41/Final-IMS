@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/user/authenticate', [LoginController::class, 'authenticate']);
 
 Route::middleware(['auth'])->group(function () {
@@ -33,20 +33,17 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::middleware("can:create,App\Models\User")->group(function () {
+        Route::resource('departments', DepartmentController::class);
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('videos', VideoController::class);
+    });
 
-
-    Route::resource('departments', DepartmentController::class);
-
-    Route::resource('roles', RoleController::class);
-
-    Route::resource('users', UserController::class);
+    Route::resource('Work_log', Work_logController::class);
 
     Route::get('/profile', [UserController::class, 'profile']);
-
-    Route::resource('videos', VideoController::class);
-
     Route::resource('work_logs', Work_logController::class);
-
     Route::get('send-email', function () {
         $user = [
             "email" => "test@test.com",

@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+
+    public function Worklogs()
+    {
+        return $this->hasMany(Work_log::class);
+    }
 }
