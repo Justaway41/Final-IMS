@@ -24,7 +24,7 @@ class Work_logController extends Controller
      */
     public function create()
     {
-        //
+        return view('worklog.index');
     }
 
     /**

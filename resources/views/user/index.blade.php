@@ -53,9 +53,7 @@
             @endforeach
           </table>  
           <a href="{{ route('users.create') }}" class="btn btn-primary w-25 align-self-end">Create User</a>  
-          <div class="">
-            {{ $users->links() }}
-          </div>
+         
 </div>
 </div>
 @endsection

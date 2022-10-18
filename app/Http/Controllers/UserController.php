@@ -44,9 +44,7 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
-        if ($request->user()->cannot('create', User::class)) {
-            abort(403);
-        };
+
         $request->validated();
 
         User::create([
