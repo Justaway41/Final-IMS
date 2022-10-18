@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
@@ -23,23 +23,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/user/authenticate', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware(['auth'])->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout']);
 
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
 
     Route::middleware("can:create,App\Models\User")->group(function () {
         Route::resource('departments', DepartmentController::class);
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
-        Route::resource('videos', VideoController::class);
     });
 
+    Route::resource('videos', VideoController::class);
     Route::resource('Work_log', Work_logController::class);
 
     Route::get('/profile', [UserController::class, 'profile']);

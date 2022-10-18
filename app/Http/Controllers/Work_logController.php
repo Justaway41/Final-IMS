@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\worklogFormRequest;
 use App\Models\Work_log;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,19 @@ class Work_logController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(worklogFormRequest $request)
     {
-        //
+        // dd($request->all());
+        $request->validated();
+
+        Work_log::create([
+            'user_id' => auth()->user()->id,
+            'work' => $request->work,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'hours_worked' => $request->hours_worked
+        ]);
+        return redirect(route('dashboard'));
     }
 
     /**

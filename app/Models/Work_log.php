@@ -9,6 +9,13 @@ class Work_log extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'work',
+        'start_time',
+        'end_time',
+        'hours_worked'
+    ];
 
     // A user has many worklogs
     public function user()

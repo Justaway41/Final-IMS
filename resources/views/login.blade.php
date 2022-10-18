@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <form method="POST" class="form" action="/user/authenticate" enctype="multipart/form-data">
+        <form method="POST" class="form" action="/login" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
