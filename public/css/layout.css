@@ -167,8 +167,9 @@ footer {
 
 /* login button */
 .form button {
-    width: 25vh;
-    border-radius: 5px;
+    width: 20vh;
+    height: 5vh;
+    border-radius: 6px;
     background-color: #172b4d;
     color: #ffffff;
 }
