@@ -6,6 +6,7 @@
 }
 
 body {
+    font-size: medium !important;
     background: #172b4d !important;
     margin: 0;
     padding: 0;
@@ -41,7 +42,6 @@ nav ul li {
 nav ul li a {
     color: #ffffff !important;
     text-decoration: none;
-    font-size: larger;
     padding: 3px 8px;
     border-radius: 5px;
     letter-spacing: 1px;
@@ -63,7 +63,6 @@ form button {
     background-color: #172b4d;
     padding: 0 5px;
     text-decoration: none;
-    font-size: larger;
     transition: all 0.3s ease;
 }
 
@@ -101,6 +100,7 @@ footer {
     align-items: center;
     margin-top: 5%;
 }
+
 .profilePic {
     position: relative;
     top: -80px;
@@ -110,14 +110,17 @@ footer {
     background: rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .profilePic img {
     width: 220px;
     height: 220px;
     border-radius: 100%;
 }
+
 .title {
     color: #344563;
 }
+
 .subdiv {
     width: 80%;
     background: #f4f5f7;
@@ -125,6 +128,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
 .subdiv ul {
     padding: 20px;
     color: #344563;
@@ -132,6 +136,7 @@ footer {
     font-weight: 500;
     font-size: 15px;
 }
+
 .contractHistory {
     padding: 10px;
     margin: 30px;
@@ -142,12 +147,6 @@ footer {
 .contractHistory a {
     color: white;
     text-decoration: none;
-}
-a:hover {
-    color: white !important;
-
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .nobtn {
@@ -163,13 +162,20 @@ a:hover {
     border-radius: 10px;
     color: #172b4d;
     padding: 2rem;
-    margin: 3rem;
+    margin: 4rem;
 }
 
 /* login button */
 .form button {
-    width: 25vh;
-    border-radius: 5px;
+    width: 20vh;
+    height: 5vh;
+    border-radius: 6px;
     background-color: #172b4d;
     color: #ffffff;
+}
+
+/* forgot password from login page */
+form .forgot-password {
+    color: #172b4d !important;
+    padding: 1rem 0 0 0;
 }
