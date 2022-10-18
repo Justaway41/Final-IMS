@@ -6,7 +6,7 @@
     </div>
 
     <div>
-        <form method="POST" class="form" action="/user/authenticate" enctype="multipart/form-data">
+        <form method="POST" class="form" action="/login" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email address"

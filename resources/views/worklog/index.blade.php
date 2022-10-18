@@ -15,7 +15,9 @@
         </ul>
     @endif
   </div>
-    <form class="w-75">
+
+    <form action="{{ route('Work_log.store') }}" method="POST" class="w-75">
+
       
         @csrf
         <div class="form-group ">
@@ -32,11 +34,19 @@
           </div>
           <button onclick="timeCalculator()">Calculate Hours</button>
           <div class="form-group">
-            <label for="exampleInputEmail1">Total Time</label>
-            <input type="number" class="form-control" id="totalTime" aria-describedby="emailHelp" value ="{{ old('total_time') }}"  name="end_time" readonly>
+            <label for="exampleInputEmail1">Total Hours</label>
+            <input type="number" class="form-control" id="totalTime" aria-describedby="emailHelp" value ="{{ old('total_time') }}"  name="hours_worked" readonly>
           </div>
-        
-          </div>  
+          <div class="form-check">
+            <p>
+
+              Note: Total Hours cannot exceed 8 hours
+            </p>
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label" for="exampleCheck1">I understand that work once submitted cannot be edited</label>
+          </div>
+       
+
           <div>
 
               <button type="submit" class=" m-2 btn btn-primary">Submit</button>
