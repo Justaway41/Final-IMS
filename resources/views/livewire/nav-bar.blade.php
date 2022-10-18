@@ -9,7 +9,7 @@
             <ul>
 
                 <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/worklog">Worklog</a></li>
+                <li><a href={{ route('work_logs.create') }}>Worklog</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li>
                     <form method="POST" action="/logout">

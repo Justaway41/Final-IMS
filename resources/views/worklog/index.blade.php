@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="w-100 bg-light d-flex justify-content-center align-items-center">
-    <form class="  w-75">
+    <form class="w-75">
       
         @csrf
         <div class="form-group ">
