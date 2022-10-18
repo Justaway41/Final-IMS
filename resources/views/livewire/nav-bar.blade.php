@@ -1,13 +1,12 @@
 <header>
     <nav>
-        <div class="navlogo">
-            <a href="/dashboard">
-                <img src="{{ asset('images/navLogo.png') }}" alt="Deerwalk Sifal School Logo">
-            </a>
-        </div>
         @auth
+            <div class="navlogo">
+                <a href="/dashboard">
+                    <img src="{{ asset('images/navLogo.png') }}" alt="Deerwalk Sifal School Logo">
+                </a>
+            </div>
             <ul>
-
                 <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href={{ route('work_logs.create') }}>Worklog</a></li>
                 <li><a href="/profile">Profile</a></li>

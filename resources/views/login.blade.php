@@ -1,6 +1,10 @@
 @extends('layouts.layout')
 
 @section('content')
+    <div class="navlogo">
+        <img src="{{ asset('images/navLogo.png') }}" alt="Deerwalk Sifal School Logo">
+    </div>
+
     <div>
         <form method="POST" class="form" action="/user/authenticate" enctype="multipart/form-data">
             @csrf
