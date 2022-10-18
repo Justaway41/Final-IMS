@@ -54,6 +54,7 @@ nav ul li a:hover {
     background: #ffffff !important;
 }
 
+/* logout button */
 form button {
     background: none;
     border: none;
@@ -65,6 +66,7 @@ form button {
     transition: all 0.3s ease;
 }
 
+/* logout button action */
 button:hover {
     color: #172B4D;
     background: #ffffff;
@@ -79,6 +81,7 @@ footer {
     text-align: center;
 }
 
+/* layout page div.main tag */
 .main {
     margin: auto;
     padding: auto;
@@ -92,6 +95,7 @@ footer {
     width: auto;
 }
 
+/* login form */
 .form {
     width: 65vh;
     font-size: larger;
@@ -102,13 +106,15 @@ footer {
     margin: 3rem;
 }
 
+/* login button */
 .form button {
     width: 25vh;
     border-radius: 5px;
     color: #172B4D;
 }
 
-.form button:hover{
+/* login button action */
+.form button:hover {
     color: #ffffff;
     background-color: #172B4D;
 }
