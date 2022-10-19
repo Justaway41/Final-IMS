@@ -15,7 +15,9 @@
         </ul>
     @endif
   </div>
+
     <form action="{{ route('Work_log.store') }}" method="POST" class="w-75">
+
       
         @csrf
         <div class="form-group ">
@@ -44,6 +46,7 @@
             <label class="form-check-label" for="exampleCheck1">I understand that work once submitted cannot be edited</label>
           </div>
        
+
           <div>
 
               <button type="submit" class=" m-2 btn btn-primary">Submit</button>

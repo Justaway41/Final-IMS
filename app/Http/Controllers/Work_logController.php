@@ -36,6 +36,7 @@ class Work_logController extends Controller
      */
     public function store(worklogFormRequest $request)
     {
+
         // dd($request->all());
         $request->validated();
 
@@ -47,6 +48,7 @@ class Work_logController extends Controller
             'hours_worked' => $request->hours_worked
         ]);
         return redirect(route('dashboard'));
+
     }
 
     /**
