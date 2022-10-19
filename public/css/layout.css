@@ -14,6 +14,7 @@ body {
     overflow: hidden;
 }
 
+/* navbar */
 nav {
     display: flex;
     height: 80px;
@@ -54,20 +55,7 @@ nav ul li a:hover {
     background: #ffffff !important;
 }
 
-/* logout button */
-form button {
-    background: none;
-    border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    background-color: #172b4d;
-    padding: 0 5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-/* logout button action */
-
+/* footer */
 footer {
     position: absolute;
     left: 0;
@@ -90,6 +78,52 @@ footer {
     height: auto;
     width: auto;
 }
+
+/* login form */
+.form {
+    width: 65vh;
+    font-size: larger;
+    background-color: #ffffff !important;
+    border-radius: 10px;
+    color: #172b4d;
+    padding: 2rem;
+    margin: 4rem;
+}
+
+/* login button */
+.form button {
+    width: 20vh;
+    height: 5vh;
+    border-radius: 6px;
+    background-color: #172b4d;
+    color: #ffffff;
+}
+
+/* forgot password from login page */
+form .forgot-password {
+    color: #172b4d !important;
+    padding: 1rem 0 0 0;
+}
+
+/* logout button */
+form button {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #172b4d;
+    padding: 0 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
 
 /* profile page style */
 .profileContainer {
@@ -152,30 +186,4 @@ footer {
 .nobtn {
     border: none !important;
     background-color: none !important;
-}
-
-/* login form */
-.form {
-    width: 65vh;
-    font-size: larger;
-    background-color: #ffffff !important;
-    border-radius: 10px;
-    color: #172b4d;
-    padding: 2rem;
-    margin: 4rem;
-}
-
-/* login button */
-.form button {
-    width: 20vh;
-    height: 5vh;
-    border-radius: 6px;
-    background-color: #172b4d;
-    color: #ffffff;
-}
-
-/* forgot password from login page */
-form .forgot-password {
-    color: #172b4d !important;
-    padding: 1rem 0 0 0;
 }
