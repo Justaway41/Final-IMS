@@ -6,7 +6,7 @@ use App\Http\Requests\UserFormRequest;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -62,6 +62,9 @@ class UserController extends Controller
             'contract_end_date' => $request->contract_end_date,
             'hourly_rate' => $request->hourly_rate,
         ]);
+
+        Password::sendResetLink($request->only(['email']));
+
         return redirect(route('users.index'));
     }
 

@@ -27,33 +27,8 @@ class LoginController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function authenticate(Request $request)
-    {
-        $formFeilds = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
 
-        if (Auth::attempt($formFeilds)) {
-            $request->session()->regenerate();
 
-            if (auth()->user()->role->title == 'Admin') {
-                return redirect()->intended('users');
-            }
-
-            return redirect()->intended('dashboard');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credntials do not match our records.',
-        ])->onlyInput('email');
-    }
 
     /**
      * Display the specified resource.
@@ -100,8 +75,4 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -22,12 +22,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+
+
+
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
 
