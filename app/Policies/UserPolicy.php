@@ -40,7 +40,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id === 2;
+        return $user->role->title === 'Admin';
     }
 
     /**
@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user)
     {
-        return $user->role_id === 2;
+        return $user->role->title === 'Admin';
     }
 
     /**
@@ -64,7 +64,7 @@ class UserPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id === 2;
+        return $user->role->title === 'Admin';
     }
 
     /**
@@ -76,7 +76,7 @@ class UserPolicy
      */
     public function restore(User $user)
     {
-        return $user->role_id === 2;
+        return $user->role->title === 'Admin';
     }
 
     /**
@@ -88,6 +88,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        return $user->role_id === 2;
+        return $user->role->title === 'Admin';
     }
 }

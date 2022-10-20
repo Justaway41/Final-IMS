@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('content')
+
     <div class="m-2">
         <div class="row">
             <div class="col-lg-12 margin-tb">

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="m-2">
+    <div class="m-2 bg-white">
         <div class="pull-left">
             <h4>Departments</h4>
         </div>
@@ -25,14 +25,13 @@
 
         <table class="table table-bordered">
             <tr>
-                <th>Department Id</th>
                 <th>Department Name</th>
                 <th width="280px">Action</th>
             </tr>
+     
             @foreach ($departments as $department)
                 <tr>
-                    <td>{{ $department->id }}</td>
-                    <td>{{ $department->department_name }}</td>
+                    <td>  <a href="{{ route('departments.show',$department->id) }}">{{ $department->department_name }} </a></td>
                     <td>
                         <form action="{{ route('departments.destroy', $department->id) }}" method="POST">
                             <a class="btn btn-primary" href="{{ route('departments.edit', $department->id) }}">Edit</a>
