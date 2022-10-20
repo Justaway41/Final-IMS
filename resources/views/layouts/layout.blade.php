@@ -16,6 +16,9 @@
     </script>
     <script src="{{ asset('js/totalTime.js') }}"></script>
 
+    {{-- popup meaasge --}}
+    <script src="{{ asset('js/popup_msg.js') }}"></script>
+
     {{-- css file from public --}}
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 

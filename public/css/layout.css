@@ -57,7 +57,7 @@ nav ul li a:hover {
 
 /* footer */
 footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -106,7 +106,7 @@ footer {
     color: #ffffff;
 }
 
-/* forgot password from login page */
+/* Forgot your password? from login page */
 .forgot-password {
     color: #172b4d !important;
     padding: 1rem 0 0 0;
