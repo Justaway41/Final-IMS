@@ -35,7 +35,10 @@ class DepartmentController extends Controller
 
     public function show($id)
     {
-        //
+        $department = Department::findorFail($id);
+        $users = $department->users;
+
+        return view('departments.single-department', ['users' => $users]);
     }
 
     public function edit($id)
