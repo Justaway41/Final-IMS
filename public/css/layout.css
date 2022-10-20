@@ -6,7 +6,7 @@
 }
 
 body {
-    font-size: large !important;
+    font-size: medium !important;
     background: #172b4d !important;
     margin: 0;
     padding: 0;
@@ -99,8 +99,8 @@ footer {
 
 /* login button */
 .login_form button {
-    width: 15vh;
-    height: 5vh;
+    width: 12vw;
+    height: auto;
     border-radius: 6px;
     background-color: #172b4d;
     color: #ffffff;
@@ -121,12 +121,11 @@ button {
     background-color: #172b4d;
     padding: 0 5px;
     text-decoration: none;
-    transition: all 0.3s ease;
 }
 
 /* worklog over-display box */
 .worklog_over {
-    font-size: xx-large;
+    font-size: x-large;
     color: #344563;
     background-color: #D9D9D9;
     width: fit-content;
@@ -135,7 +134,7 @@ button {
     padding: 3px 30px;
     box-shadow: 0 3px 7px rgb(0 0 0 / 0.25);
     position: relative;
-    top: 30px;
+    top: 15px;
 }
 
 /* worklog fill page */
@@ -145,10 +144,15 @@ button {
     background-color: #D9D9D9;
     width: 80vw;
     height: 70vh;
-    padding: 30px;
+    padding: 10px 30px;
 }
 
-
+.time {
+    width: 35vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 
 
 
