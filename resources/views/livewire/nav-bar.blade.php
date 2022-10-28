@@ -8,7 +8,7 @@
             </div>
             <ul>
                 <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href={{ route('work_logs.create') }}>Worklog</a></li>
+                <li><a href={{ route('Work_log.create') }}>Worklog</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li>
                     

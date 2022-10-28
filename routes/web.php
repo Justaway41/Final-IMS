@@ -42,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('Work_log', Work_logController::class);
 
     Route::get('/profile', [UserController::class, 'profile']);
-    Route::resource('work_logs', Work_logController::class);
     Route::get('send-email', function () {
         $user = [
             "email" => "test@test.com",
