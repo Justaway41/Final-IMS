@@ -1,5 +1,3 @@
 <footer>
-    <p>
-        &copy; Intern Manager - DDL
-    </p>
+    &copy; Intern Manager - DDL
 </footer>
