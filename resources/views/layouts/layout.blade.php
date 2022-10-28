@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
     <title>Intern Manager</title>
     <link rel="icon" href="{{ asset('images/logoOnly.png') }}" type="image/x-icon">
 
@@ -19,7 +18,7 @@
     {{-- popup meaasge --}}
     <script src="{{ asset('js/popup_msg.js') }}"></script>
 
-    {{-- css file from public --}}
+    {{-- External CSS file --}}
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 
     {{-- bootstrap css --}}

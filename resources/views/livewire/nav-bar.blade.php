@@ -11,13 +11,13 @@
                 <li><a href={{ route('work_logs.create') }}>Worklog</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li>
-                    
-                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                Log Out
-            </a>
-                  <form  id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Log Out
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                         @csrf
-                </form>
+                    </form>
                 </li>
             </ul>
         @endauth
