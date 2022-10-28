@@ -18,11 +18,22 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            [
+                "full_name" => "Admin",
+                "email" => "admin@gmail.com",
+                "password" => "admin",
+                "gender" => "male",
+                "birthday" => "10/21/2022",
+                "contact" => "98134502056",
+                "address" => "admin gau",
+                "department_id" => "1",
+                "role_id" => "2",
+                "contract_status" => "active",
+                "contract_start_date" => "10/21/2022",
+                "contract_end_date" => "10/21/2022",
+                "hourly_rate" => "60",
+                'remember_token' => Str::random(10),
+            ]
         ];
     }
 
