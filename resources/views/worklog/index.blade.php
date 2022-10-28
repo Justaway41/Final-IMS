@@ -13,12 +13,13 @@
                     <label for="exampleFormControlTextarea1">Work</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="work" value="{{ old('work') }}"></textarea>
                 </div>
-
                 <div class="time">
-                    <div class="mb-3">
+                    <div class="mb-3" id="time">
                         <label for="exampleInputEmail1">Start Time</label>
                         <input type="time" class="form-control" id="startTime" aria-describedby="emailHelp"
                             value="{{ old('start_time') }}" name="start_time">
+                    </div>
+                    <div class="mb-3" id="time">
                         <label for="exampleInputEmail1">End Time</label>
                         <input type="time" class="form-control" id="endTime" aria-describedby="emailHelp"
                             value="{{ old('end_time') }}" name="end_time">
