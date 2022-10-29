@@ -139,6 +139,7 @@ section::-webkit-scrollbar {
     grid-template-columns: repeat(2, 1fr);
 }
 
+/* worklog view-dashboard */
 .work_view {
     margin-left: 5px;
     text-align: left;
@@ -183,28 +184,88 @@ p#right {
     border-radius: 4px;
     text-align: left;
     width: 70vw;
-    height: 80vh;
+    height: 82vh;
     margin-top: -1.25rem;
     padding: 1.5rem 2rem;
 }
 
 section.worklog_scroll {
-    height: 72vh;
-    overflow-y: scroll;
+    height: 75vh;
+    overflow-y: auto;
+    padding: 10px;
 }
 
-.time {
-    width: 80%;
-    margin: auto;
+#workFill {
+    color: #172b4d;
+    background-color: #f2f2f2;
+}
+
+.timelog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
 div#time {
-    margin: 0 20px;
+    width: 85%;
 }
 
+#startTime,
+#endTime {
+    color: #172b4d;
+    background-color: #f2f2f2;
+}
 
+button.time_calculate {
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #172b4d;
+    color: #ffffff;
+}
+
+button.time_calculate:hover {
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
+
+#totalTime {
+    color: #172b4d;
+    background-color: #f2f2f2;
+    width: 42.5%;
+}
+
+#checkbox {
+    border-color: #172b4d;
+    background-color: #f2f2f2;
+}
+
+#checkbox:hover {
+    background-color: #ffffff;
+}
+
+#checkbox:checked {
+    background-color: #172b4d;
+}
+
+div.submit_button {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.submit_work {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin: 20px;
+    background: #172b4d;
+    color: #ffffff;
+}
+
+button.submit_work:hover {
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
 
 /* profile page */
 .profile_container {
