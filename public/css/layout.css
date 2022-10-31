@@ -134,7 +134,7 @@ section::-webkit-scrollbar {
     width: 80vw;
     height: 82vh;
     margin-top: -1.25rem;
-    padding: 1.5rem 2rem;
+    padding: 2rem 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -175,6 +175,13 @@ p#underline {
 
 p#right {
     text-align: right;
+}
+
+/* bar-graph */
+#myChart {
+    padding-top: 2rem;
+    max-width: 35vw;
+    margin: 0 auto;
 }
 
 /* worklog form */
