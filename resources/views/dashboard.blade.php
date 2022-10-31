@@ -1,64 +1,61 @@
 @extends('layouts.layout')
 
 @section('content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <div class="head-over-display">
         Dashboard
     </div>
     <div class="dashboard">
 
-        
-        
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
         <div class="work_view">
             <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
             <section class="dashboard_scroll">
                 @foreach ($worklogs as $worklog)
-                <div class="singleWorklog">
-                    <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
-                    <p class="work">{{ $worklog->work }}</p>
-                    <p class="work" id="right">{{ $worklog->hours_worked }}</p>
-                </div>
+                    <div class="singleWorklog">
+                        <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
+                        <p class="work">{{ $worklog->work }}</p>
+                        <p class="work" id="right">{{ $worklog->hours_worked }}</p>
+                    </div>
                 @endforeach
             </section>
         </div>
     </div>
-    <script>
-           let app = {{ Js::from($worklogs) }};
 
-        let xValues = ['Day 7', 'Day 6', 'Day 5', 'Day 4', 'Day 3', 'Day 2', 'Day 1' ];
+    <script>
+        let app = {{ Js::from($worklogs) }};
+        let xValues = ['Day 7', 'Day 6', 'Day 5', 'Day 4', 'Day 3', 'Day 2', 'Day 1'];
         let yValues = [];
         for (let i = 0; i < 7; i++) {
-            yValues[i] = app[i].hours_worked; 
+            yValues[i] = app[i].hours_worked;
         }
-        console.log(yValues);
         let barColors = "#172b4d";
         new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-        responsive: true,
-        scales: {
-        	yAxes: [{
-            	ticks: {
-                	beginAtZero: true
-            	}
-        	}]
-    	},
-        legend: {display: false},   
-        title:{
-            display:true,
-            text:"Hours Worked"
-        }
-    }
-});
-
-
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Hours Worked"
+                }
+            }
+        });
     </script>
 @endsection
