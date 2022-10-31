@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Work_log::class);
     }
+
+    public function latestWorklog()
+    {
+        return $this->hasMany(Work_log::class)->latest();
+    }
 }

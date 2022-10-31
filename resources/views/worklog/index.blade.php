@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Total Hours</label>
-                    <input type="number" class="form-control" id="totalTime" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" id="totalTime" aria-describedby="emailHelp"
                         value="{{ old('total_time') }}" name="hours_worked" readonly>
                     Note: Total Hours must be between 4 to 8 hours.
                     @error('hours_worked')

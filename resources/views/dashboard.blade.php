@@ -1,60 +1,64 @@
 @extends('layouts.layout')
 
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <div class="head-over-display">
         Dashboard
     </div>
     <div class="dashboard">
 
-        <!--Load the AJAX API-->
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            // Load the Visualization API and the corechart package.
-            google.charts.load('current', {
-                'packages': ['corechart']
-            });
-            // Set a callback to run when the Google Visualization API is loaded.
-            google.charts.setOnLoadCallback(drawChart);
-            // Callback that creates and populates a data table,
-            // instantiates the pie chart, passes in the data and
-            // draws it.
-            function drawChart() {
-                // Create the data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Date');
-                data.addColumn('number', 'Hours Worked');
-                data.addRows([
-                    @foreach ($worklogs as $worklog)
-                        ['{{ $worklog->created_at->format('M d') }}', {{ $worklog->hours_worked }}],
-                    @endforeach
-                ]);
-                // Set chart options
-                var options = {
-                    'title': 'Your Working Hours:',
-                    'height': 300,
-                    'width': 400
-                };
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-                chart.draw(data, options);
-            }
-        </script>
-
-        <div id="chart_div">
-
-        </div>
-
+        
+        
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         <div class="work_view">
             <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
             <section class="dashboard_scroll">
                 @foreach ($worklogs as $worklog)
-                    <div class="singleWorklog">
-                        <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
-                        <p class="work">{{ $worklog->work }}</p>
-                        <p class="work" id="right">{{ $worklog->hours_worked }}</p>
-                    </div>
+                <div class="singleWorklog">
+                    <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
+                    <p class="work">{{ $worklog->work }}</p>
+                    <p class="work" id="right">{{ $worklog->hours_worked }}</p>
+                </div>
                 @endforeach
             </section>
         </div>
     </div>
+    <script>
+           let app = {{ Js::from($worklogs) }};
+
+        let xValues = ['Day 7', 'Day 6', 'Day 5', 'Day 4', 'Day 3', 'Day 2', 'Day 1' ];
+        let yValues = [];
+        for (let i = 0; i < 7; i++) {
+            yValues[i] = app[i].hours_worked; 
+        }
+        console.log(yValues);
+        let barColors = "#172b4d";
+        new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+        responsive: true,
+        scales: {
+        	yAxes: [{
+            	ticks: {
+                	beginAtZero: true
+            	}
+        	}]
+    	},
+        legend: {display: false},   
+        title:{
+            display:true,
+            text:"Hours Worked"
+        }
+    }
+});
+
+
+    </script>
 @endsection
