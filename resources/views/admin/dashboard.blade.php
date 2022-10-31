@@ -1,4 +1,5 @@
-@extends('admin.layout')
+@extends('layouts.layout')
 
-@section('files')
+@section('content')
+    admin dashboard here
 @endsection
