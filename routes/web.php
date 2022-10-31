@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
+use App\Mail\worklogMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,4 +49,9 @@ Route::middleware(['auth'])->group(function () {
             "password" => "12345678"
         ];
     });
+});
+
+
+Route::get('worklog-mail', function () {
+    return new worklogMail();
 });
