@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
 use App\Mail\worklogMail;
+use App\Models\Work_log;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,8 +54,10 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/mailable', function () {
-    $work_logs = App\Models\Work_log::get();
 
-    return new App\Mail\worklogMail($work_logs);
-});
+// Mail template viewing
+// Route::get('/mailable', function () {
+//     $work_logs = Work_log::whereDate('created_at', Carbon::today())->get();
+
+//     return new App\Mail\worklogMail($work_logs);
+// });

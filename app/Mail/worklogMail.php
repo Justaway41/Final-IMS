@@ -21,7 +21,7 @@ class worklogMail extends Mailable
 
 
 
-    public function __construct(Work_log $work_logs)
+    public function __construct($work_logs)
     {
         $this->work_logs = $work_logs;
     }
@@ -36,6 +36,6 @@ class worklogMail extends Mailable
 
     public function build()
     {
-        return $this->view('email.worklogMail');
+        return $this->markdown('email.worklogMail');
     }
 }
