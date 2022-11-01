@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Work_log;
 use Illuminate\Console\Command;
 
 class AllWorklogs extends Command
@@ -27,6 +28,8 @@ class AllWorklogs extends Command
      */
     public function handle()
     {
+
+
         return 0;
     }
 }

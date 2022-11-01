@@ -111,7 +111,7 @@ footer {
 .head-over-display {
     font-size: x-large;
     color: #344563;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     width: fit-content;
     height: fit-content;
     font-weight: bold;
@@ -129,12 +129,12 @@ section::-webkit-scrollbar {
 /* dashboard view page */
 .dashboard {
     color: #344563;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 4px;
     width: 80vw;
     height: 82vh;
     margin-top: -1.25rem;
-    padding: 1.5rem 2rem;
+    padding: 2.5rem 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -170,7 +170,6 @@ p.work {
 
 p#underline {
     text-decoration: underline #172b4d 1px;
-
 }
 
 p#right {
@@ -180,7 +179,7 @@ p#right {
 /* worklog form */
 .worklog {
     color: #344563;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 4px;
     text-align: left;
     width: 70vw;
@@ -273,7 +272,7 @@ button.submit_work:hover {
     height: 75vh;
     display: flex;
     color: #344563;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     flex-direction: column;
     align-items: center;
     margin-top: 4rem;

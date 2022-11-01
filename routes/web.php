@@ -51,7 +51,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::get('/mailable', function () {
+    $work_logs = App\Models\Work_log::get();
 
-Route::get('worklog-mail', function () {
-    return new worklogMail();
+    return new App\Mail\worklogMail($work_logs);
 });
