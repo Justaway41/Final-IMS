@@ -314,27 +314,30 @@ button.submit_work:hover {
     border-radius: 4px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
 }
 
 .subdiv ul {
-    margin: 5px;
-    padding: 10px;
     color: #172b4d;
     list-style-type: none;
 }
 
 .leftDiv {
-    text-align: right;
+    text-align: left;
+    margin: 10px 0 10px 30px;
+    padding: 10px 0 10px 30px;
 }
 
 .rightDiv {
     text-align: left;
+    margin: 10px 30px 10px 0;
+    padding: 10px 30px 10px 0;
 }
 
 button.contractHistory {
     border: none;
     padding: 10px;
-    margin-top: 4vh;
+    margin-top: 2vh;
     border-radius: 4px;
     background: #172b4d;
     color: #ffffff;
