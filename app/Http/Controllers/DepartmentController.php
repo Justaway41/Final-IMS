@@ -10,8 +10,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('departments.index', compact('departments'))
-            ->with('i', (request()->input('page')));
+        return view('departments.index', compact('departments'));
     }
 
     public function create()
@@ -70,5 +69,11 @@ class DepartmentController extends Controller
 
         return redirect()->route('departments.index')
             ->with('success', 'Department deleted successfully.');
+    }
+
+    public function view(Department $department)
+    {
+        $departments = Department::all();
+        return view('departments.view', compact('departments'));
     }
 }
