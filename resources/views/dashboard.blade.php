@@ -4,9 +4,12 @@
     <div class="head-over-display">
         Dashboard
     </div>
-    <div class="dashboard">
 
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <div class="dashboard">
+        <div class="leftView">
+            <canvas id="myChart"></canvas>
+            <h1>leaves here</h1>
+        </div>
 
         <div class="work_view">
             <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
@@ -30,6 +33,7 @@
             yValues[i] = app[i].hours_worked;
         }
         let barColors = "#172b4d";
+
         new Chart("myChart", {
             type: "bar",
             data: {
@@ -53,7 +57,7 @@
                 },
                 title: {
                     display: true,
-                    text: "Hours Worked"
+                    text: "Your Working Hours:"
                 }
             }
         });

@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('Work_log', Work_logController::class);
 
     Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/view', [DepartmentController::class, 'view']);
     Route::get('send-email', function () {
         $user = [
             "email" => "test@test.com",

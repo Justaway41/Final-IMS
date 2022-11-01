@@ -28,10 +28,11 @@
                 <th>Department Name</th>
                 <th width="280px">Action</th>
             </tr>
-     
+
             @foreach ($departments as $department)
                 <tr>
-                    <td>  <a href="{{ route('departments.show',$department->id) }}">{{ $department->department_name }} </a></td>
+                    <td> <a href="{{ route('departments.show', $department->id) }}">{{ $department->department_name }} </a>
+                    </td>
                     <td>
                         <form action="{{ route('departments.destroy', $department->id) }}" method="POST">
                             <a class="btn btn-primary" href="{{ route('departments.edit', $department->id) }}">Edit</a>
