@@ -134,9 +134,7 @@ section::-webkit-scrollbar {
     width: 80vw;
     height: 82vh;
     margin-top: -1.25rem;
-
     padding: 2.5rem 2rem;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -346,4 +344,95 @@ button.contractHistory {
 
 button.contractHistory:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
+
+/* admin dashboard */
+.adminDash {
+    color: #344563;
+    background-color: #d9d9d9;
+    border-radius: 4px;
+    width: 80vw;
+    height: 82vh;
+    margin-top: -1.25rem;
+    padding: 2.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* box-display layout */
+.adminDash a,
+.viewDepartments a {
+    font-size: larger;
+    font-weight: bold;
+    margin: auto;
+    text-decoration: none;
+    height: 30vh;
+    width: 20vw;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.adminDash a:active,
+.adminDash a:hover,
+.viewDepartments a:active,
+.viewDepartments a:hover {
+    color: #fff !important;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
+
+/* admin dashboard box colors */
+a.a1 {
+    background-color: #c35c29;
+}
+
+a.a2 {
+    background-color: #72438b;
+}
+
+a.a3 {
+    background-color: #7cac52;
+}
+
+a.a4 {
+    background-color: #b44476;
+}
+
+a.a5 {
+    background-color: #2686a3;
+}
+
+a.a6 {
+    background-color: #192631;
+}
+
+/* Departments view from admin dashboard */
+.viewDepartments {
+    color: #344563;
+    background-color: #d9d9d9;
+    border-radius: 4px;
+    width: 70vw;
+    height: 82vh;
+    margin-top: -1.25rem;
+    padding: 2.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* departments box color */
+a.one {
+    background-color: #2686a3;
+}
+
+a.two {
+    background-color: #72438b;
+}
+
+a.three {
+    background-color: #7cac52;
+}
+
+a.four {
+    background-color: #b44476;
 }
