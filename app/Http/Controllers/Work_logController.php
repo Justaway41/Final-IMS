@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\worklogFormRequest;
 use App\Models\Work_log;
+use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class Work_logController extends Controller
@@ -20,17 +22,23 @@ class Work_logController extends Controller
 
     public function store(worklogFormRequest $request)
     {
-        // dd($request->all());
-        $request->validated();
+        $currentTime = Carbon::now()->toTimeString();
+        $timeLimit = Carbon::createFromTime(20, 00, 00)->toTimeString();
+        if ($currentTime > $timeLimit) {
 
-        Work_log::create([
-            'user_id' => auth()->user()->id,
-            'work' => $request->work,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'hours_worked' => $request->hours_worked
-        ]);
-        return redirect(route('dashboard'));
+            $request->validated();
+
+            Work_log::create([
+                'user_id' => auth()->user()->id,
+                'work' => $request->work,
+                'start_time' => $request->start_time,
+                'end_time' => $request->end_time,
+                'hours_worked' => $request->hours_worked
+            ]);
+            return redirect(route('dashboard'));
+        }
+
+        return redirect(route('Work_log.create'))->with('message', 'Contact Manager since worklog is only fillable between 9:00 AM and 8:00 PM');
     }
 
     public function show(Work_log $work_log)
