@@ -4,18 +4,21 @@ $("#menu-toggle").click(function (e) {
 });
 function addTiming() {
     $("#time-row").append(
-        '                        <div class="form-row"><a href="#" class="w-100 text-right" onclick="removeTiming(this)">&#x2716</a><br>\n' +
-            '                            <div class="form-group col-md-6">\n' +
-            "                                <label>Start Time</label>\n" +
-            '                                <input class="form-control startTime" type="time" name="start_time[]">\n' +
-            "                            </div>\n" +
-            '                            <div class="form-group col-md-6">\n' +
-            "                                <label>End Time</label>\n" +
-            '                                <input class="form-control endTime" type="time" name="end_time[]">\n' +
-            "                            </div>\n" +
-            "                        </div>"
+        '   <div><a href="#" class="crossButton" onclick="removeTiming(this)">&#x2716</a><br>\n' +
+        '       <div class="timelog">\n' +
+        '           <div class= "mb-3 time" >\n' +
+        '               <label for= "exampleInputEmail1" > Start Time</label >\n' +
+        '               <input type="time" class="form-control startTime" aria-describedby="emailHelp" name="start_time[]">\n' +
+        '           </div>\n' +
+        '           <div class="mb-3 time">\n' +
+        '               <label for="exampleInputEmail1">End Time</label>\n' +
+        '               <input type="time" class="form-control endTime" aria-describedby="emailHelp" name="end_time[]">\n' +
+        '           </div>\n' +
+        '       </div >\n' +
+        '   </div>'
     );
 }
+
 function removeTiming(ref) {
     $(ref).parent().remove();
 }

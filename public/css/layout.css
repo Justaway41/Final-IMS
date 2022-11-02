@@ -223,17 +223,33 @@ div.time {
     background-color: #f2f2f2;
 }
 
-button.time_calculate {
+button.time_calculate,
+button.add_timing {
     border: none;
     padding: 3px 8px;
+    margin: 10px 0;
     border-radius: 4px;
-    margin-bottom: 10px;
     background: #172b4d;
     color: #ffffff;
 }
 
-button.time_calculate:hover {
+button.time_calculate:hover,
+button.add_timing:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
+
+a.add_timing {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.add_timing:hover {
+    color: #fff;
+}
+
+a.crossButton {
+    color: #172b4d;
+    text-decoration: none;
 }
 
 #totalTime {
@@ -283,21 +299,21 @@ button.submit_work:hover {
 /* profile page */
 .profile_container {
     width: 60vw;
-    height: 75vh;
+    height: 73vh;
     display: flex;
     color: #344563;
     background-color: #d9d9d9;
     flex-direction: column;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 5rem;
     border-radius: 4px;
 }
 
 .profile_pic {
     position: relative;
     top: -5.5rem;
-    width: 15vw;
-    height: 15vw;
+    width: 13vw;
+    height: 13vw;
     border-radius: 100%;
     background: rgba(0 0 0 / 0.25);
     box-shadow: 0px 3px 7px rgba(0 0 0 / 0.25);
@@ -305,10 +321,11 @@ button.submit_work:hover {
 
 .title1 {
     margin-top: -5rem;
+    margin-bottom: 0;
 }
 
 .title2 {
-    margin-top: -1rem;
+    margin-top: 0.25vh;
 }
 
 .subdiv {

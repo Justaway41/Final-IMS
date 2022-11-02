@@ -8,7 +8,6 @@
     <div class="dashboard">
         <div class="leftView">
             <canvas id="myChart"></canvas>
-            <h1>leaves here</h1>
         </div>
 
         <div class="work_view">
@@ -29,9 +28,9 @@
         let app = {{ Js::from($worklogs) }};
         let xValues = ['Day 7', 'Day 6', 'Day 5', 'Day 4', 'Day 3', 'Day 2', 'Day 1'];
         let yValues = [];
-        
+
         for (let i = 0; i < 7; i++) {
-                yValues[i] = app[i].hours_worked;
+            yValues[i] = app[i].hours_worked;
 
 
         }
@@ -52,7 +51,7 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            max:8
+                            max: 8
                         }
                     }]
                 },

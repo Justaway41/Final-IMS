@@ -1,15 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-<<<<<<< HEAD
-@if($message = Session::get('message'))
-<div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-@endif
-=======
->>>>>>> ad69543e7423ce23dd391214609c0f97336c1496
     <div class="head-over-display">
         Worklog
     </div>
@@ -27,30 +18,33 @@
                     @enderror
                 </div>
 
-
                 <div class="timelog" id="time-row">
-
                     <div class="mb-3 time">
                         <label for="exampleInputEmail1">Start Time</label>
-                        <input type="time" class="form-control startTime"  aria-describedby="emailHelp"
-                             name="start_time[]">
+                        <input type="time" class="form-control startTime" aria-describedby="emailHelp"
+                            name="start_time[]">
                         @error('start_time')
                             <p class="text-danger small"><small>{{ $message }}</small></p>
                         @enderror
                     </div>
                     <div class="mb-3 time">
                         <label for="exampleInputEmail1">End Time</label>
-                        <input type="time" class="form-control endTime"  aria-describedby="emailHelp"
-                             name="end_time[]">
+                        <input type="time" class="form-control endTime" aria-describedby="emailHelp" name="end_time[]">
                         @error('end_time')
                             <p class="text-danger small"><small>{{ $message }}</small></p>
                         @enderror
                     </div>
-                    <a href="#" class="btn btn-primary p-2 d-block w-75" onclick="addTiming();">Add
-                        Timing</a>
                 </div>
 
-                <button class="time_calculate" onclick="timeCalculator()">Calculate Hours</button>
+                <div>
+                    <button class="add_timing">
+                        <a href="#" class="add_timing" onclick="addTiming();">Add Timing</a>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="time_calculate" onclick="timeCalculator()">Calculate Hours</button>
+                </div>
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Total Hours</label>
