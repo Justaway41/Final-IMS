@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
-($message = Session::get('message'))
+{{-- ($message = Session::get('message'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
-</div>
+</div> --}}
     <div class="head-over-display">
         Worklog
     </div>
