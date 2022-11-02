@@ -44,7 +44,8 @@ class Work_logController extends Controller
             return redirect(route('dashboard'));
         }
 
-        return redirect()->route('Work_log.create')->with('message', 'Contact Manager since worklog is only fillable between 9:00 AM and 8:00 PM');
+
+        return redirect()->route('Work_log.create')->with('message', 'Submit time exceeded. Please contact your manager.');
     }
 
     public function show(Work_log $work_log)

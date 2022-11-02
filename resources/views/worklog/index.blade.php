@@ -1,12 +1,15 @@
 @extends('layouts.layout')
 
 @section('content')
+<<<<<<< HEAD
 @if($message = Session::get('message'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
 </div>
 @endif
+=======
+>>>>>>> ad69543e7423ce23dd391214609c0f97336c1496
     <div class="head-over-display">
         Worklog
     </div>
@@ -24,7 +27,9 @@
                     @enderror
                 </div>
 
+
                 <div class="timelog" id="time-row">
+
                     <div class="mb-3 time">
                         <label for="exampleInputEmail1">Start Time</label>
                         <input type="time" class="form-control startTime"  aria-describedby="emailHelp"
@@ -64,6 +69,9 @@
                 </div>
 
                 <div class="submit_button">
+                    @if ($message = Session::get('message'))
+                        <p class="text-danger small"> <strong>{{ $message }}</strong></p>
+                    @endif
                     <button type="submit" class="submit_work">Submit</button>
                 </div>
             </section>
