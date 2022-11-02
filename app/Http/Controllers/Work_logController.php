@@ -24,7 +24,7 @@ class Work_logController extends Controller
     {
         $currentTime = Carbon::now()->toTimeString();
         $timeLimit = Carbon::createFromTime(20, 00, 00)->toTimeString();
-        if ($currentTime > $timeLimit) {
+        if ($currentTime < $timeLimit) {
 
             $request->validated();
 
