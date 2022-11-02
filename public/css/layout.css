@@ -67,10 +67,12 @@ nav ul li a:hover {
 footer {
     height: 5vh;
     position: fixed;
-    bottom: 0;
+    bottom: 5px;
     width: 100%;
     color: #ffffff !important;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* login form */
@@ -134,7 +136,7 @@ section::-webkit-scrollbar {
     width: 80vw;
     height: 82vh;
     margin-top: -1.25rem;
-    padding: 2.5rem 2rem;
+    padding: 32px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -211,7 +213,7 @@ section.worklog_scroll {
     grid-template-columns: repeat(2, 1fr);
 }
 
-div#time {
+div.time {
     width: 85%;
 }
 
@@ -258,13 +260,18 @@ div.submit_button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+}
+
+div.submit_button p {
+    margin-bottom: 5px;
 }
 
 button.submit_work {
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
-    margin: 20px;
+    margin: 0 20px;
     background: #172b4d;
     color: #ffffff;
 }
@@ -371,6 +378,9 @@ button.contractHistory:hover {
     width: 20vw;
     color: #fff;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .adminDash a:active,
@@ -403,7 +413,7 @@ a.a5 {
 }
 
 a.a6 {
-    background-color: #192631;
+    background-color: #0c263c;
 }
 
 /* Departments view from admin dashboard */
