@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,10 @@ class Work_log extends Model
         'hours_worked'
     ];
 
+    protected $casts = [
+        'start_time' => AsArrayObject::class,
+        'end_time' => AsArrayObject::class,
+    ];
     // A user has many worklogs
     public function user()
     {

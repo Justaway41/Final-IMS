@@ -211,7 +211,7 @@ section.worklog_scroll {
     grid-template-columns: repeat(2, 1fr);
 }
 
-div#time {
+div.time {
     width: 85%;
 }
 

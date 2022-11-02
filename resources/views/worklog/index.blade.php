@@ -1,11 +1,12 @@
 @extends('layouts.layout')
 
 @section('content')
-{{-- ($message = Session::get('message'))
+@if($message = Session::get('message'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
-</div> --}}
+</div>
+@endif
     <div class="head-over-display">
         Worklog
     </div>
@@ -23,23 +24,25 @@
                     @enderror
                 </div>
 
-                <div class="timelog">
-                    <div class="mb-3" id="time">
+                <div class="timelog" id="time-row">
+                    <div class="mb-3 time">
                         <label for="exampleInputEmail1">Start Time</label>
-                        <input type="time" class="form-control" id="startTime" aria-describedby="emailHelp"
-                            value="{{ old('start_time') }}" name="start_time">
+                        <input type="time" class="form-control startTime"  aria-describedby="emailHelp"
+                             name="start_time[]">
                         @error('start_time')
                             <p class="text-danger small"><small>{{ $message }}</small></p>
                         @enderror
                     </div>
-                    <div class="mb-3" id="time">
+                    <div class="mb-3 time">
                         <label for="exampleInputEmail1">End Time</label>
-                        <input type="time" class="form-control" id="endTime" aria-describedby="emailHelp"
-                            value="{{ old('end_time') }}" name="end_time">
+                        <input type="time" class="form-control endTime"  aria-describedby="emailHelp"
+                             name="end_time[]">
                         @error('end_time')
                             <p class="text-danger small"><small>{{ $message }}</small></p>
                         @enderror
                     </div>
+                    <a href="#" class="btn btn-primary p-2 d-block w-75" onclick="addTiming();">Add
+                        Timing</a>
                 </div>
 
                 <button class="time_calculate" onclick="timeCalculator()">Calculate Hours</button>

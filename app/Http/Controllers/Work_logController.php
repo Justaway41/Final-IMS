@@ -7,12 +7,18 @@ use App\Models\Work_log;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Work_logController extends Controller
 {
     public function index()
     {
-        //
+        if (Auth::user()->role->title === 'Admin' || 'Manager') {
+
+            $work_log = Work_log::latest()->get();
+            return view('worklog.allWorklog', ['work_logs' => $work_log]);
+        }
+        abort(404);
     }
 
     public function create()
@@ -24,7 +30,7 @@ class Work_logController extends Controller
     {
         $currentTime = Carbon::now()->toTimeString();
         $timeLimit = Carbon::createFromTime(20, 00, 00)->toTimeString();
-        if ($currentTime > $timeLimit) {
+        if ($currentTime < $timeLimit) {
 
             $request->validated();
 
@@ -38,7 +44,7 @@ class Work_logController extends Controller
             return redirect(route('dashboard'));
         }
 
-        return redirect(route('Work_log.create'))->with('message', 'Contact Manager since worklog is only fillable between 9:00 AM and 8:00 PM');
+        return redirect()->route('Work_log.create')->with('message', 'Contact Manager since worklog is only fillable between 9:00 AM and 8:00 PM');
     }
 
     public function show(Work_log $work_log)

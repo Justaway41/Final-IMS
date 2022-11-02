@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('work');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->json('start_time');
+            $table->json('end_time');
             $table->integer('hours_worked');
             $table->timestamps();
         });

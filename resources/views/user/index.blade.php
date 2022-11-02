@@ -5,7 +5,6 @@
 
 <div class=" container-fluid d-flex mt-4 w-75 ">
   <div class="table w-100 d-flex flex-column  align-items-center bg-light">
-
   <table class="table  table-light">
     <thead>
       <tr>

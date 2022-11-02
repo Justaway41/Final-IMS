@@ -29,8 +29,11 @@
         let app = {{ Js::from($worklogs) }};
         let xValues = ['Day 7', 'Day 6', 'Day 5', 'Day 4', 'Day 3', 'Day 2', 'Day 1'];
         let yValues = [];
+        
         for (let i = 0; i < 7; i++) {
-            yValues[i] = app[i].hours_worked;
+                yValues[i] = app[i].hours_worked;
+
+
         }
         let barColors = "#172b4d";
 
@@ -48,7 +51,8 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            max:8
                         }
                     }]
                 },
