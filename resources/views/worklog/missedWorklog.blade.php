@@ -4,13 +4,11 @@
     <div class="head-over-display">
         Worklog
     </div>
-
     <div class="worklog">
         <form action="{{ route('Work_log.store') }}" method="POST">
             @csrf
             <section class="worklog_scroll">
-
-                <input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value ="{{ auth()->user()->id }}"  name="user_id">
+                <input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value ="{{ $users->id }}"  name="user_id">
 
                 <div class="mb-3">
                     <label for="workFill">Work</label>

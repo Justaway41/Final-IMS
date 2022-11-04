@@ -39,6 +39,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('departments', DepartmentController::class);
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
+        Route::get('/settings', function () {
+            // dd("Hello world");
+            return view('admin.settings');
+        })->name('settings');
+        Route::get('/missedWorklog', [Work_logController::class, 'users'])->name('missedWorklog');
     });
 
     Route::resource('videos', VideoController::class);
@@ -46,12 +51,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/view', [DepartmentController::class, 'view']);
-    Route::get('send-email', function () {
-        $user = [
-            "email" => "test@test.com",
-            "password" => "12345678"
-        ];
-    });
 });
 
 

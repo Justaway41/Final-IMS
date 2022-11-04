@@ -27,7 +27,7 @@ class worklogFormRequest extends FormRequest
             'work' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
-            'hours_worked' => ['required', 'gte:4', 'lte:8']
+            'hours_worked' => ['required', 'gte:0', 'lte:8']
         ];
         return $rules;
     }
