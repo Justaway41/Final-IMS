@@ -13,24 +13,36 @@
                 <label for="exampleInputEmail1">Full Name</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="John Snow" value="{{ old('full_name') }}" name="full_name">
+                @error('full_name')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="johnsnow@deerwalk.edu.np" value="{{ old('email') }}" name="email">
+                @error('email')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Address</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Durbar Marg" value="{{ old('address') }}" name="address">
+                @error('address')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Phone Number</label>
                 <input type="integer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="9841567113" value="{{ old('contact') }}" name="contact">
+                @error('contact')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -40,11 +52,17 @@
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
+                @error('gender')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Birthday</label>
-                <input type="date" class="form-control" name="birthday">
+                <input type="date" class="form-control" name="birthday" value="{{ old('birthday') }}">
+                @error('birthday')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -55,6 +73,9 @@
                         <option value={{ $department->id }}>{{ $department->department_name }}</option>
                     @endforeach
                 </select>
+                @error('department_id')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -65,11 +86,17 @@
                         <option value={{ $role->id }}>{{ $role->title }}</option>
                     @endforeach
                 </select>
+                @error('role_id')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1">Photo</label>
                 <input type="file" class="form-control" id="exampleInputPassword1" name="photo">
+                @error('photo')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -79,24 +106,36 @@
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                 </select>
+                @error('contract_status')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Contract Start Date</label>
                 <input type="date" class="form-control" id="exampleInputEmail1" value="{{ old('contract_start_date') }}"
                     name="contract_start_date">
+                @error('contract_start_date')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Contract End Date</label>
                 <input type="date" class="form-control" id="exampleInputEmail1" value="{{ old('contract_end_date') }}"
                     name="contract_end_date">
+                @error('contract_end_date')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1">Hourly Rate</label>
                 <input type="nunber" class="form-control" id="exampleInputEmail1" value="{{ old('hourly_rate') }}"
                     name="hourly_rate">
+                @error('hourly_rate')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="checkbox">
