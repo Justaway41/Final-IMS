@@ -35,7 +35,8 @@ class DepartmentController extends Controller
     public function show($id)
     {
         $department = Department::findorFail($id);
-        $users = $department->users->whereIn('role_id', ['1', '3']);
+
+        $users = $department->users->where('role_id', '1');
 
         return view('departments.single-department', ['users' => $users, 'department' => $department]);
     }

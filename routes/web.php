@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
             return view('admin.settings');
         })->name('settings');
         Route::get('/missedWorklog', [Work_logController::class, 'users'])->name('missedWorklog');
+        Route::get('/totalHours', [Work_logController::class, 'total'])->name('totalhours');
     });
 
     Route::resource('videos', VideoController::class);

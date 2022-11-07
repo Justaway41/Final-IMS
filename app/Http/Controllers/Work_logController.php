@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\worklogFormRequest;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Work_log;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,9 +80,26 @@ class Work_logController extends Controller
     {
 
         //to view interns to add worklog after 8 
-        $interns = User::where('role_id', '1')->get();
+        $interns = User::whereRelation('role', 'title', 'Intern')->get();
 
         // dd($interns);
         return view('admin.interns', ['interns' => $interns]);
+    }
+
+
+    public function total(User $user)
+    {
+        // $worklogs = Work_log::with('user.full_name')->get();
+        // $posts = Post::whereRelation('comments', 'is_approved', false)->get();
+        $users = User::whereRelation('role', 'title', 'Intern')->get();
+
+        // $users->role()->where('title', 'Intern')->get();
+
+        // echo $posts[0]->votes_count;
+        // echo $posts[0]->comments_count;
+
+        // dd($users);
+
+        return view('admin.totalHours', ['users' => $users]);
     }
 }
