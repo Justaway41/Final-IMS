@@ -67,7 +67,7 @@ nav ul li a:hover {
 footer {
     height: 5vh;
     position: fixed;
-    bottom: 5px;
+    bottom: 0;
     width: 100%;
     color: #ffffff !important;
     display: flex;
@@ -462,4 +462,30 @@ a.three {
 
 a.four {
     background-color: #b44476;
+}
+
+.tableBG {
+    background-color: #d9d9d9;
+    color: #344563;
+    border-radius: 4px;
+    margin-top: -1rem;
+    padding: 2.5rem;
+}
+
+.table {
+    color: #344563 !important;
+    border-bottom: 1px solid #344563 !important;
+    width: 100%;
+    height: 100%;
+}
+
+tr.hover:hover {
+    background-color: #f2f2f2;
+    color: #172b4d;
+}
+
+a.edituser {
+    text-decoration: none;
+    color: #344563 !important;
+    
 }

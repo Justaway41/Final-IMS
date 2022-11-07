@@ -24,7 +24,7 @@
                  four
              @endswitch
          "
-                href="{{ route('departments.show', $department->id) }}">{{ $department->department_name }} </a>
+                href="{{ route('departments.show', $department->id) }}">{{ $department->department_name }}</a>
         @endforeach
     </div>
 @endsection

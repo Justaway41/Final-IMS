@@ -1,40 +1,36 @@
 @extends('layouts.layout')
 
-
 @section('content')
+    <div class="head-over-display">
+        {{ $department->department_name }}
+    </div>
 
-<div class=" container-fluid d-flex mt-4 w-75 ">
-  <div class="table w-100 d-flex flex-column  align-items-center bg-light">
-
-  <table class="table  table-light">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Gender</th>
-        <th scope="col">Birthday</th>
-        <th scope="col">Phone No</th>
-        <th scope="col">Address</th>
-        <th scope="col">Role</th>
-
-      </tr>
-    </thead>
-    @foreach ($users as $user)
-          <tbody>
-              <tr>
-                <th scope="row"> {{ $user->full_name }}  </th>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->gender}}</td>
-                <td>{{ $user->birthday }}</td>
-                <td>{{ $user->contact }}</td>
-                <td>{{ $user->address }}</td>
-                <td>{{ $user->role->title }}</td> 
-              </tr>
-            </tbody>
+    <div class="tableBG">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            @foreach ($users as $user)
+                <tbody>
+                    <tr class="hover">
+                        <th> {{ $user->full_name }} </th>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->address }}</td>
+                        <td>{{ $user->contact }}</td>
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->birthday }}</td>
+                        <td>{{ $user->role->title }}</td>
+                    </tr>
+                </tbody>
             @endforeach
-          </table>  
-         
-         
-</div>
-</div>
+        </table>
+    </div>
 @endsection
