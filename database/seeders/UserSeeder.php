@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $user = [
             [
                 'full_name' => 'Admin',
-                'email' => 'admin@gmai.com',
+                'email' => 'admin@gmail.com',
                 'password' => bcrypt('admin123'),
                 'gender' => 'male',
                 'birthday' => '2022-11-03',

@@ -21,13 +21,13 @@ class departmentSeeder extends Seeder
             ],
 
             [
-                'department_name' => 'DDL'
+                'department_name' => 'Library'
             ],
             [
-                'department_name' => 'DDL'
+                'department_name' => 'Biology'
             ],
             [
-                'department_name' => 'DDL'
+                'department_name' => 'IT'
             ],
         ];
         foreach ($departments as $key => $value) {

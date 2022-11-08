@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0559b494d0b0b379eb34e8ca2cdfef69",
+    "content-hash": "24b0d3318cb411bc8006acd574172ac1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1846,6 +1846,57 @@
                 }
             ],
             "time": "2022-08-08T13:52:53+00:00"
+        },
+        {
+            "name": "milantarami/nepali-calendar",
+            "version": "v1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/milantarami/nepali-calendar.git",
+                "reference": "4f14d1bc23af968d055abe1edf23a4a473f6c96c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/milantarami/nepali-calendar/zipball/4f14d1bc23af968d055abe1edf23a4a473f6c96c",
+                "reference": "4f14d1bc23af968d055abe1edf23a4a473f6c96c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MilanTarami\\NepaliCalendar\\NepaliCalendarServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Helpers/nepali-calendar.php"
+                ],
+                "psr-4": {
+                    "MilanTarami\\NepaliCalendar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "milantarami",
+                    "email": "milantarami.dev@gmail.com"
+                }
+            ],
+            "description": "Date converter with more features ( adding months to date, adding days to date , get current date etc. ) . Supports BS and AD date type.",
+            "support": {
+                "issues": "https://github.com/milantarami/nepali-calendar/issues",
+                "source": "https://github.com/milantarami/nepali-calendar/tree/v1.3.2"
+            },
+            "time": "2021-12-29T06:37:57+00:00"
         },
         {
             "name": "monolog/monolog",

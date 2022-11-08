@@ -12,7 +12,7 @@
             @foreach ($users as $user)
           <tr>
             <th scope="row">{{ $user->full_name }}</th>
-            <td>{{ $user->Worklogs->sum('hours_worked') }}</td>
+            <td>{{ $user->MonthlyWorklogs->sum('hours_worked') }}</td>
           </tr>
           @endforeach
         </tbody>
