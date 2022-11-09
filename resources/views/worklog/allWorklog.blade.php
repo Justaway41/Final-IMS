@@ -5,7 +5,7 @@
         Worklogs
     </div>
 
-    <div class="tableBG">
+    <div class="tableBG" style="min-width:40vw">
         <table class="table">
             <thead>
                 <tr>

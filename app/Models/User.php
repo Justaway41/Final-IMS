@@ -90,6 +90,6 @@ class User extends Authenticatable
         $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
 
 
-        return $this->hasMany(Work_log::class)->whereBetween('created_at', [$firstdayofMonthinAD, $lastdayofMonthinAD]);
+        return $this->hasMany(Work_log::class)->latest()->whereBetween('created_at', [$firstdayofMonthinAD, $lastdayofMonthinAD]);
     }
 }

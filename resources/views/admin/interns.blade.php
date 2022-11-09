@@ -6,7 +6,7 @@
     </div>
 
     <div class="tableBG">
-        <table class="table" style="width:40vw">
+        <table class="table" style="min-width:30vw">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
