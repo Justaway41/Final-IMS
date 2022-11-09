@@ -25,15 +25,12 @@
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 
     {{-- Nepali date picker JS --}}
-        <script
-    src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
-    type="text/javascript"></script>
+    <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
+        type="text/javascript"></script>
 
-{{-- Nepali date picker CSS --}}
-    <link
-    href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
-    rel="stylesheet" type="text/css"/>
-
+    {{-- Nepali date picker CSS --}}
+    <link href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
+        rel="stylesheet" type="text/css" />
 
     {{-- bootstrap css --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
