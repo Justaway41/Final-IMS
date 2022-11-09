@@ -1,47 +1,25 @@
 @extends('layouts.layout')
+
 @section('content')
+    <div class="head-over-display">
+        Create New Department
+    </div>
 
-    <div class="m-2">
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2>Create New Department</h2>
-                </div>
+    <form action="{{ route('departments.store') }}" method="POST" enctype="multipart/form-data" class="createUser">
+        @csrf
+        <div class="createForm">
 
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('departments.index') }}">Back</a>
-                </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1">Department Name</label>
+                <input type="text" name="department_name" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+                @error('department_name')
+                    <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
             </div>
         </div>
-        <br>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('departments.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Department Name</strong>
-                        <input type="text" name="department_name" class="form-control">
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-
-        </form>
-    </div>
+        <div>
+            <button type="submit" class="submit">Submit</button>
+        </div>
+    </form>
 @endsection
