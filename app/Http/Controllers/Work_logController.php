@@ -89,16 +89,8 @@ class Work_logController extends Controller
 
     public function total(User $user)
     {
-        // $worklogs = Work_log::with('user.full_name')->get();
-        // $posts = Post::whereRelation('comments', 'is_approved', false)->get();
+
         $users = User::whereRelation('role', 'title', 'Intern')->get();
-
-        // $users->role()->where('title', 'Intern')->get();
-
-        // echo $posts[0]->votes_count;
-        // echo $posts[0]->comments_count;
-
-        // dd($users);
 
         return view('admin.totalHours', ['users' => $users]);
     }

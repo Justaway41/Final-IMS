@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use MilanTarami\NepaliCalendar\Facades\NepaliCalendar;
 
 class User extends Authenticatable
 {
@@ -70,8 +73,23 @@ class User extends Authenticatable
         return $this->hasMany(Work_log::class);
     }
 
-    public function latestWorklog()
+    public function latestWorklogs()
     {
         return $this->hasMany(Work_log::class)->latest();
+    }
+
+    public function MonthlyWorklogs()
+    {
+        $nepalidate = NepaliCalendar::AD2BS(Carbon::now()->toDateString());
+        $nepaliMonth = $nepalidate["MM"];
+        $nepaliYear = $nepalidate["YYYY"];
+        $startdateandenddate = NepaliCalendar::bsMonthStartEndDates($nepaliMonth,  $nepaliYear);
+        $firstdayofMonth = $startdateandenddate["start_date_of_month"];
+        $lastdayofMonth = $startdateandenddate["end_date_of_month"];
+        $firstdayofMonthinAD = NepaliCalendar::BS2AD($firstdayofMonth)["AD_DATE"];
+        $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
+
+
+        return $this->hasMany(Work_log::class)->whereBetween('created_at', [$firstdayofMonthinAD, $lastdayofMonthinAD]);
     }
 }
