@@ -24,8 +24,11 @@ class Work_logController extends Controller
         abort(404);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->user()->cannot('create', "App\Models\Work_log")) {
+            abort(403, "Only one worklog per day");
+        }
 
         return view('worklog.index');
     }

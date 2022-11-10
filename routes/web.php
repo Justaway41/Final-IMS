@@ -43,12 +43,15 @@ Route::middleware(['auth'])->group(function () {
             // dd("Hello world");
             return view('admin.settings');
         })->name('settings');
+
         Route::get('/missedWorklog', [Work_logController::class, 'users'])->name('missedWorklog');
         Route::get('/totalHours', [Work_logController::class, 'total'])->name('totalhours');
     });
 
     Route::resource('videos', VideoController::class);
     Route::resource('Work_log', Work_logController::class);
+
+
 
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/view', [DepartmentController::class, 'view']);
