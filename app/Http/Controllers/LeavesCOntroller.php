@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Leaves;
 use Illuminate\Http\Request;
 
-class LeavesCOntroller extends Controller
+class LeavesController extends Controller
 {
     /**
      * Display a listing of the resource.
