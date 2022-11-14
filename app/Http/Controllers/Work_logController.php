@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\worklogFormRequest;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\Work_log;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Contracts\Session\Session;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LeavesFormRequest;
 use App\Models\Leaves;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class LeavesController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.leaves');
     }
 
     /**
@@ -33,9 +34,18 @@ class LeavesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LeavesFormRequest $request)
     {
-        //
+        $request->validated();
+        Leaves::create([
+            'reason' => $request->reason,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'total_days' => $request->total_days,
+            'status' => 'pending',
+            'user_id' => $request->user_id,
+        ]);
+        return redirect('dashboard');
     }
 
     /**
