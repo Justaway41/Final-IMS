@@ -92,4 +92,8 @@ class User extends Authenticatable
 
         return $this->hasMany(Work_log::class)->latest()->whereBetween('created_at', [$firstdayofMonthinAD, $lastdayofMonthinAD]);
     }
+    public function Leaves()
+    {
+        return $this->hasMany(Leaves::class);
+    }
 }

@@ -7,18 +7,21 @@
 
     <div class="dashboard">
         <div class="leftView">
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart"></canvas><br>
+            <div class="apply-leaves" style="height: 50px; width:100px">
+                <a href="{{ route('leaves.index') }}">Apply Leaves</a>
+            </div>
         </div>
-
+        
         <div class="work_view">
-            <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
+            <h2>Total Hours: {{ $worklogs->sum('hours_worked') || 0 }}</h2>
             <section class="dashboard_scroll">
                 @foreach ($worklogs as $worklog)
-                    <div class="singleWorklog">
-                        <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
-                        <p class="work">{{ $worklog->work }}</p>
-                        <p class="work" id="right">{{ $worklog->hours_worked }}</p>
-                    </div>
+                <div class="singleWorklog">
+                    <p class="work" id="underline">{{ $worklog->created_at->format('M d') }}</p>
+                    <p class="work">{{ $worklog->work }}</p>
+                    <p class="work" id="right">{{ $worklog->hours_worked }}</p>
+                </div>
                 @endforeach
             </section>
         </div>

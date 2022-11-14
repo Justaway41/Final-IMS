@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LeavesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
+    Route::resource('leaves', LeavesController::class);
 
     Route::middleware("can:create,App\Models\User")->group(function () {
         Route::resource('departments', DepartmentController::class);
@@ -47,7 +49,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/missedWorklog', [Work_logController::class, 'users'])->name('missedWorklog');
         Route::get('/totalHours', [Work_logController::class, 'total'])->name('totalhours');
     });
-
     Route::resource('videos', VideoController::class);
     Route::resource('Work_log', Work_logController::class);
 
