@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use MilanTarami\NepaliCalendar\Facades\NepaliCalendar;
 use App\Models\Department;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 class dashboard extends Controller
@@ -16,10 +13,10 @@ class dashboard extends Controller
         $departments = Department::get();
 
         $worklogs = Auth::user()->MonthlyWorklogs;
-        // dd($worklogs);
+        $leaves = Auth::user()->MonthlyLeaves;
         if (Auth::user()->role->title != "Intern") {
             return view('admin.dashboard', ['departments' => $departments]);
         }
-        return view('dashboard', ['worklogs' => $worklogs]);
+        return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
     }
 }

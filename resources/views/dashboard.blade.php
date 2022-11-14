@@ -11,6 +11,17 @@
             <div class="apply-leaves" style="height: 50px; width:100px">
                 <a href="{{ route('leaves.index') }}">Apply Leaves</a>
             </div>
+            <section class="dashboard_scroll">
+                @foreach ($leaves as $leave)
+                <div class="singleWorklog">
+                    <p class="work" id="underline">{{ $leave->start_date }}</p>
+                    <p class="work" id="underline">{{ $leave->end_date }}</p>
+                    <p class="work">{{ $leave->reason }}</p>
+                    <p class="work  {{ $leave->status == 'approved' ? 'green' : ($leave->status == 'disapproved'? 'red' : 'yellow') }}   ">{{ $leave->status }}</p>
+                    <p class="work" id="right">{{ $leave->total_days }}</p>
+                </div>
+                @endforeach
+            </section>
         </div>
         
         <div class="work_view">

@@ -96,4 +96,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leaves::class);
     }
+
+    public function MonthlyLeaves()
+    {
+        $nepalidate = NepaliCalendar::AD2BS(Carbon::now()->toDateString());
+        $nepaliMonth = $nepalidate["MM"];
+        $nepaliYear = $nepalidate["YYYY"];
+        $startdateandenddate = NepaliCalendar::bsMonthStartEndDates($nepaliMonth,  $nepaliYear);
+        $firstdayofMonth = $startdateandenddate["start_date_of_month"];
+        $lastdayofMonth = $startdateandenddate["end_date_of_month"];
+        $firstdayofMonthinAD = NepaliCalendar::BS2AD($firstdayofMonth)["AD_DATE"];
+        $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
+
+        return $this->hasMany(Leaves::class)->latest()->whereBetween('created_at', [$firstdayofMonthinAD, $lastdayofMonthinAD]);
+    }
 }
