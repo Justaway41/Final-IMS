@@ -51,10 +51,6 @@ function timeCalculator() {
 }
 
 const daysCalculator = () => {
-    // var Difference_In_Time = date2.getTime() - date1.getTime();
-
-    // To calculate the no. of days between two dates
-    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     event.preventDefault();
     let startDate = $("input.start-date").val();
     let endDate = $("input.end-date").val();
