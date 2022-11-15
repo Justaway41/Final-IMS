@@ -17,7 +17,7 @@
                     <p class="work" id="underline">{{ $leave->start_date }}</p>
                     <p class="work" id="underline">{{ $leave->end_date }}</p>
                     <p class="work">{{ $leave->reason }}</p>
-                    <p class="work  {{ $leave->status == 'approved' ? 'green' : ($leave->status == 'disapproved'? 'red' : 'yellow') }}   ">{{ $leave->status }}</p>
+                    <p class="work  {{ $leave->status == 'approved' ? 'green' : ($leave->status == 'disapproved'? 'red' : 'yellow') }}   ">{{ ucfirst($leave->status) }}</p>
                     <p class="work" id="right">{{ $leave->total_days }}</p>
                 </div>
                 @endforeach
