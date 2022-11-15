@@ -27,7 +27,6 @@
             <tr class="hover">
                 @foreach($user->MonthlyLeaves->where('status','pending') as $leave)
                 <th scope="row">{{ $leave->user->full_name }}</th>
-                {{-- {{ dd($leave)}} --}}
                 <td>{{ $leave->reason }}</td>
 
                 <td>{{ $leave->start_date }}</td>
@@ -44,7 +43,7 @@
                     <td>
                         <button class="btn btn-danger" value="rejected" name="status">
 
-                            Rejected
+                            Reject
                         </button>
                     </td>
                 </form>
