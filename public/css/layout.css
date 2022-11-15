@@ -141,6 +141,50 @@ section::-webkit-scrollbar {
     grid-template-columns: repeat(2, 1fr);
 }
 
+#myleaves {
+    margin: 0 10px;
+    padding: 0 10px;
+}
+
+.leaves {
+    display: flex;
+}
+
+/* apply leaves */
+.apply_leaves {
+    text-decoration: none;
+    font-size: large;
+    padding: 3px 5px;
+    font-weight: bold;
+    background-color: #172b4d;
+    color: #f2f2f2;
+    border-radius: 4px;
+}
+
+.apply_leaves:hover {
+    color: #f2f2f2;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+section.leaves_scroll {
+    height: 27vh;
+    overflow-y: auto;
+}
+
+p.leave_records {
+    text-decoration: underline;
+    margin-bottom: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+p.leave_status {
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 4px;
+    color: #000;
+}
+
 /* worklog view-dashboard */
 .work_view {
     margin-left: 5px;
@@ -180,7 +224,6 @@ p#right {
 
 /* bar-graph */
 #myChart {
-    padding-top: 2rem;
     max-width: 35vw;
     margin: 0 auto;
 }
@@ -564,9 +607,11 @@ button.submit:hover {
 .green {
     background-color: green;
 }
+
 .red {
     background-color: red;
 }
+
 .yellow {
     background-color: yellow;
 }
