@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LeavesFormRequest;
 use App\Models\Leaves;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LeavesController extends Controller
@@ -23,9 +24,10 @@ class LeavesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $users)
     {
-        //
+        $users = User::has('leaves')->get();
+        return view('admin.leaves', ['users' => $users]);
     }
 
     /**
@@ -65,9 +67,13 @@ class LeavesController extends Controller
      * @param  \App\Models\Leaves  $leaves
      * @return \Illuminate\Http\Response
      */
-    public function edit(Leaves $leaves)
+    public function edit(Request $request, $id)
     {
-        //
+      $model = Leaves::findorFail($id);
+      $model->status = $request->status;
+      $model->update(['status',$request->status]);
+  
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -77,9 +83,9 @@ class LeavesController extends Controller
      * @param  \App\Models\Leaves  $leaves
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Leaves $leaves)
+    public function update(LeavesFormRequest $request, $id)
     {
-        //
+        //   
     }
 
     /**
