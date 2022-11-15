@@ -1,58 +1,45 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="head-over-display">
-    Verify Leaves
-</div>
-<div class="tableBG">
+    <div class="head-over-display">
+        Verify Leaves
+    </div>
 
-    <table class="table" style="min-width:30vw">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-                <th scope="col">Total Days</th>
-                <th></th>
-                <th></th>
+    <div class="tableBG">
+        <table class="table" style="min-width:30vw">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">From date</th>
+                    <th scope="col">To date</th>
+                    <th scope="col">Days</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
 
-
-
-                </th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach ($users as $user)
-            <tr class="hover">
-                @foreach($user->MonthlyLeaves->where('status','pending') as $leave)
-                <th scope="row">{{ $leave->user->full_name }}</th>
-                {{-- {{ dd($leave)}} --}}
-                <td>{{ $leave->reason }}</td>
-
-                <td>{{ $leave->start_date }}</td>
-                <td>{{ $leave->end_date }}</td>
-                <td>{{ $leave->total_days }}</td>
-                <form action="{{ route('leaves.edit',$leave->id) }}">
-                    @csrf
-                    <td>
-                        <button class="btn btn-success" value="approved" name="status">
-
-                            Approve
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" value="rejected" name="status">
-
-                            Rejected
-                        </button>
-                    </td>
-                </form>
+                @foreach ($user->MonthlyLeaves->where('status', 'pending') as $leave)
+                    <tbody>
+                        <tr class="hover">
+                            <th scope="row">{{ $leave->user->full_name }}</th>
+                            <td>{{ $leave->reason }}</td>
+                            <td>{{ $leave->start_date }}</td>
+                            <td>{{ $leave->end_date }}</td>
+                            <td>{{ $leave->total_days }}</td>
+                            <form action="{{ route('leaves.edit', $leave->id) }}">
+                                @csrf
+                                <td>
+                                    <button class="btn btn-success" value="approved" name="status">Approve</button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" value="rejected" name="status">Reject</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
                 @endforeach
-            </tr>
             @endforeach
-        </tbody>
-    </table>
-</div>
-
+        </table>
+    </div>
 @endsection
