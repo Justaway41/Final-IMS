@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('total_days');
-            $table->set('status', ['pending', 'approved', 'disapproved']);
+            $table->set('status', ['pending', 'approved', 'rejected']);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

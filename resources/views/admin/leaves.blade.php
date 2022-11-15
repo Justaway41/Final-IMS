@@ -42,9 +42,9 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-danger" value="disapproved" name="status">
+                        <button class="btn btn-danger" value="rejected" name="status">
 
-                            Disapprove
+                            Rejected
                         </button>
                     </td>
                 </form>
