@@ -42,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
         Route::get('/settings', function () {
-            // dd("Hello world");
             return view('admin.settings');
         })->name('settings');
 
