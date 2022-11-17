@@ -108,10 +108,6 @@ class User extends Authenticatable
         $firstdayofMonthinAD = NepaliCalendar::BS2AD($firstdayofMonth)["AD_DATE"];
         $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
 
-<<<<<<< HEAD
         return $this->hasMany(Leaves::class)->latest()->whereDate('created_at', '>=',$firstdayofMonthinAD)->whereDate('created_at','<=',$lastdayofMonthinAD);
-=======
-        return $this->hasMany(Leaves::class)->latest()->whereDate('created_at', '>=',$firstdayofMonthinAD )->whereDate('created_at','<=',$lastdayofMonthinAD);
->>>>>>> 04779170bca195a077d08488e70b21d6e2499257
     }
 }
