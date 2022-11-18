@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LeavesFormRequest;
+use App\Mail\leaveMail;
 use App\Models\Leaves;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LeavesController extends Controller
 {
@@ -47,6 +49,15 @@ class LeavesController extends Controller
             'status' => 'pending',
             'user_id' => $request->user_id,
         ]);
+
+        $mailData = [
+            'reason' => $request->reason,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'total_days' => $request->total_days,
+            'name' => $request->user()->full_name,
+        ];
+        Mail::to('manager_ddl@deerwalk.edu.np')->send(new leaveMail($mailData));
         return redirect('dashboard');
     }
 
@@ -69,10 +80,10 @@ class LeavesController extends Controller
      */
     public function edit(Request $request, $id)
     {
-      $model = Leaves::findorFail($id);
-      $model->status = $request->status;
-      $model->update(['status',$request->status]);
-  
+        $model = Leaves::findorFail($id);
+        $model->status = $request->status;
+        $model->update(['status', $request->status]);
+
         return redirect()->route('dashboard');
     }
 
