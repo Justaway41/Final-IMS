@@ -24,9 +24,9 @@ class Work_logController extends Controller
 
     public function create(Request $request)
     {
-       if ($request->user()->cannot('create', "App\Models\Work_log")) {
+        if ($request->user()->cannot('create', "App\Models\Work_log")) {
             abort(403, "Only one worklog per day");
-        } 
+        }
 
         return view('worklog.index');
     }
@@ -34,7 +34,7 @@ class Work_logController extends Controller
     public function store(worklogFormRequest $request)
     {
         $currentTime = Carbon::now()->toTimeString();
-        $timeLimit = Carbon::createFromTime(20, 00, 00)->toTimeString();
+        $timeLimit = Carbon::createFromTime(20, 30, 00)->toTimeString();
 
         if ($currentTime < $timeLimit || Auth::user()->role->title !== 'Intern') {
 
