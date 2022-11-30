@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LeavesFormRequest;
 use App\Mail\leaveMail;
+use App\Mail\mailStatus;
 use App\Models\Leaves;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -84,7 +85,14 @@ class LeavesController extends Controller
         $model->status = $request->status;
         $model->update(['status', $request->status]);
 
-        return redirect()->route('dashboard');
+        $mailStatus = [
+            'name' => $model->user->full_name,
+            'email' => $model->user->email,
+            'total_days' => $model->total_days,
+            'status' => $request->status,
+        ];
+        Mail::to($mailStatus['email'])->send(new mailStatus($mailStatus));
+        return redirect()->route('leaves.create');
     }
 
     /**
