@@ -103,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
-    // both admin and intern todo panel
+    // intern todo panel
     Route::group([
         'prefix' => 'todo',
         'as' => 'todo.'
