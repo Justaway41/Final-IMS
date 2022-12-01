@@ -20,8 +20,8 @@ class UserFactory extends Factory
         return [
             [
                 "full_name" => "Admin",
-                "email" => "admin@gmail.com",
-                "password" => "admin",
+                "email" => "admin123@gmail.com",
+                "password" => "admin1234",
                 "gender" => "male",
                 "birthday" => "10/21/2022",
                 "contact" => "98134502056",

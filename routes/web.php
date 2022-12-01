@@ -4,7 +4,10 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeavesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProjectAdminController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TodoAdminController;
+use App\Http\Controllers\TodoInternController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
@@ -12,7 +15,6 @@ use App\Mail\worklogMail;
 use App\Models\Work_log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,7 +57,65 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/view', [DepartmentController::class, 'view']);
+
+
+    // todo routes
+    Route::group([
+        'prefix' => 'admin/projects',
+        'middleware' => 'isAdmin',
+        'as' => 'admin.projects.'
+    ], function(){
+        Route::get('/', [ProjectAdminController::class, 'index'])
+            ->name('index');
+        Route::get('/create', [ProjectAdminController::class, 'create'])
+            ->name('create');
+        Route::post('/store', [ProjectAdminController::class, 'store'])
+            ->name('store');
+            Route::get('/{id}', [ProjectAdminController::class, 'show'])
+            ->name('show');
+    });
+
+    Route::group([
+        'prefix' => 'admin/todo',
+        'midddleware' => 'isAdmin',
+        'as' => 'admin.todo.'
+    ], function(){
+        // won't probably need it based on the design
+        // Route::get('/', [TodoAdminController::class, 'index'])
+        //     ->name('index');
+
+        Route::get('/create/{id}', [TodoAdminController::class, 'create'])
+            ->name('create');
+        Route::post('/store/{id}', [TodoAdminController::class, 'store'])
+            ->name('store');
+        Route::group([
+            'prefix' => 'tasks',
+            'as' => 'tasks.'
+        ], function(){
+            Route::get('/', [TodoAdminController::class, 'show'])
+                ->name('show');
+            Route::get('/edit/{id}', [TodoAdminController::class, 'edit'])
+                ->name('edit');
+            Route::put('/update', [TodoAdminController::class, 'update'])
+                ->name('update');
+            Route::put('/updateProgress/{id}', [TodoAdminController::class, 'updateProgress'])
+                ->name('updateProgress');
+        });
+    });
+
+    // both admin and intern todo panel
+    Route::group([
+        'prefix' => 'todo',
+        'as' => 'todo.'
+    ], function(){
+        Route::get('/', [TodoInternController::class, 'index']);
+    });
+    
 });
+
+
+
+
 
 
 // Mail template viewing
