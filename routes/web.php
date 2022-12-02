@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     // todo routes
+
+    // projects route
     Route::group([
         'prefix' => 'admin/projects',
         'middleware' => 'isAdmin',
@@ -69,12 +71,17 @@ Route::middleware(['auth'])->group(function () {
             ->name('index');
         Route::get('/create', [ProjectAdminController::class, 'create'])
             ->name('create');
+        Route::get('/edit/{id}', [ProjectAdminController::class, 'edit'])
+            ->name('edit');
         Route::post('/store', [ProjectAdminController::class, 'store'])
             ->name('store');
+        Route::put('/update', [ProjectAdminController::class, 'update'])
+            ->name('update');
             Route::get('/{id}', [ProjectAdminController::class, 'show'])
             ->name('show');
     });
 
+    // todo tasks route
     Route::group([
         'prefix' => 'admin/todo',
         'midddleware' => 'isAdmin',
