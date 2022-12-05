@@ -1,10 +1,12 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 @section('content')
+<div class="main">
+
     <div class="head-over-display">
         Worklogs
     </div>
-
+    
     <div class="tableBG" style="min-width:40vw">
         <table class="table">
             <thead>
@@ -16,13 +18,14 @@
             </thead>
             <tbody>
                 @foreach ($work_logs as $worklog)
-                    <tr class="hover">
-                        <th scope="row">{{ $worklog->user->full_name }}</th>
-                        <td>{{ $worklog->work }}</td>
-                        <td>{{ $worklog->hours_worked }}</td>
-                    </tr>
+                <tr class="hover">
+                    <th scope="row">{{ $worklog->user->full_name }}</th>
+                    <td>{{ $worklog->work }}</td>
+                    <td>{{ $worklog->hours_worked }}</td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+</div>
 @endsection

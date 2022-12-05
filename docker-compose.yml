@@ -5,22 +5,47 @@ services:
         image: mysql
         container_name: ${DB_DATABASE}
         ports:
-            - 3306:3306
+            - 3307:3306
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USERNAME: ${DB_USERNAME}
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
             MYSQL_PASSWORD: ${DB_PASSWORD}
         volumes:
             - intern_manager:/var/lib/mysql
 
     laravel:
-        build: .
-        env_file: .env
+        build:
+            context: .
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
+        environment:
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=app
         ports:
             - 8000:80
         volumes:
             - .:/var/www/html/
+        depends_on:
+            - mysql
+            # - laravel-init
+
+    # laravel-init:
+    #     build:
+    #         context: .
+    #         target: php
+    #         args:
+    #             - APP_ENV=${APP_ENV}
+    #     environment:
+    #         - APP_ENV=${APP_ENV}
+    #         - CONTAINER_ROLE=app
+    #     command: docker/entrypoint.sh
+    #     volumes:
+    #         - .:/var/www/html/
+    #     depends_on:
+    #         - mysql
 
 volumes:
     intern_manager:

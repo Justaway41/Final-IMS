@@ -1,10 +1,12 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 @section('content')
+<div class="main">
+
     <div class="head-over-display">
         Roles
     </div>
-
+    
     <div class="tableBG" style="min-width:40vw">
         <table class="table">
             <thead>
@@ -15,24 +17,25 @@
             </thead>
             <tbody>
                 @foreach ($roles as $role)
-                    <tr class="hover">
-                        <th scope="row">{{ $role->title }}</th>
-                        <td>
-                            <form>
-                                <a class="createUser" href="{{ route('roles.edit', $role->id) }}">Edit</a>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="delete">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                <tr class="hover">
+                    <th scope="row">{{ $role->title }}</th>
+                    <td>
+                        <form>
+                            <a class="createUser" href="{{ route('roles.edit', $role->id) }}">Edit</a>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
         <a href="{{ route('roles.create') }}" class="createUser">Create New Role</a>
     </div>
+</div>
 @endsection

@@ -489,7 +489,9 @@ a.a6 {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
-
+.dil {
+    background-color: var(--top-nav-color);
+}
 /* departments box color */
 a.one {
     background-color: #2686a3;

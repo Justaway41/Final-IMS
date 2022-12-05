@@ -61,6 +61,9 @@ const daysCalculator = () => {
     let Differnce_In_Time = end.getTime() - start.getTime();
 
     let Difference_In_Days = Differnce_In_Time / (1000 * 3600 * 24);
+    console.log(Differnce_In_Time);
 
-    total_days.val(Difference_In_Days);
+    let Total_Diff = 10;
+
+    total_days.val(Total_Diff);
 };

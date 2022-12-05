@@ -76,11 +76,18 @@
         let barColors = "#172b4d";
 
         new Chart("myChart", {
-            type: "bar",
+            type: "line",
             data: {
                 labels: xValues,
                 datasets: [{
                     backgroundColor: barColors,
+                    fill: false,
+                    borderWidth: 2,
+                    pointHoverBackgroundColor: barColors,
+                    borderColor: barColors,
+                    pointHoverBackgroundColor: barColors,
+                    pointBackgroundColor: barColors,
+                    tension: 0,
                     data: yValues
                 }]
             },
@@ -90,7 +97,7 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            max: 8
+                            max: 9
                         }
                     }]
                 },

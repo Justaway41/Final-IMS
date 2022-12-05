@@ -8,9 +8,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
-use App\Mail\worklogMail;
-use App\Models\Work_log;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -1,10 +1,12 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 @section('content')
+<div class="main">
+
     <div class="head-over-display">
         {{ $department->department_name }}
     </div>
-
+    
     <div class="tableBG">
         <table class="table">
             <thead>
@@ -19,9 +21,9 @@
                 </tr>
             </thead>
             @foreach ($users as $user)
-                <tbody>
-                    <tr class="hover">
-                        <th> {{ $user->full_name }} </th>
+            <tbody>
+                <tr class="hover">
+                    <th> {{ $user->full_name }} </th>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->address }}</td>
                         <td>{{ $user->contact }}</td>
@@ -30,7 +32,8 @@
                         <td>{{ $user->role->title }}</td>
                     </tr>
                 </tbody>
-            @endforeach
-        </table>
+                @endforeach
+            </table>
+        </div>
     </div>
 @endsection
