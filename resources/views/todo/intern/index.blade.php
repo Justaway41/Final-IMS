@@ -40,18 +40,50 @@
                         {{$task->deadline}}
                     </div>
                     <div class="flex">
-                        <form action="{{route('admin.todo.tasks.updateProgress', ['id' => $task->id])}}" method="POST" enctype="multipart/form-data" >
+                        <form action="{{route('admin.todo.tasks.updateProgress', ['id' => $task->id])}}" id="progressForm" method="POST" enctype="multipart/form-data" >
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="mx-2 border border-white p-1">{{progress($task) }}</button>
+                            
+                            <button type="submit" class="mx-2 border border-white p-1" id="progressButton">{{progress($task)}}</button>
                         </form>
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div>
+            <button class="add text-white border border-white p-1" id="add">CLICK</button>
         </div>
     @endunless
 
 
 
 </div>
+{{-- not working as intended --}}
+    {{-- <script>
+        $(document).ready(function(){
+            $(document).on('click', '#progressButton', function(e) {
+                e.preventDefault();
+                var form  = $("#progressForm");
+                console.log(form.attr('action'));
+                var data = {
+                    'progress' : $('#progressButton').html()
+                }
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "PUT",
+                    url: form.attr('action'),
+                    data: data,
+                    success: function(response){
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script> --}}
+
+
 @endsection

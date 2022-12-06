@@ -89,10 +89,6 @@ Route::middleware(['auth'])->group(function () {
         'midddleware' => 'isAdmin',
         'as' => 'admin.todo.'
     ], function(){
-        // won't probably need it based on the design
-        // Route::get('/', [TodoAdminController::class, 'index'])
-        //     ->name('index');
-
         Route::get('/create/{id}', [TodoAdminController::class, 'create'])
             ->name('create');
         Route::post('/store/{id}', [TodoAdminController::class, 'store'])
