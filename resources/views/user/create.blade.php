@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 @section('content')
     <div class="head-over-display">

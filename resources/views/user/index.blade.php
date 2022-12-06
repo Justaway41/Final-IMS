@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 @section('content')
     <div class="head-over-display">
@@ -6,7 +6,7 @@
     </div>
 
     <div class="tableBG">
-        <table class="table">
+        <table class="table" >
             <thead>
                 <tr>
                     <th scope="col">Name</th>

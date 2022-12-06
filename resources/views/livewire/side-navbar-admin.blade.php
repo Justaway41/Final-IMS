@@ -1,10 +1,10 @@
 <div class="sidenav">
     <div class="logo">
-        <img
-            src="{{ asset('images/navLogo.png') }}"
-            alt="DSS Logo"
-        />
+        <a href="/dashboard">
+            <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
+        </a>
     </div>
+
     <div class="sidelinks">
         <ul>
             <li>
@@ -27,7 +27,6 @@
             </li>
             <li>
                 <a href="{{ route('leaves.create') }}">
-                    <i class="fa fa-person-to-door fa-lg icons"></i>
                     <span>Leaves</span>
                 </a>
             </li>
@@ -38,7 +37,7 @@
                 </a>
             </li>
             <li>
-               
+
                 <a href="/settings">
                     <i class="fa fa-cog fa-lg icons"></i>
                     <span>Settings</span>
