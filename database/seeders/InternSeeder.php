@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 
         $user = [
             [
-                'full_name' => 'Admin123',
+                'full_name' => 'Admin',
                 'email' => 'admin123@gmail.com',
                 'password' => bcrypt('admin1234'),
                 'gender' => 'male',
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'contact' => '9813706413',
                 'address' => 'admin gau',
                 'department_id' => '1',
-                'role_id' => '1',
+                'role_id' => '2',
                 'contract_status' => 'active',
                 'contract_start_date' => '2022-11-03',
                 'contract_end_date' => '2022-11-10',

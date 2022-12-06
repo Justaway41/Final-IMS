@@ -96,6 +96,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leaves::class);
     }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 
     public function MonthlyLeaves()
     {
