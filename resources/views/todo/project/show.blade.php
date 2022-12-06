@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-{{-- to display completed if task is completed --}}
+{{-- to display if the task is completed or in-progress --}}
 @php
     function progress($task){
         if($task->completed) return "COMPLETED";
