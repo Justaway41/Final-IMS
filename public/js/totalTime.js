@@ -49,21 +49,3 @@ function timeCalculator() {
         total_hours.val(totalHours);
     }
 }
-
-const daysCalculator = () => {
-    event.preventDefault();
-    let startDate = $("input.start-date").val();
-    let endDate = $("input.end-date").val();
-    let total_days = $("input#totalDays");
-    let start = new Date(startDate);
-    let end = new Date(endDate);
-
-    let Differnce_In_Time = end.getTime() - start.getTime();
-
-    let Difference_In_Days = Differnce_In_Time / (1000 * 3600 * 24);
-    console.log(Differnce_In_Time);
-
-    let Total_Diff = 10;
-
-    total_days.val(Total_Diff);
-};

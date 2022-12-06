@@ -12,11 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class Work_logController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::user()->role->title === 'Admin' || 'Manager') {
-
-            $work_log = Work_log::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+            $work_log = [];
+            if ($request->start_date != null && $request->end_date != null) {
+                $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
+                    $q->whereDate('created_at', '>=', $request->start_date)->whereDate('created_at', '<=', $request->end_date);
+                })->get();
+            }
             return view('worklog.allWorklog', ['work_logs' => $work_log]);
         }
         abort(404);
@@ -62,22 +66,8 @@ class Work_logController extends Controller
         abort(404);
     }
 
-    public function edit(Work_log $work_log, Request $request)
-    {
-        //
-    }
 
-    public function update(Request $request, Work_log $work_log)
-    {
-        //
-    }
-
-    public function destroy(Work_log $work_log)
-    {
-        //
-    }
-
-    public function users(User $user)
+    public function users()
     {
 
         //to view interns to add worklog after 8 
@@ -88,7 +78,7 @@ class Work_logController extends Controller
     }
 
 
-    public function total(User $user)
+    public function total()
     {
 
         $users = User::whereRelation('role', 'title', 'Intern')->get();

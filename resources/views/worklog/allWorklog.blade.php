@@ -6,9 +6,26 @@
     <div class="head-over-display">
         Worklogs
     </div>
-    
+
     <div class="tableBG" style="min-width:40vw">
-        <table class="table">
+        <form class="d-flex align-items-center justify-content-end gap-3" method="GET"
+            action="{{ route('Work_log.index') }}">
+            @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">From</label>
+                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    name="start_date">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">To</label>
+                <input type="date" class="form-control" id="exampleInputPassword1" name="end_date">
+            </div>
+            <div class="form-group align-self-end">
+
+                <button type="submit" class=" btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <table class="table mt-3">
             <thead>
                 <tr>
                     <th scope="col">Intern Name</th>
