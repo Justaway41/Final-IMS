@@ -14,7 +14,6 @@
                 <p>Todo : {{$task->todo}}</p>
                 <p>Deadline : {{$task->deadline}}</p>
                 <form action="" method="POST">
-    
                     <select name="vals" class=" border border-black-500 p-2">
                         <option value="">
                         Task Progress

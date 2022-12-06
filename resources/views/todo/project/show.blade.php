@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 
+{{-- to display completed if task is completed --}}
 @php
     function progress($task){
         if($task->completed) return "COMPLETED";
@@ -9,6 +10,13 @@
 
 @section('content')
 <div class="text-white">
+        <div>
+            <a href="{{route('admin.projects.index')}}" class="flex justify-start hover:text-white">
+                <button class="border border-white-500 p-2 mb-3">
+                    Back
+                </button>
+            </a>
+        </div>
     <div class="flex flex-col mb-3 border border-white">
         <div>
             <span>PROJECT: </span>
@@ -48,7 +56,17 @@
                             {{$task->deadline}}
                         </div>
                         <div class="flex">
-                            <form action="{{route('admin.todo.tasks.updateProgress', ['id' => Crypt::encrypt($task->id)])}}" method="POST" enctype="multipart/form-data" >
+                            <form action="{{route('admin.todo.tasks.delete', ['id' => $task->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="mx-2 border border-white p-1">DELETE</button>
+                            </form>
+                            <a href="{{route('admin.todo.tasks.edit', ['id'=> $task->id])}}" class="hover:text-white">
+                                <button type="submit" class="mx-2 border border-white p-1 ">
+                                    EDIT
+                                </button>
+                            </a>
+                            <form action="{{route('admin.todo.tasks.updateProgress', ['id' => $task->id])}}" method="POST" enctype="multipart/form-data" >
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="mx-2 border border-white p-1">{{progress($task) }}</button>
@@ -60,11 +78,13 @@
         @endunless
 
 
-        <a href="{{route('admin.todo.create', $project->id)}}" class="hover:text-white">
-            <button class="border border-white-500 p-2">
-                Add Todos
-            </button>
-        </a>
+            <div>
+                <a href="{{route('admin.todo.create', $project->id)}}" class="hover:text-white">
+                    <button class="border border-white-500 p-2">
+                        Add Todos
+                    </button>
+                </a>
+            </div>
     </div>
 
 </div>

@@ -11,7 +11,7 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'assign_to', 'todo', 'deadline', 'project_id'
+        'assign_to', 'todo', 'deadline', 'project_id', 'user_id'
     ];
 
     // setting deadline date format
@@ -25,5 +25,8 @@ class Task extends Model
     public function projects(){
         $this->belongsTo(Project::class);
     }
-
+    public function users()
+    {
+        $this->belongsTo(User::class);
+    }
 }

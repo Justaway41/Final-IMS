@@ -75,9 +75,11 @@ Route::middleware(['auth'])->group(function () {
             ->name('edit');
         Route::post('/store', [ProjectAdminController::class, 'store'])
             ->name('store');
-        Route::put('/update', [ProjectAdminController::class, 'update'])
+        Route::put('/update/{id}', [ProjectAdminController::class, 'update'])
             ->name('update');
-            Route::get('/{id}', [ProjectAdminController::class, 'show'])
+        Route::delete('/delete/{id}', [ProjectAdminController::class, 'destroy'])
+            ->name('delete');
+        Route::get('/{id}', [ProjectAdminController::class, 'show'])
             ->name('show');
     });
 
@@ -103,8 +105,10 @@ Route::middleware(['auth'])->group(function () {
                 ->name('show');
             Route::get('/edit/{id}', [TodoAdminController::class, 'edit'])
                 ->name('edit');
-            Route::put('/update', [TodoAdminController::class, 'update'])
+            Route::put('/update/{id}', [TodoAdminController::class, 'update'])
                 ->name('update');
+            Route::delete('/delete/{id}', [TodoAdminController::class, 'destroy'])
+                ->name('delete');
             Route::put('/updateProgress/{id}', [TodoAdminController::class, 'updateProgress'])
                 ->name('updateProgress');
         });

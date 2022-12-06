@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\User;
 use App\Models\Project;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -16,11 +17,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            // $table->foreign('project_id')
-            //     ->constrained()
-            //     ->references('id')->on('projects')
-            //     ->onDelete('cascade');
             $table->foreignIdFor(Project::class);
+            $table->foreignIdFor(User::class);
             $table->string('assign_to');
             $table->boolean('completed')->default(0); // 0 - on_progress, 1 - completed
             $table->longText('todo');

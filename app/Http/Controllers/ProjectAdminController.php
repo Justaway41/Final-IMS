@@ -17,7 +17,9 @@ class ProjectAdminController extends Controller
 
     // show individual project
     public function show(Request $req, $id){
-        $id = Crypt::decrypt($id);
+        if(auth()->user()->role_id != 2){
+            abort(404);
+        }
         $project = Project::find($id);
         $task = Task::where('project_id', $id)->get();
         return view('todo.project.show', ['project' => $project, 'tasks' => $task]);
@@ -39,7 +41,22 @@ class ProjectAdminController extends Controller
     public function edit($id){
         return view('todo.project.edit', ['project' => Project::find($id)]);
     }
-    public function update(Request $req, Project $project){
+    public function update(Request $req, $id){
+        $project = Project::find($id);
+        if($project->name != $req->get('name')){
+            $project->name = $req->get('name');
+            $project->save();
+            return redirect(route('admin.projects.index'));
+        }else if($project->start_date != $req->get('start_date')){
+            $project->start_date = $req->get('start_date');
+            $project->save();
+            return redirect(route('admin.projects.index'));
+        }else if($project->deadline != $req->get('deadline')){
+            $project->deadline = $req->get('deadline');
+            $project->save();
+            return redirect(route('admin.projects.index'));
+        }
+
         $formFields = $req->validate([
             'name' => 'required',
             'start_date' => 'required | date_format:m/d/Y',
@@ -48,7 +65,12 @@ class ProjectAdminController extends Controller
         $project->update($formFields);
         return redirect(route('admin.projects.index'));
     }
-    public function destroy(){
+    public function destroy($id){
+        $project = Project::find($id);
+        $task = Task::where('project_id', $id);
+        $task->delete();
+        $project->destroy($id);
 
+        return back();
     }
 }

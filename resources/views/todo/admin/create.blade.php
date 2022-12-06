@@ -13,14 +13,29 @@
                         <label for="todo">Todo:</label>
                         <input type="text" name="todo" class="text-black">
                     </div>
-                    <div class="mb-3">
+
+                    <div>
+                        <label for="assign_to">Assign To</label>
+                        <select class="text-black" name="assign_to">
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}" class="text-black">  
+                                    {{ $user->email }} 
+                                </option>
+                            @endforeach    
+                        </select>
+                    </div>
+
+                    {{-- <div class="mb-3">
                         <label for="assign_to">Assign to:</label>
                         <input type="text" name="assign_to" class="text-black">
-                    </div>
+                    </div> --}}
+
+
                     <div class="mb-3">
                         <label for="deadline">Deadline:</label>
                         <input type="" autocomplete="off" name="deadline" class="datepicker text-black ">
                     </div>
+
                     <div class="mb-3 border border-black-500">
                         <button class="" type="submit">Create</button>
                     </div>

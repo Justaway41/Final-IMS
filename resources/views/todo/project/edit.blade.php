@@ -2,13 +2,21 @@
 
 @section('content')
     <div class="text-white">
-        <form action="{{route('admin.projects.update')}}" method="POST" enctype="multipart/form-data">
+        <div>
+            <a href="{{route('admin.projects.index')}}" class="flex justify-start hover:text-white">
+                <button class="border border-white-500 p-2 mb-3">
+                    Back
+                </button>
+            </a>
+        </div>
+        <form action="{{route('admin.projects.update', ['id' => $project->id])}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3 border border-black-500 p-4">
                 <div class="mb-3">
                     <label for="name">Project:</label>
                     <input type="text" name="name" autocomplete="off" class="text-black" value="{{$project->name}}">
+
                 </div>
                 <div class="mb-3 border border-black-500 p-2">
                     <div class="mb-3">
