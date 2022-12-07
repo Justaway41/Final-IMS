@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
         'prefix' => 'admin/projects',
         'middleware' => 'isAdmin',
         'as' => 'admin.projects.'
-    ], function(){
+    ], function () {
         Route::get('/', [ProjectAdminController::class, 'index'])
             ->name('index');
         Route::get('/create', [ProjectAdminController::class, 'create'])
@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
         'prefix' => 'admin/todo',
         'midddleware' => 'isAdmin',
         'as' => 'admin.todo.'
-    ], function(){
+    ], function () {
         Route::get('/create/{id}', [TodoAdminController::class, 'create'])
             ->name('create');
         Route::post('/store/{id}', [TodoAdminController::class, 'store'])
@@ -93,7 +93,7 @@ Route::middleware(['auth'])->group(function () {
         Route::group([
             'prefix' => 'tasks',
             'as' => 'tasks.'
-        ], function(){
+        ], function () {
             Route::get('/', [TodoAdminController::class, 'show'])
                 ->name('show');
             Route::get('/edit/{id}', [TodoAdminController::class, 'edit'])
@@ -111,10 +111,9 @@ Route::middleware(['auth'])->group(function () {
     Route::group([
         'prefix' => 'todo',
         'as' => 'todo.'
-    ], function(){
+    ], function () {
         Route::get('/', [TodoInternController::class, 'index']);
     });
-    
 });
 
 

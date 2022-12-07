@@ -1,7 +1,9 @@
-@extends('layouts.layout')
+@extends('layouts.adminlayout')
 
 
 @section('content')
+<div class="main">
+
     {{-- post task form --}}
     <div class="text-white border border-black-500 mb-3">
         <div>
@@ -18,17 +20,13 @@
                         <label for="assign_to">Assign To</label>
                         <select class="text-black" name="assign_to">
                             @foreach ($users as $user)
-                                <option value="{{$user->id}}" class="text-black">  
-                                    {{ $user->email }} 
-                                </option>
-                            @endforeach    
+                            <option value="{{$user->id}}" class="text-black">
+                                {{ $user->email }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
 
-                    {{-- <div class="mb-3">
-                        <label for="assign_to">Assign to:</label>
-                        <input type="text" name="assign_to" class="text-black">
-                    </div> --}}
 
 
                     <div class="mb-3">
@@ -43,4 +41,5 @@
             </div>
         </div>
     </div>>
+</div>
 @endsection

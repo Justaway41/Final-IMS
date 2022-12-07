@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{csrf_token()}}"> 
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Intern Manager</title>
     <link rel="icon" href="{{ asset('images/logoOnly.png') }}" type="image/x-icon">
 
@@ -17,6 +17,9 @@
     <script src="{{ asset('js/totalDays.js') }}"></script>
     {{-- graph --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    {{-- font awsome icons --}}
+    <script src="https://kit.fontawesome.com/8d8b2b9a46.js" crossorigin="anonymous"></script>
 
     {{-- popup meaasge --}}
     <script src="{{ asset('js/popup_msg.js') }}"></script>
@@ -35,31 +38,30 @@
 
     {{-- datepicker jquery and basic stylings --}}
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-      <script>
-      $( function() {
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
         $( ".datepicker" ).datepicker();
       } );
     </script>
     {{-- tailwind cdn --}}
-      <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-
-        .ui-datepicker-header, .ui-datepicker-calendar{
+        .ui-datepicker-header,
+        .ui-datepicker-calendar {
             background-color: white;
             padding: 10px;
             color: black;
         }
 
-        .ui-datepicker 
-        a{
+        .ui-datepicker a {
             color: black;
             margin: 5px;
             padding: 5px;
             text-decoration: none;
         }
-        .ui-datepicker 
-        a:hover{
+
+        .ui-datepicker a:hover {
             cursor: pointer;
         }
     </style>

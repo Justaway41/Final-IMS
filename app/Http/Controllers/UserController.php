@@ -6,6 +6,7 @@ use App\Http\Requests\UserFormRequest;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
@@ -17,10 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10)->where('role_id', '1');
+        $users = User::whereRelation('Role', 'Title', 'Intern')->paginate(10);
         $roles = Role::get();
         $departments = Department::get();
-        return view('user.index', ['users' => $users, 'roles' => $roles, 'departments' => $departments]);
+        return view('user.index', ['users' => $users]);
     }
 
     /**
@@ -61,6 +62,9 @@ class UserController extends Controller
             'contract_start_date' => $request->contract_start_date,
             'contract_end_date' => $request->contract_end_date,
             'hourly_rate' => $request->hourly_rate,
+            'pan_number' => Crypt::encryptString($request->pan_number),
+            'bank_account' => Crypt::encryptString($request->bank_account),
+
         ]);
 
         Password::sendResetLink($request->only(['email']));
