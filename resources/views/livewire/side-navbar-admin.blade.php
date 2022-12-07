@@ -1,7 +1,13 @@
 <div class="sidenav">
     <div class="logo">
-        <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
+        <<<<<<< HEAD <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
+        =======
+        <a href="/dashboard">
+            <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
+        </a>
+        >>>>>>> b29411a39098abc6d505d1a302942f37bc0566b8
     </div>
+
     <div class="sidelinks">
         <ul>
             <li>
