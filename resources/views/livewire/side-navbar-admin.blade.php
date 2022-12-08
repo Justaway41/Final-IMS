@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('admin.projects.index')}}">
                     <i class="fa fa-pencil-square-o fa-lg icons"></i>
                     <span>Projects</span>
                 </a>

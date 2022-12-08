@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     protected $fillable = [
-            'name', 'start_date', 'deadline'
+            'name', 'start_date', 'deadline', 'department'
     ];
     use HasFactory;
 

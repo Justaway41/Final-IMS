@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('start_date');
             $table->date('deadline');
+            $table->string('department');
             $table->timestamps();
         });
     }

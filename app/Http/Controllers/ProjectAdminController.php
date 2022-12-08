@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Project;
 use App\Models\Task;
 use GuzzleHttp\Handler\Proxy;
@@ -26,12 +27,14 @@ class ProjectAdminController extends Controller
     }
 
     public function create(){
-        return view('todo.project.create');
+        $departments = Department::all();
+        return view('todo.project.create', ['departments' => $departments]);
     }
     
     public function store(Request $req){
         $formFields = $req->validate([
             'name' => 'required',
+            'department' => 'required',
             'start_date' => 'required | date_format:m/d/Y',
             'deadline' => 'required | date_format:m/d/Y'
         ]);
@@ -55,12 +58,17 @@ class ProjectAdminController extends Controller
             $project->deadline = $req->get('deadline');
             $project->save();
             return redirect(route('admin.projects.index'));
+        } else if($project->department != $req->get('department')){
+            $project->department = $req->get('department');
+            $project->save();
+            return redirect(route('admin.projects.index'));
         }
 
         $formFields = $req->validate([
             'name' => 'required',
             'start_date' => 'required | date_format:m/d/Y',
-            'deadline' => 'required | date_format:m/d/Y'
+            'deadline' => 'required | date_format:m/d/Y',
+            'department' => 'required', 
         ]);
         $project->update($formFields);
         return redirect(route('admin.projects.index'));
@@ -72,5 +80,12 @@ class ProjectAdminController extends Controller
         $project->destroy($id);
 
         return back();
+    }
+
+    public static function getProjectCount(){
+        $project = Project::all();
+        $projectCount = $project->count();
+        if($projectCount > 0) return $projectCount;
+        return 0;
     }
 }

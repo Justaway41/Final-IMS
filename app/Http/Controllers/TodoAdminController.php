@@ -52,8 +52,10 @@ class TodoAdminController extends Controller
     public function edit(Request $req, $id){
         TodoAdminController::abortIfNotAdmin();
 
+        $users = User::all();
+
         $task = Task::find($id);
-        return view('todo.admin.edit', ['task' => $task]);
+        return view('todo.admin.edit', ['task' => $task, 'users' => $users]);
     }
 
     public function update(Request $req, $id){
@@ -65,7 +67,8 @@ class TodoAdminController extends Controller
             $task->save();
             return redirect(route('admin.projects.show', ['id' => $task->project_id]));
         } else if($task->assign_to != $req->get('assign_to')){
-            $task->todo = $req->get('assign_to');
+
+            $task->assign_to = $req->get('assign_to');
             $task->save();
             return redirect(route('admin.projects.show', ['id' => $task->project_id]));
         } else if($task->deadline != $req->get('deadline')){
