@@ -4,12 +4,12 @@
 @section('content')
 <div class="main">
 
-    <div class="text-white w-screen border border-black-500 p-4">
+    <div class="text-black w-screen border border-black-500 p-4">
         <form action="{{route('admin.projects.store')}}" method="POST">
             @csrf
             <div class="mb-3 border border-black-500 p-4">
                 <div class="mb-3">
-                    <label for="name">Project:</label>000000000000000000000000000
+                    <label for="name">Project:</label>
                     <input type="text" name="name" autocomplete="off" class="text-black">
                 </div>
                 <div class="mb-3 border border-black-500 p-2">
