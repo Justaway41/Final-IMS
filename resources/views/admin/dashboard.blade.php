@@ -12,7 +12,7 @@
         </div>
 
         <div class="box">
-            <h1 class="total">20</h1>
+            <h1 class="total">{{$projectCount}}</h1>
             <span>
                 <i class="fa fa-pencil-square-o fa-5x"></i>
             </span>
@@ -27,161 +27,17 @@
                         <tr>
                             <th scope="col">Project Title </th>
                             <th scope="col">Department</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Deadline</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-                        <tr class="hover">
-                            <td>UI/UX Design</td>
-                            <td>UI Team</td>
-                            <td>review</td>
-                        </tr>
-
+                        @foreach($projects as $project)
+                            <tr class="hover">
+                                <td>{{$project->name}}</td>
+                                <td>{{$project->department}}</td>
+                                <td>{{$project->deadline}}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

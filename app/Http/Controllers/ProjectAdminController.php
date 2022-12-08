@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Project;
 use App\Models\Task;
 use GuzzleHttp\Handler\Proxy;
@@ -29,7 +30,8 @@ class ProjectAdminController extends Controller
 
     public function create()
     {
-        return view('todo.project.create');
+        $departments = Department::all();
+        return view('todo.project.create', ['departments' => $departments]);
     }
 
     public function store(Request $req)
@@ -63,10 +65,11 @@ class ProjectAdminController extends Controller
             return redirect(route('admin.projects.index'));
         }
 
+
         $formFields = $req->validate([
             'name' => 'required',
-            'start_date' => 'required | date_format:m/d/Y',
-            'deadline' => 'required | date_format:m/d/Y'
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
         $project->update($formFields);
         return redirect(route('admin.projects.index'));
@@ -79,5 +82,13 @@ class ProjectAdminController extends Controller
         $project->destroy($id);
 
         return back();
+    }
+
+    public static function getProjectCount()
+    {
+        $project = Project::all();
+        $projectCount = $project->count();
+        if ($projectCount > 0) return $projectCount;
+        return 0;
     }
 }

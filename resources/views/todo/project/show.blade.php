@@ -4,7 +4,9 @@
 @php
 function progress($task){
 if($task->completed) return "COMPLETED";
-return "IN PROGRESS";
+return "
+IN PROGRESS
+";
 }
 @endphp
 
