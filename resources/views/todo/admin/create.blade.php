@@ -4,18 +4,15 @@
 @section('content')
 <div class="main">
 
+    <div class="head-over-display">
+        Todo
+    </div>
     {{-- post task form --}}
-    <div class="text-white border border-black-500 mb-3">
+    <div class="createUser">
         <div>
-            <p class="border border-black-500">TO DO'S</p>
             <div>
                 <form action="{{route('admin.todo.store', $project->id)}}" method="POST">
                     @csrf
-                    <div class="mb-3">
-                        <label for="todo">Todo:</label>
-                        <input type="text" name="todo" class="text-black">
-                    </div>
-
                     <div>
                         <label for="assign_to">Assign To</label>
                         <select class="text-black" name="assign_to">
@@ -35,7 +32,7 @@
                     </div>
 
                     <div class="mb-3 border border-black-500">
-                        <button class="" type="submit">Create</button>
+                        <button class="btn btn-primary" type="submit">Create</button>
                     </div>
                 </form>
             </div>

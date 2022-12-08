@@ -9,22 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     protected $fillable = [
-            'name', 'start_date', 'deadline'
+        'name', 'start_date', 'end_date'
     ];
     use HasFactory;
 
-    // mutators to mutate 
-    public function setStartDateAttribute($value){
-        $this->attributes['start_date'] = Carbon::createFromFormat('m/d/Y', $value)
-            ->format('Y-m-d');
-    }
-    public function setDeadlineattribute($value){
-        $this->attributes['deadline'] = Carbon::createFromFormat('m/d/Y', $value)
-            ->format('Y-m-d');
-    }
+
 
     // relationship with task
-    public function tasks(){
+    public function tasks()
+    {
         return $this->hasMany(Task::class);
     }
 }

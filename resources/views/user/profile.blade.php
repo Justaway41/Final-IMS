@@ -15,6 +15,8 @@
             <li class="border-bottom">Contract Start Date</li>
             <li class="border-bottom">Contract End Date</li>
             <li class="border-bottom">Pan Number</li>
+            <li class="border-bottom">Bank Name</li>
+
             <li>Bank Account Number</li>
 
         </ul>
@@ -27,6 +29,7 @@
             <li class="border-bottom">{{ auth()->user()->contract_start_date }}</li>
             <li class="border-bottom">{{ auth()->user()->contract_end_date }}</li>
             <li class="border-bottom">{{ Crypt::decryptString(auth()->user()->pan_number) }}</li>
+            <li class="border-bottom">{{ auth()->user()->bank_name }}</li>
             <li>{{ Crypt::decryptString(auth()->user()->bank_account) }}</li>
 
         </ul>

@@ -18,7 +18,7 @@ return new class extends Migration
             // add user id later
             $table->string('name');
             $table->date('start_date');
-            $table->date('deadline');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

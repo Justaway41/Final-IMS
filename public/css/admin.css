@@ -23,11 +23,14 @@ body {
     background-color: var(--top-nav-color);
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding: 10px;
     grid-column: 1/4;
     grid-row: 1/2;
 }
-
+.topnav form {
+    margin-right: 1rem;
+}
 .topnav button {
     background-color: inherit;
     border: none;
@@ -167,8 +170,8 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
-
-.main {
+.main,
+.project {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -227,7 +230,7 @@ a.createUser:hover {
 }
 
 .createUser {
-    background-color: #d9d9d9;
+    background-color: var(--top-nav-color);
     color: #344563;
     border-radius: 4px;
     margin-top: -1rem;
@@ -372,3 +375,7 @@ a.crossButton {
 .submit_work:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
+/* .add-project {
+    padding: 2rem;
+    background-color: var(--top-nav-color);
+} */

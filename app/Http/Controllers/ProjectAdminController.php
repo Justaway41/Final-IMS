@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Crypt;
 class ProjectAdminController extends Controller
 {
     // show entire project list
-    public function index(){
+    public function index()
+    {
         return view('todo.project.index', ['projects' => Project::all()]);
     }
 
     // show individual project
-    public function show(Request $req, $id){
-        if(auth()->user()->role_id != 2){
+    public function show($id)
+    {
+        if (auth()->user()->role_id != 2) {
             abort(404);
         }
         $project = Project::find($id);
@@ -25,33 +27,37 @@ class ProjectAdminController extends Controller
         return view('todo.project.show', ['project' => $project, 'tasks' => $task]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('todo.project.create');
     }
-    
-    public function store(Request $req){
+
+    public function store(Request $req)
+    {
         $formFields = $req->validate([
             'name' => 'required',
-            'start_date' => 'required | date_format:m/d/Y',
-            'deadline' => 'required | date_format:m/d/Y'
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
         Project::create($formFields);
         return redirect('/admin/projects/');
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return view('todo.project.edit', ['project' => Project::find($id)]);
     }
-    public function update(Request $req, $id){
+    public function update(Request $req, $id)
+    {
         $project = Project::find($id);
-        if($project->name != $req->get('name')){
+        if ($project->name != $req->get('name')) {
             $project->name = $req->get('name');
             $project->save();
             return redirect(route('admin.projects.index'));
-        }else if($project->start_date != $req->get('start_date')){
+        } else if ($project->start_date != $req->get('start_date')) {
             $project->start_date = $req->get('start_date');
             $project->save();
             return redirect(route('admin.projects.index'));
-        }else if($project->deadline != $req->get('deadline')){
+        } else if ($project->deadline != $req->get('deadline')) {
             $project->deadline = $req->get('deadline');
             $project->save();
             return redirect(route('admin.projects.index'));
@@ -65,7 +71,8 @@ class ProjectAdminController extends Controller
         $project->update($formFields);
         return redirect(route('admin.projects.index'));
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         $project = Project::find($id);
         $task = Task::where('project_id', $id);
         $task->delete();

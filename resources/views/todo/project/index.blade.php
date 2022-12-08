@@ -1,57 +1,42 @@
 @extends('layouts.adminlayout')
 
 @section('content')
-<div class="main">
+<div class="head-over-display">
+    Add Project
+</div>
+<div class="tableBG">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Project Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Actions</th>
 
-    <div class="text-white h-screen">
-        <div class="mb-3">
-            @unless (count($projects) == 0)
-            @foreach($projects as $project)
-            <div class="flex space-x-3">
-                <a href="{{route('admin.projects.show', ['id' => $project->id])}}" class="hover:text-white">
-                    <div class="flex flex-col mb-3 border border-white p-2">
-                        <div>
-                            <span>PROJECT: </span>
-                            {{$project->name}}
-                        </div>
-                        <div class="flex space-x-4">
-                            <div>
-                                <span>START DATE: </span>
-                                {{$project->start_date}}
-                            </div>
-                            <div>
-                                <span>DEADLINE: </span>
-                                {{$project->deadline}}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div>
-                    <a href="{{route('admin.projects.edit',['id' => $project->id])}}" class="hover:text-white">
-                        <button class="border border-white p-2">
-                            Edit
-                        </button>
-                    </a>
-                </div>
-                <div>
+            </tr>
+        </thead>
+
+        @foreach($projects as $project)
+        <tbody>
+            <tr class="hover">
+                <th title="Update"><a class="edituser" href="{{route('admin.projects.show', ['id' => $project->id])}}">
+                        {{$project->name}}</a></th>
+                <td>{{$project->start_date}}</td>
+                <td> {{$project->end_date}}</td>
+
+                <td>
                     <form action="{{route('admin.projects.delete', $project->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="border border-white-500 p-2">DELETE</button>
+                        <button class="delete" type="submit">
+                            Delete
+                        </button>
                     </form>
-                </div>
-            </div>
-            @endforeach
-            @endunless
-        </div>
-
-        <div>
-            <a href="{{route('admin.projects.create')}}">
-                <button class="btn btn-primary">
-                    Add project
-                </button>
-            </a>
-        </div>
-    </div>
+                </td>
+            </tr>
+        </tbody>
+        @endforeach
+    </table>
+    <a href="{{route('admin.projects.create')}}" class="btn btn-primary">Add Project</a>
 </div>
 @endsection

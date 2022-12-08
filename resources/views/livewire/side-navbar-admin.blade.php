@@ -1,11 +1,8 @@
 <div class="sidenav">
     <div class="logo">
-        <<<<<<< HEAD <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
-        =======
         <a href="/dashboard">
             <img src="{{ asset('images/navLogo.png') }}" alt="DSS Logo" />
         </a>
-        >>>>>>> b29411a39098abc6d505d1a302942f37bc0566b8
     </div>
 
     <div class="sidelinks">
@@ -35,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/projects">
                     <i class="fa fa-pencil-square-o fa-lg icons"></i>
                     <span>Projects</span>
                 </a>

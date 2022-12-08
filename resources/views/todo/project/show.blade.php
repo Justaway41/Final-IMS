@@ -9,17 +9,13 @@ return "IN PROGRESS";
 @endphp
 
 @section('content')
-<div class="main">
+<div class="head-over-display">
+    TO-DO
+</div>
+<div class="tableBG">
 
     <div class="text-white">
-        <div>
-            <a href="{{route('admin.projects.index')}}" class="flex justify-start hover:text-white">
-                <button class="border border-white-500 p-2 mb-3">
-                    Back
-                </button>
-            </a>
-        </div>
-        <div class="flex flex-col mb-3 border border-white">
+        <div class="flex flex-col mb-3 ">
             <div>
                 <span>PROJECT: </span>
                 {{$project->name}}
@@ -31,7 +27,7 @@ return "IN PROGRESS";
                 </div>
                 <div class=" border border-white p-2">
                     <span>DEADLINE: </span>
-                    {{$project->deadline}}
+                    {{$project->end_date}}
                 </div>
             </div>
         </div>

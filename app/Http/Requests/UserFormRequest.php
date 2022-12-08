@@ -37,6 +37,7 @@ class   UserFormRequest extends FormRequest
             'contract_end_date' => 'required',
             'hourly_rate' => 'required',
             'pan_number' => 'required',
+            'bank_name' => 'required',
             'bank_account' => 'required',
             'gender' => 'required'
         ];
