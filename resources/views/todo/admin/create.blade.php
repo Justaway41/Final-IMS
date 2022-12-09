@@ -26,14 +26,15 @@
 
 
 
-                    <div class="mb-3">
-                        <label for="deadline">Deadline:</label>
-                        <input type="" autocomplete="off" name="deadline" class="datepicker text-black ">
+                    <div class=" mb-3">
+                        <label for="deadline">Task</label>
+                        <input type="text" autocomplete="off" name="todo" text-black ">
                     </div>
-
-                    <div class="mb-3 border border-black-500">
-                        <button class="btn btn-primary" type="submit">Create</button>
-                    </div>
+                    <div class=" mb-3">
+                        <label for="deadline">Deadline</label>
+                        <input type="date" autocomplete="off" name="deadline" text-black ">
+                    </div>                    
+                        <button class=" btn btn-primary" type="submit">Create</button>
                 </form>
             </div>
         </div>

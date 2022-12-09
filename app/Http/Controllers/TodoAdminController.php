@@ -21,7 +21,7 @@ class TodoAdminController extends Controller
     public function create($id)
     {
         TodoAdminController::abortIfNotAdmin();
-        $users = User::all();
+        $users = User::whereRelation('role', 'title', 'Intern')->get();
         return view('todo.admin.create', ['users' => $users, 'project' => Project::find($id)]);
     }
 
