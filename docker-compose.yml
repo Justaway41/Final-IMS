@@ -21,7 +21,6 @@ services:
             target: php
             args:
                 - APP_ENV=${APP_ENV}
-        env_file: .env
         environment:
             - APP_ENV=${APP_ENV}
             - CONTAINER_ROLE=app
