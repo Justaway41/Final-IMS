@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Task;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class ProjectAdminController extends Controller
@@ -14,13 +15,13 @@ class ProjectAdminController extends Controller
     // show entire project list
     public function index()
     {
-        return view('todo.project.index', ['projects' => Project::all()]);
+        return view('todo.project.index', ['projects' => Project::latest()->get()]);
     }
 
     // show individual project
     public function show($id)
     {
-        if (auth()->user()->role_id != 2) {
+        if (Auth::user()->role->title != "Intern") {
             abort(404);
         }
         $project = Project::find($id);

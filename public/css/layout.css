@@ -607,13 +607,13 @@ button.submit:hover {
 }
 
 .green {
-    background-color: green;
+    background-color: green !important;
 }
 
 .red {
-    background-color: red;
+    background-color: red !important ;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: yellow !important ;
 }

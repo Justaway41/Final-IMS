@@ -16,8 +16,8 @@
             </tr>
         </thead>
 
-        @foreach($projects as $project)
         <tbody>
+            @foreach($projects as $project)
             <tr class="hover">
                 <th title="Update"><a class="edituser" href="{{route('admin.projects.show', ['id' => $project->id])}}">
                         {{$project->name}}</a></th>
@@ -34,8 +34,8 @@
                     </form>
                 </td>
             </tr>
+            @endforeach
         </tbody>
-        @endforeach
     </table>
     <a href="{{route('admin.projects.create')}}" class="btn btn-primary">Add Project</a>
 </div>

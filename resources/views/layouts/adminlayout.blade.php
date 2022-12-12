@@ -14,7 +14,6 @@
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/totalTime.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- admin css --}}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 

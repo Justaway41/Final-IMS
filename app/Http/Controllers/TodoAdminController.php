@@ -48,7 +48,7 @@ class TodoAdminController extends Controller
     {
         TodoAdminController::abortIfNotAdmin();
 
-        return view('todo.admin.show', ['tasks' => Task::all(), 'tasks_completed' => ['red', 'yellow', 'green']]);
+        return view('todo.admin.show', ['tasks' => Task::latest()->get(),]);
     }
 
     public function abortIfNotAdmin()

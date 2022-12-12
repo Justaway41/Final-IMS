@@ -19,10 +19,11 @@ class Task extends Model
     // relationship with project
     public function projects()
     {
-        $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class, 'project_id');
     }
+
     public function users()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -3,10 +3,10 @@
 {{-- to display if the task is completed or in-progress --}}
 @php
 function progress($task){
-if($task->completed) return "COMPLETED";
-return "
-IN PROGRESS
-";
+if($task->completed){
+return "COMPLETED";
+}
+return "IN PROGRESS";
 }
 @endphp
 
@@ -16,77 +16,100 @@ IN PROGRESS
 </div>
 <div class="createUser">
     <div class="flex flex-col mb-3 ">
-        <div>
-            <span>PROJECT: </span>
-            {{$project->name}}
+        <div class="d-flex justify-content-start">
+            <p>
+
+                <span class="bigText">PROJECT: </span>
+                {{$project->name}}
+            </p>
         </div>
         <div class="d-flex justify-content-between">
-            <div class="contetn">
+            <p>
 
-                <span>START DATE: </span>
+                <span class="bigText">START DATE: </span>
                 {{$project->start_date}}
-            </div>
-            <div class="content">
+            </p>
+            <p>
 
-                <span>DEADLINE: </span>
+                <span class="bigText">DEADLINE: </span>
                 {{$project->end_date}}
-            </div>
+            </p>
+
         </div>
     </div>
 
     <div class="flex flex-col space-y-4">
-        <p>TODO'S</p>
-        {{-- {{$tasks}} to get tasks related to the current project --}}
+        <h2 class="">TODO'S</h2>
+    </div>
 
 
-        @unless ($tasks->isEmpty())
-        <div class="flex flex-col">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Assigned To</th>
+                <th scope="col">Work</th>
+                <th scope="col">Deadline</th>
+                <th scope="col" colspan=2>Actions</th>
+                <th scope="col">Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
             @foreach($tasks as $task)
-            <div class="flex justify-between mx-4 mb-3">
-                <div>
-                    <span>ASSIGN TO: </span>
+            <tr class="hover">
+                <td>
                     {{$task->assign_to}}
-                </div>
-                <div>
-                    <span>TODO: </span>
+                </td>
+                <td>
                     {{$task->todo}}
-                </div>
-                <div>
-                    <span>DEADLINE </span>
+                </td>
+                <td>
                     {{$task->deadline}}
-                </div>
-                <div class="flex">
+                </td>
+                <td>
                     <form action="{{route('admin.todo.tasks.delete', ['id' => $task->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="mx-2 border border-white p-1">DELETE</button>
+                        <button type="submit" class="btn btn-danger">DELETE</button>
                     </form>
+                </td>
+                <td>
+
                     <a href="{{route('admin.todo.tasks.edit', ['id'=> $task->id])}}" class="hover:text-white">
-                        <button type="submit" class="mx-2 border border-white p-1 ">
+                        <button type="submit" class="btn btn-info">
                             EDIT
                         </button>
                     </a>
+                </td>
+                <td>
                     <form action="{{route('admin.todo.tasks.updateProgress', ['id' => $task->id])}}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="mx-2 border border-white p-1">{{progress($task) }}</button>
+                        <button type="submit" class="leave_status p-2 {{ $task->completed  ? 'green' : 'yellow' }}"
+                            style="border: none; border-radius: 0.65rem;">{{progress($task) }}</button>
                     </form>
-                </div>
-            </div>
+                </td>
+
+
+            </tr>
             @endforeach
-        </div>
-        @endunless
+        </tbody>
 
+    </table>
 
-        <div>
-            <a href="{{route('admin.todo.create', $project->id)}}" class="hover:text-white">
-                <button class="border border-white-500 p-2">
-                    Add Todos
-                </button>
-            </a>
-        </div>
+    <div>
+        <a href="{{route('admin.todo.create', $project->id)}}" class="hover:text-white">
+            <button class="border border-white-500 p-2">
+                Add Todos
+            </button>
+        </a>
     </div>
+
+
+</div>
 
 
 </div>

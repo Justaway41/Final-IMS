@@ -7,7 +7,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectAdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TodoAdminController;
-use App\Http\Controllers\TodoInternController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
@@ -112,7 +111,7 @@ Route::middleware(['auth'])->group(function () {
         'prefix' => 'todo',
         'as' => 'todo.'
     ], function () {
-        Route::get('/', [TodoInternController::class, 'index']);
+        Route::get('/', [TodoAdminController::class, 'index']);
     });
 });
 
