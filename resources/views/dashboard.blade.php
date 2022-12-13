@@ -49,7 +49,10 @@
     </div>
 
     <div class="work_view">
-        <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
+        <div class="topView d-flex align-items-center justify-content-between">
+            <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
+            <a class="nice" href="/todo">Todo</a>
+        </div>
         <section class="dashboard_scroll">
             @foreach ($worklogs as $worklog)
             <div class="singleWorklog">

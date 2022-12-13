@@ -14,7 +14,6 @@ return "In Progress";
 </div>
 
 <div class="worklog">
-    @unless($tasks->isEmpty())
     <div class="tableBG" style="min-width:40vw">
         <table class="table" style="min-width:30vw">
             <thead>
@@ -50,7 +49,6 @@ return "In Progress";
             </tbody>
             </tbody>
         </table>
-        @endunless
     </div>
 </div>
 
