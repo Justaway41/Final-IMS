@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Project;
-use App\Models\Work_log;
-use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 
 class dashboard extends Controller
 {
     public function index()
     {
-        $departments = Department::get();
-        $interns = User::whereRelation('role', 'title', 'Intern')->get();
+        if (Auth::user()->role->title == "Admin") {
+
+            $interns = User::whereRelation('role', 'title', 'Intern')->get();
+        }
+        $interns = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
+
         $worklogs = Auth::user()->MonthlyWorklogs;
         $leaves = Auth::user()->MonthlyLeaves;
         $projects = Project::all();

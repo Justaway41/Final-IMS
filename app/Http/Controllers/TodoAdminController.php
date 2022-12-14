@@ -21,7 +21,7 @@ class TodoAdminController extends Controller
     public function create($id)
     {
         TodoAdminController::abortIfNotAdmin();
-        $users = User::whereRelation('role', 'title', 'Intern')->get();
+        $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
         return view('todo.admin.create', ['users' => $users, 'project' => Project::find($id)]);
     }
 
@@ -48,12 +48,12 @@ class TodoAdminController extends Controller
     {
         TodoAdminController::abortIfNotAdmin();
 
-        return view('todo.admin.show', ['tasks' => Task::latest()->get(),]);
+        return view('todo.admin.show', ['tasks' => Task::latest()->get()]);
     }
 
     public function abortIfNotAdmin()
     {
-        if (auth()->user()->role->title != "Admin") {
+        if (auth()->user()->role->title != "Admin" || auth()->user()->role->title != "Manager") {
             abort(404);
         }
     }

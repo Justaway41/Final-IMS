@@ -8,6 +8,7 @@ use App\Mail\mailStatus;
 use App\Models\Leaves;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class LeavesController extends Controller
@@ -29,7 +30,11 @@ class LeavesController extends Controller
      */
     public function create(User $users)
     {
-        $users = User::has('leaves')->get();
+        if (Auth::user()->role->title != 'Manager') {
+            $users = User::has('leaves')->get();
+        } else {
+            $users = User::whereRelation('department', 'department_name', Auth::user()->department->department_name)->has('leaves')->get();
+        }
         return view('admin.leaves', ['users' => $users]);
     }
 
@@ -62,16 +67,7 @@ class LeavesController extends Controller
         return redirect('dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Leaves  $leaves
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Leaves $leaves)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -91,30 +87,7 @@ class LeavesController extends Controller
             'total_days' => $model->total_days,
             'status' => $request->status,
         ];
-        Mail::to('kritartha.sapkota@deerwalk.edu.np')->send(new mailStatus($mailStatus));
+        Mail::to($mailStatus['email'])->send(new mailStatus($mailStatus));
         return redirect()->route('leaves.create');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Leaves  $leaves
-     * @return \Illuminate\Http\Response
-     */
-    public function update(LeavesFormRequest $request, $id)
-    {
-        //   
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Leaves  $leaves
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Leaves $leaves)
-    {
-        //
     }
 }

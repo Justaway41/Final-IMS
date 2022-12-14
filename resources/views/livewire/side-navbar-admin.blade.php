@@ -7,12 +7,14 @@
 
     <div class="sidelinks">
         <ul>
+            @if(Auth::user()->role->title != 'Manager')
             <li>
                 <a href="/view">
                     <i class="fa fa-sitemap fa-lg icons"></i>
                     <span>Departments</span>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="{{ route('users.index') }}">
                     <i class="fa fa-users fa-lg icons"></i>

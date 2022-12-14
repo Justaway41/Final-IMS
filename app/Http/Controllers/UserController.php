@@ -6,7 +6,9 @@ use App\Http\Requests\UserFormRequest;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -17,8 +19,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::whereRelation('Role', 'Title', 'Intern')->paginate(10);
-        // dd($users);
+        if (Auth::user()->role->title == "Manager") {
+            $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(10);
+        } else {
+            $users = User::whereRelation('Role', 'Title', 'Intern')->paginate(10);
+        }
+
         return view('user.index', ['users' => $users]);
     }
 
@@ -67,7 +73,7 @@ class UserController extends Controller
         ]);
 
 
-        // Password::sendResetLink($request->only(['email']));
+        Password::sendResetLink($request->only(['email']));
 
         return redirect(route('users.index'));
     }

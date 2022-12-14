@@ -18,7 +18,7 @@ class EnsureRole
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if ($request->user()->role->title === "Admin") {
+            if ($request->user()->role->title == "Admin" || $request->user()->role->title == "Manager") {
                 return redirect('users');
             }
             return redirect('dashboard');
