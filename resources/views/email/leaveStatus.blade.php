@@ -40,7 +40,10 @@
         </p>
 
         <p>
-            Your leave request for {{ $mailStatus['total_days'] }} days {{ $mailStatus['status'] == 'rejected'
-            ? 'is not accepted' : 'is accepted' }}.
+            Your leave request for {{ $mailStatus['total_days'] }} days
+            {{ $mailStatus['status'] == 'rejected' ? 'is declined. Please contact your manager for further details.' : 'is accepted.' }}
         </p>
+
+        <p>Regards,<br>
+            Intern Manager</p>
 </body>

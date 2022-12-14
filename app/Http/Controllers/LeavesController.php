@@ -13,21 +13,11 @@ use Illuminate\Support\Facades\Mail;
 
 class LeavesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('user.leaves');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(User $users)
     {
         if (Auth::user()->role->title != 'Manager') {
@@ -38,12 +28,6 @@ class LeavesController extends Controller
         return view('admin.leaves', ['users' => $users]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(LeavesFormRequest $request)
     {
         $request->validated();
@@ -63,18 +47,19 @@ class LeavesController extends Controller
             'total_days' => $request->total_days,
             'name' => $request->user()->full_name,
         ];
-        Mail::to('kritartha.sapkota@deerwalk.edu.np')->send(new leaveMail($mailData));
+
+        if (Auth::user()->department->department_name == 'DDL') {
+            Mail::to('aahishma.khanal@sifal.deerwalk.edu.np')->send(new leaveMail($mailData));
+        } elseif (Auth::user()->department->department_name == 'Library') {
+            Mail::to('chetana.ghimire@sifal.deerwalk.edu.np')->send(new leaveMail($mailData));
+        } elseif (Auth::user()->department->department_name == 'Biology') {
+            Mail::to('suresh.chandyo@sifal.deerwalk.edu.np')->send(new leaveMail($mailData));
+        } elseif (Auth::user()->department->department_name == 'IT') {
+            Mail::to('kushal.maharjan@sifal.deerwalk.edu.np')->send(new leaveMail($mailData));
+        }
         return redirect('dashboard');
     }
 
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Leaves  $leaves
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request, $id)
     {
         $model = Leaves::findorFail($id);
