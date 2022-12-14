@@ -29,10 +29,6 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="{{ asset('images/sifalSchoolLogoColor.png') }}" alt="Sifal school logo">
-    </div>
-
     <div class="text">
 
         <h1>Leave Application</h1>
@@ -50,5 +46,6 @@
         </p>
 
         <p>Please log into IMS to accept or decline this request.</p>
+        <p>Click <a href="{{ route('login') }}" target="_blank" rel="noopener noreferrer">here</a> to login to IMS </p>
     </div>
 </body>

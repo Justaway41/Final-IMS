@@ -12,6 +12,16 @@
             action="{{ route('Work_log.index') }}">
             @csrf
             <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <select class="form-select" aria-label="Default select example" name="fullname">
+                    @foreach($users as $user)
+                    <option selected>-- Select Name --</option>
+                    <option value="{{ $user->full_name }}">{{ $user->full_name }}</option>
+
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="exampleInputEmail1">From</label>
                 <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     name="start_date">

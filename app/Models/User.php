@@ -33,7 +33,10 @@ class User extends Authenticatable
         'contract_status',
         'contract_start_date',
         'contract_end_date',
-        'hourly_rate'
+        'hourly_rate',
+        'pan_number',
+        'bank_name',
+        'bank_account'
     ];
 
     /**
@@ -90,7 +93,7 @@ class User extends Authenticatable
         $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
 
 
-        return $this->hasMany(Work_log::class)->latest()->whereDate('created_at', '>=',$firstdayofMonthinAD)->whereDate('created_at','<=',$lastdayofMonthinAD);
+        return $this->hasMany(Work_log::class)->latest()->whereDate('created_at', '>=', $firstdayofMonthinAD)->whereDate('created_at', '<=', $lastdayofMonthinAD);
     }
     public function Leaves()
     {
@@ -112,6 +115,6 @@ class User extends Authenticatable
         $firstdayofMonthinAD = NepaliCalendar::BS2AD($firstdayofMonth)["AD_DATE"];
         $lastdayofMonthinAD = NepaliCalendar::BS2AD($lastdayofMonth)["AD_DATE"];
 
-        return $this->hasMany(Leaves::class)->latest()->whereDate('created_at', '>=',$firstdayofMonthinAD)->whereDate('created_at','<=',$lastdayofMonthinAD);
+        return $this->hasMany(Leaves::class)->latest()->whereDate('created_at', '>=', $firstdayofMonthinAD)->whereDate('created_at', '<=', $lastdayofMonthinAD);
     }
 }

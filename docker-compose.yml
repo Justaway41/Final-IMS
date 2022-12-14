@@ -41,7 +41,7 @@ services:
         environment:
             - APP_ENV=${APP_ENV}
             - CONTAINER_ROLE=app
-        command: docker/entrypoint.sh
+        command: Docker/entrypoint.sh
         volumes:
             - .:/var/www/html/
         depends_on:

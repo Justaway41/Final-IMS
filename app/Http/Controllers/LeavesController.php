@@ -58,7 +58,7 @@ class LeavesController extends Controller
             'total_days' => $request->total_days,
             'name' => $request->user()->full_name,
         ];
-        Mail::to('manager_ddl@deerwalk.edu.np')->send(new leaveMail($mailData));
+        Mail::to('kritartha.sapkota@deerwalk.edu.np')->send(new leaveMail($mailData));
         return redirect('dashboard');
     }
 
@@ -91,7 +91,7 @@ class LeavesController extends Controller
             'total_days' => $model->total_days,
             'status' => $request->status,
         ];
-        Mail::to($mailStatus['email'])->send(new mailStatus($mailStatus));
+        Mail::to('kritartha.sapkota@deerwalk.edu.np')->send(new mailStatus($mailStatus));
         return redirect()->route('leaves.create');
     }
 

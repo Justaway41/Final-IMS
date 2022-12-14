@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Mail\worklogMail;
+use App\Models\Department;
+use App\Models\User;
 use App\Models\Work_log;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -31,8 +33,13 @@ class AllWorklogs extends Command
      */
     public function handle()
     {
+        $departments = Department::get();
+        foreach ($departments as $department) {
+            $users = User::whereRelation('department', 'department_name', $department->name);
+        }
         $work_logs = Work_log::whereDate('created_at', Carbon::today())->get();
-        Mail::to("kritarthasapkota999@gmail.com")->send(new worklogMail($work_logs));
+
+        Mail::to("kritartha.sapkota@deerwalk.edu.np")->send(new worklogMail($work_logs));
         // $work_logs = Work_log;
         return 0;
     }

@@ -15,13 +15,17 @@ class Work_logController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()->role->title === 'Admin' || 'Manager') {
+            $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
             $work_log = [];
             if ($request->start_date != null && $request->end_date != null) {
                 $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
-                    $q->whereDate('created_at', '>=', $request->start_date)->whereDate('created_at', '<=', $request->end_date);
+                    $q->whereRelation('user', 'full_name', $request->fullname)
+                        ->whereDate('created_at', '>=', $request->start_date)
+                        ->whereDate('created_at', '<=', $request->end_date);
                 })->get();
             }
-            return view('worklog.allWorklog', ['work_logs' => $work_log]);
+            // dd($users);
+            return view('worklog.allWorklog', ['users' => $users, 'work_logs' => $work_log]);
         }
         abort(404);
     }
@@ -58,7 +62,7 @@ class Work_logController extends Controller
         return redirect()->route('Work_log.create')->with('message', 'Submit time exceeded. Please contact your manager.');
     }
 
-    public function show(Work_log $work_log, $id)
+    public function show($id)
     {
         if (Auth::user()->role == 'Admin' || 'Manager') {
             return view('worklog.missedWorklog', ['users' => User::findOrFail($id)]);
@@ -71,7 +75,7 @@ class Work_logController extends Controller
     {
 
         //to view interns to add worklog after 8 
-        $interns = User::whereRelation('role', 'title', 'Intern')->get();
+        $interns = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
 
         // dd($interns);
         return view('admin.interns', ['interns' => $interns]);

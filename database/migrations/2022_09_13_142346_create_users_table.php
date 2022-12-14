@@ -29,9 +29,9 @@ return new class extends Migration
             $table->date('contract_start_date');
             $table->date('contract_end_date');
             $table->integer('hourly_rate');
-            $table->string('pan_number')->nullable();
+            $table->longText('pan_number')->nullable();
             $table->string('bank_name')->nullable();
-            $table->string('bank_account')->nullable();
+            $table->longText('bank_account')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

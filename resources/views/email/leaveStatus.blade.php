@@ -29,9 +29,7 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="{{ asset('images/sifalSchoolLogoColor.png') }}" alt="Sifal school logo">
-    </div>
+
 
     <div class="text">
 
@@ -42,6 +40,7 @@
         </p>
 
         <p>
-            Your leave request for {{ $mailStatus['total_days'] }} days has been {{ $mailStatus['status'] }}.
+            Your leave request for {{ $mailStatus['total_days'] }} days {{ $mailStatus['status'] == 'rejected'
+            ? 'is not accepted' : 'is accepted' }}.
         </p>
 </body>

@@ -140,7 +140,7 @@
 
         <div class="mb-3">
             <label for="exampleInputEmail1">Pan Number</label>
-            <input type="nunber" class="form-control" id="exampleInputEmail1" value="{{ old('pan_number') }}"
+            <input type="text" class="form-control" id="exampleInputEmail1" value="{{ old('pan_number') }}"
                 name="pan_number">
             @error('hourly_rate')
             <p class="text-danger small"><small>{{ $message }}</small></p>
@@ -148,7 +148,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1">Bank Name</label>
-            <input type="nunber" class="form-control" id="exampleInputEmail1" value="{{ old('bank_name') }}"
+            <input type="text" class="form-control" id="exampleInputEmail1" value="{{ old('bank_name') }}"
                 name="bank_name">
             @error('bank_name')
             <p class="text-danger small"><small>{{ $message }}</small></p>
@@ -156,7 +156,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1">Bank Account Number</label>
-            <input type="nunber" class="form-control" id="exampleInputEmail1" value="{{ old('bank_account') }}"
+            <input type="number" class="form-control" id="exampleInputEmail1" value="{{ old('bank_account') }}"
                 name="bank_account">
             @error('bank_account')
             <p class="text-danger small"><small>{{ $message }}</small></p>

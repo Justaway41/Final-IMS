@@ -43,8 +43,8 @@ class   UserFormRequest extends FormRequest
         ];
         if (in_array($this->method(), ['POST'])) {
             $rules['email'] = ['required', 'email', Rule::unique('users', 'email')];
-            $rules['pan_number'] = ['required', Rule::unique('users', 'pan_number')];
-            $rules['bank_account'] = ['required',  Rule::unique('users', 'bank_account')];
+            // $rules['pan_number'] = ['required', Rule::unique('users', 'pan_number')];
+            // $rules['bank_account'] = ['required',  Rule::unique('users', 'bank_account')];
             $rules['photo'] = 'required';
         }
 

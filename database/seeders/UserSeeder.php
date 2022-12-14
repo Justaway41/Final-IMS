@@ -51,6 +51,7 @@ class UserSeeder extends Seeder
                 'contract_end_date' => '2022-11-10',
                 'hourly_rate' => '60',
                 'pan_number' => Crypt::encryptString('27-01-76-07524'),
+                'bank_name' => 'NIBL',
                 'bank_account' => Crypt::encryptString('00105080463010')
             ]
         ];

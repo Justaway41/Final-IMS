@@ -22,6 +22,7 @@
                 <th scope="col">Contract End Date</th>
                 <th scope="col">Hourly Rate</th>
                 <th scope="col">Pan Number</th>
+                <th scope="col">Bank Name</th>
                 <th scope="col">Bank Account</th>
                 <th scope="col">Action</th>
             </tr>
@@ -43,6 +44,7 @@
                 <td>{{ $user->contract_end_date }}</td>
                 <td>{{ $user->hourly_rate }}</td>
                 <td>{{ Crypt::decryptString($user->pan_number) }}</td>
+                <td>{{ $user->bank_name }}</td>
                 <td>{{ Crypt::decryptString($user->bank_account) }}</td>
 
                 <td>
