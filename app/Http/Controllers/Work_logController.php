@@ -14,7 +14,7 @@ class Work_logController extends Controller
 {
     public function index(Request $request)
     {
-        if (Auth::user()->role->title === 'Admin' || 'Manager') {
+        if (Auth::user()->role->title === 'Manager') {
             $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
             $work_log = [];
             if ($request->start_date != null && $request->end_date != null) {
@@ -24,9 +24,22 @@ class Work_logController extends Controller
                         ->whereDate('created_at', '<=', $request->end_date);
                 })->get();
             }
-            // dd($users);
+            return view('worklog.allWorklog', ['users' => $users, 'work_logs' => $work_log]);
+        } elseif (Auth::user()->role->title === 'Admin') {
+            $users = User::whereRelation('role', 'title', 'Intern')->get();
+            $work_log = [];
+            if ($request->start_date != null && $request->end_date != null) {
+                $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
+                    $q->whereRelation('user', 'full_name', $request->fullname)
+                        ->whereDate('created_at', '>=', $request->start_date)
+                        ->whereDate('created_at', '<=', $request->end_date);
+                })->get();
+            } else {
+                $work_log = Work_log::latest()->get();
+            }
             return view('worklog.allWorklog', ['users' => $users, 'work_logs' => $work_log]);
         }
+
         abort(404);
     }
 
@@ -85,9 +98,10 @@ class Work_logController extends Controller
     {
         if (Auth::user()->role->title == 'Admin') {
             $users = User::whereRelation('role', 'title', 'Intern')->get();
+            return view('admin.totalHours', ['users' => $users]);
+        } else {
+            $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
+            return view('admin.totalHours', ['users' => $users]);
         }
-        $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
-
-        return view('admin.totalHours', ['users' => $users]);
     }
 }
