@@ -38,16 +38,7 @@
                 @foreach ($users as $user)
                 <tr class="hover">
                         <th scope="row">{{ $user->full_name }}</th>
-                        {{ 
-                        $startDate = Carbon::today();
-                        $endDate = Carbon::tomorrow(); }}
-                        @if($startDate != Carbon::today()){
-
-                            <td>{{ $user->ManualWorklog($startDate,$endDate)->sum('hours_worked') }}</td>
-                        }
-                        @else{
-                        <td>{{ $user->MonthlyWorklog()->sum('hours_worked') }}</td>}
-                        @endif
+                        <td>{{ $user->MonthlyWorklogs->sum('hours_worked') }}</td>
                     </tr>
                     @endforeach
                 </tbody>
