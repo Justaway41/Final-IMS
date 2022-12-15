@@ -53,10 +53,9 @@ class AllWorklogs extends Command
                     $students = "library@gmail.com";
                     break;
             }
-            Mail::to("bijaya.shrestha@sifal.deerwalk.edu.np")
-                ->cc($manager->email)
-                ->cc($students)
-                ->cc("ujjwal.poudel@sifal.deerwalk.edu.np")
+
+            Mail::to("kritartha.sapkota@deerwalk.edu.np")
+                ->cc([$manager->email, $students, "ujjwal.poudel@sifal.deerwalk.edu.np"])
                 ->send(new worklogMail($work_logs, $department));
         }
 
