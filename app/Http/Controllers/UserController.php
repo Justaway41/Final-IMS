@@ -14,11 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->role->title == "Manager") {
-            $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(10);
-        } else {
-            $users = User::whereRelation('Role', 'Title', 'Intern')->paginate(10);
-        }
+        $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(5);
         return view('user.index', ['users' => $users]);
     }
 
