@@ -19,7 +19,7 @@ class ProjectAdminController extends Controller
     // show individual project
     public function show($id)
     {
-        if (Auth::user()->role->title != "Intern") {
+        if (Auth::user()->role->title == "Intern") {
             abort(404);
         }
         $project = Project::find($id);

@@ -18,7 +18,7 @@ class isAdminMiddleWare
     // if not admin abort
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->title == 'Admin' || Auth::user()->role->title == 'Admin') {
+        if (Auth::check() && Auth::user()->role->title == 'Admin' || Auth::user()->role->title == 'Manager') {
             return $next($request);
         }
         abort(403);
