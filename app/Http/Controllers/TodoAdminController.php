@@ -39,7 +39,7 @@ class TodoAdminController extends Controller
         $formFields['project_id'] = $id;
         $formFields['user_id'] = $formFields['assign_to'];
         $user = User::find($formFields['assign_to']);
-        $formFields['assign_to'] = $user->email;
+        $formFields['assign_to'] = $user->full_name;
 
         Task::create($formFields);
         return redirect(route('admin.projects.show', Project::find($id)));
@@ -47,9 +47,7 @@ class TodoAdminController extends Controller
 
     public function show()
     {
-        TodoAdminController::abortIfNotAdmin();
-
-        return view('todo.admin.show', ['tasks' => Task::latest()->get()]);
+        //
     }
 
     public function abortIfNotAdmin()
@@ -58,12 +56,11 @@ class TodoAdminController extends Controller
             abort(404);
         }
     }
+
     public function edit($id)
     {
         TodoAdminController::abortIfNotAdmin();
-
-        $users = User::all();
-
+        $users = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
         $task = Task::find($id);
         return view('todo.admin.edit', ['task' => $task, 'users' => $users]);
     }
@@ -97,6 +94,7 @@ class TodoAdminController extends Controller
         return redirect(route('admin.projects.show', ['id' => $task->project_id]));
         // return redirect(route('admin.projects.show', ['id' =>$task->project_id]));
     }
+
     public function destroy($id)
     {
         TodoAdminController::abortIfNotAdmin();

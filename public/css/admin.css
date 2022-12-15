@@ -92,6 +92,7 @@ footer {
 .admin_main {
     grid-column: 2/3;
     grid-row: 2/3;
+    margin-top: 2vh;
 }
 
 .boxmain {
@@ -188,15 +189,16 @@ footer {
     color: #172b4d;
 }
 
-a.createUser {
+.createUser {
     text-decoration: none;
     color: #fff;
     background-color: #172b4d;
     padding: 7px 15px;
     border-radius: 4px;
+    border: none;
 }
 
-a.createUser:hover {
+.createUser:hover {
     color: #fff;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
@@ -214,39 +216,9 @@ a.createUser:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
-/* .adminDash {
-    border-radius: 4px;
-    padding: 5% 2%;
-    display: grid;
-    gap: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-} */
-
-/* .main,
-.project {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-} */
-
-
-
-
-/* .createUser {
-    background-color: var(--top-nav-color);
-    color: #344563;
-    border-radius: 4px;
-    margin-top: -1rem;
-    padding: 2rem;
-    overflow-y: auto;
-} */
-
+/* 
 .createForm {
+    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -383,21 +355,3 @@ a.crossButton {
     padding: 2rem;
     background-color: var(--top-nav-color);
 } */
-
-
-.green {
-    background-color: green !important;
-}
-
-.red {
-    background-color: red !important;
-}
-
-.yellow {
-    background-color: yellow !important;
-}
-
-.bigText {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
