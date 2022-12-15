@@ -37,7 +37,9 @@
                     <button type="submit" class=" btn btn-primary">Submit</button>
                 </div>
             </form>
+            @if (gettype($work_logs) != "array")
             <p>Total Hours: {{ $work_logs->sum('hours_worked') }}</p>
+            @endif
             <table class="table mt-3">
                 <thead>
                     <tr>

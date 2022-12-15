@@ -38,7 +38,12 @@
                 @foreach ($users as $user)
                 <tr class="hover">
                         <th scope="row">{{ $user->full_name }}</th>
-                        <td>{{ $user->MonthlyWorklogs->sum('hours_worked') }}</td>
+                        @if ($startDate != 0 && $endDate != 0)
+                            <td>{{ $user->ManualWorklog($startDate,$endDate)->sum('hours_worked') }}</td>
+                        @else
+                            <td>{{ $user->MonthlyWorklogs->sum('hours_worked') }}</td>
+                        
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

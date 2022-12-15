@@ -96,10 +96,10 @@ class User extends Authenticatable
 
         return $this->hasMany(Work_log::class)->latest()->whereDate('created_at', '>=', $firstdayofMonthinAD)->whereDate('created_at', '<=', $lastdayofMonthinAD);
     }
-    // public function ManualWorklog($startDate, $endDate)
-    // {
-    //     return $this->hasMany(Work_log::class)->latest()->whereDate('created_at', '>=', $startDate)->whereDate('created_at', '<=', $endDate);
-    // }
+    public function ManualWorklog($startDate, $endDate)
+    {
+        return $this->hasMany(Work_log::class)->latest()->whereDate('created_at', '>=', $startDate)->whereDate('created_at', '<=', $endDate);
+    }
     public function Leaves()
     {
         return $this->hasMany(Leaves::class);
