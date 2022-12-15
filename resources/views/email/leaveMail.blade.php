@@ -36,7 +36,7 @@
         <h2>Dear Manager,</h2>
 
         <p>
-        <h3>{{ $mailData['name'] }} has requested for a {{ $mailData['total_days'] }} days leave.</h3>
+        <h3>{{ $mailData['name'] }} requested for a {{ $mailData['total_days'] }} days leave.</h3>
         </p>
 
         <p>
@@ -45,7 +45,10 @@
             To date: {{ $mailData['end_date'] }}
         </p>
 
-        <p>Please log into IMS to accept or decline this request.</p>
-        <p>Click <a href="{{ route('login') }}" target="_blank" rel="noopener noreferrer">here</a> to login to IMS </p>
+        <p>Click <a href="{{ route('login') }}" target="_blank" rel="noopener noreferrer">here</a> to login to IMS to
+            accept or decline this request.</p>
+
+        <p>Regards,<br>
+            Intern Manager</p>
     </div>
 </body>
