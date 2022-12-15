@@ -43,10 +43,11 @@
                 <td>{{ $user->contract_start_date }}</td>
                 <td>{{ $user->contract_end_date }}</td>
                 <td>{{ $user->hourly_rate }}</td>
+                @if($user->pan_number != null)
                 <td>{{ Crypt::decryptString($user->pan_number) }}</td>
                 <td>{{ $user->bank_name }}</td>
                 <td>{{ Crypt::decryptString($user->bank_account) }}</td>
-
+                @endif
                 <td>
                     <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                         @csrf
@@ -60,6 +61,7 @@
         </tbody>
         @endforeach
     </table>
+    {{ $users->links() }}
     <a href="{{ route('users.create') }}" class="createUser">Create User</a>
 </div>
 @endsection

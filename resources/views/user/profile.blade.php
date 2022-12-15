@@ -28,10 +28,11 @@
             <li class="border-bottom">{{ auth()->user()->address }}</li>
             <li class="border-bottom">{{ auth()->user()->contract_start_date }}</li>
             <li class="border-bottom">{{ auth()->user()->contract_end_date }}</li>
+            @if(auth()->user()->pan_number != null)
             <li class="border-bottom">{{ Crypt::decryptString(auth()->user()->pan_number) }}</li>
             <li class="border-bottom">{{ auth()->user()->bank_name }}</li>
             <li>{{ Crypt::decryptString(auth()->user()->bank_account) }}</li>
-
+            @endif
         </ul>
     </div>
 

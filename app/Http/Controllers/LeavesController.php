@@ -63,7 +63,8 @@ class LeavesController extends Controller
             'total_days' => $request->total_days,
             'name' => $request->user()->full_name,
         ];
-        Mail::to('kritartha.sapkota@deerwalk.edu.np')->send(new leaveMail($mailData));
+        $managerMail = User::whereRelation('department', 'department_name', Auth::user()->department->department_name)->whereRelation('role', 'title', 'Manager')->first();
+        Mail::to($managerMail->email)->send(new leaveMail($mailData));
         return redirect('dashboard');
     }
 

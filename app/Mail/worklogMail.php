@@ -17,13 +17,14 @@ class worklogMail extends Mailable
      * @return void
      */
 
-    public $work_logs;
+    public $work_logs, $department;
 
 
 
-    public function __construct($work_logs)
+    public function __construct($work_logs, $department)
     {
         $this->work_logs = $work_logs;
+        $this->department = $department;
     }
 
     /**

@@ -230,7 +230,7 @@
 <body class="d-flex justify-content-center">
     <div class="main w-75 p-3">
 
-        <p style="color: black;">This is the worklog of all interns</p>
+        <p style="color: black;">This is the todays worklog of interns of {{ $department->department_name }}</p>
         <table class="table">
 
             <thead>
@@ -240,15 +240,15 @@
                     <th scope="col">Hours Worked</th>
                 </tr>
             </thead>
-            @foreach ($work_logs as $worklog)
             <tbody>
+                @foreach ($work_logs as $worklog)
                 <tr>
                     <th>{{ $worklog->user->full_name }}</th>
                     <th>{{ $worklog->work }}</th>
                     <th>{{ $worklog->hours_worked }}</th>
                 </tr>
+                @endforeach
             </tbody>
-            @endforeach
         </table>
     </div>
 
