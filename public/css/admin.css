@@ -4,7 +4,6 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
 }
 
 :root {
@@ -14,9 +13,10 @@
 }
 
 body {
+    overflow: hidden;
     display: grid;
-    grid-template-columns: 15% 85%;
-    grid-template-rows: 8% 84% 8%;
+    grid-template-columns: 15vw 85vw;
+    grid-template-rows: 6vh 88vh 6vh;
 }
 
 .topnav {
@@ -30,7 +30,7 @@ body {
 }
 
 .topnav form {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .topnav button {
@@ -91,11 +91,11 @@ footer {
 
 .admin_main {
     grid-column: 2/3;
-    grid-row: 1/4;
-    margin: auto;
+    grid-row: 2/3;
 }
 
 .boxmain {
+    margin: 2vh 8vw;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -126,15 +126,13 @@ footer {
 .block {
     display: block;
     overflow-y: auto;
-    height: 40vh;
+    height: 50vh;
 }
 
 .viewDepartments {
+    margin: 8vw;
     display: grid;
-    gap: 5%;
-    padding: 2rem;
-    width: 60vw;
-    height: 60vh;
+    gap: 8%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto, auto);
 }
@@ -160,6 +158,7 @@ footer {
 }
 
 .head-over-display {
+    margin: auto;
     font-size: x-large;
     color: var(--main-color);
     background-color: var(--top-nav-color);
@@ -170,8 +169,11 @@ footer {
     border-radius: 4px;
     box-shadow: 0 3px 7px rgb(0 0 0 / 0.25);
     position: relative;
-    display: flex;
-    justify-content: center;
+}
+
+.hover:hover {
+    background-color: #fff;
+    color: #172b4d;
 }
 
 .tableBG {
@@ -179,31 +181,12 @@ footer {
     color: #344563;
     border-radius: 4px;
     margin-top: -1rem;
-    margin-bottom: 1rem;
     padding: 1rem;
 }
 
-/* .adminDash {
-    border-radius: 4px;
-    padding: 5% 2%;
-    display: grid;
-    gap: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-} */
-
-/* .main,
-.project {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-} */
-
-
+.edituser {
+    color: #172b4d;
+}
 
 a.createUser {
     text-decoration: none;
@@ -231,14 +214,37 @@ a.createUser:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
-.createUser {
+/* .adminDash {
+    border-radius: 4px;
+    padding: 5% 2%;
+    display: grid;
+    gap: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+} */
+
+/* .main,
+.project {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+} */
+
+
+
+
+/* .createUser {
     background-color: var(--top-nav-color);
     color: #344563;
     border-radius: 4px;
     margin-top: -1rem;
     padding: 2rem;
     overflow-y: auto;
-}
+} */
 
 .createForm {
     display: grid;
@@ -257,11 +263,6 @@ button.submit {
     border-radius: 4px;
     margin-top: 10px;
     padding: 5px 20px;
-}
-
-tr.hover:hover {
-    background-color: #f2f2f2;
-    color: #172b4d;
 }
 
 button.submit:hover {
@@ -382,10 +383,7 @@ a.crossButton {
     padding: 2rem;
     background-color: var(--top-nav-color);
 } */
-tr.hover:hover {
-    background-color: #f2f2f2;
-    color: #172b4d;
-}
+
 
 .green {
     background-color: green !important;
