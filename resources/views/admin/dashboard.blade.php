@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="boxmain">
-    <div class="box">
+    <div class="box" style="margin-right: 1em">
         <h1>{{ $totalinterns }}</h1>
         <span>
             <i class="fa fa-users fa-5x"></i>
@@ -10,7 +10,7 @@
         <h1>Intern</h1>
     </div>
 
-    <div class="box">
+    <div class="box" style="margin-left: 1em">
         <h1 class="total">{{$projectCount}}</h1>
         <span>
             <i class="fa fa-pencil-square-o fa-5x"></i>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="bigBox">
-        <h1>Recent Projects</h1>
+        <h1 style="text-align: center">Recent Projects</h1>
         <div class="block">
             <table class="table">
                 <thead>

@@ -4,7 +4,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
-    /* border: 1px solid green; */
+    overflow: hidden;
 }
 
 :root {
@@ -14,9 +14,8 @@
 }
 
 body {
-    overflow: hidden;
     display: grid;
-    grid-template-columns: 15% 77% 8%;
+    grid-template-columns: 15% 85%;
     grid-template-rows: 8% 84% 8%;
 }
 
@@ -26,12 +25,14 @@ body {
     justify-content: flex-end;
     align-items: center;
     padding: 10px;
-    grid-column: 1/4;
+    grid-column: 2/3;
     grid-row: 1/2;
 }
+
 .topnav form {
     margin-right: 1rem;
 }
+
 .topnav button {
     background-color: inherit;
     border: none;
@@ -47,7 +48,7 @@ body {
 }
 
 .logo img {
-    padding: 5px 10px;
+    padding: 10px;
     width: 100%;
 }
 
@@ -60,24 +61,27 @@ body {
     text-decoration: none;
     margin: auto;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidelinks ul a {
     font-size: large;
-    line-height: 5em;
+    line-height: 4em;
     text-decoration: none;
     color: var(--text-color);
 }
 
 .icons {
+    margin: 0;
+    padding: 0;
     margin-right: 0.5em;
+    height: 24px;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 8%;
+    grid-column: 1/3;
+    grid-row: 3/4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,25 +89,21 @@ footer {
     color: var(--text-color);
 }
 
-.main {
-    grid-column: 2/4;
-    grid-row: 2/3;
-    max-width: 75%;
-    max-height: 82%;
+.admin_main {
+    grid-column: 2/3;
+    grid-row: 1/4;
+    margin: auto;
 }
 
 .boxmain {
     display: grid;
-    align-content: center;
-    justify-content: space-around;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
 }
 
 .box {
     align-items: center;
     justify-items: center;
-    margin: 2em;
+    margin: 0 0 1em 0;
     padding: 0.5em;
     background-color: var(--top-nav-color);
     display: grid;
@@ -120,8 +120,7 @@ footer {
 .bigBox {
     grid-column: 1/3;
     background-color: var(--top-nav-color);
-    margin-bottom: 10px;
-    display: block;
+    padding-top: 5px;
 }
 
 .block {
@@ -131,22 +130,21 @@ footer {
 }
 
 .viewDepartments {
-    border-radius: 4px;
-    padding: 5% 2%;
     display: grid;
     gap: 5%;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    padding: 2rem;
+    width: 60vw;
+    height: 60vh;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, auto);
 }
 
-.adminDash a,
-.viewDepartments a {
+.viewDepartments a.dil {
     font-size: larger;
     font-weight: bold;
-    margin: auto;
     text-decoration: none;
-    height: 30vh;
-    width: 20vw;
+    height: 20vh;
+    width: 15vw;
     color: #000;
     display: flex;
     align-items: center;
@@ -156,28 +154,23 @@ footer {
     border-radius: 25px;
 }
 
-.adminDash a:hover,
 .viewDepartments a:hover {
     color: #000 !important;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
-.adminDash {
+.head-over-display {
+    font-size: x-large;
+    color: var(--main-color);
+    background-color: var(--top-nav-color);
+    width: fit-content;
+    height: fit-content;
+    font-weight: bold;
+    padding: 4px 16px;
     border-radius: 4px;
-    padding: 5% 2%;
-    display: grid;
-    gap: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-.main,
-.project {
-    margin: auto;
+    box-shadow: 0 3px 7px rgb(0 0 0 / 0.25);
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
     justify-content: center;
 }
 
@@ -187,22 +180,30 @@ footer {
     border-radius: 4px;
     margin-top: -1rem;
     margin-bottom: 1rem;
-    padding: 2.5rem;
+    padding: 1rem;
 }
 
-.head-over-display {
-    background-color: var(--top-nav-color);
-    font-size: x-large;
-    color: #344563;
-    width: fit-content;
-    height: fit-content;
-    font-weight: bold;
-    padding: 4px 16px;
+/* .adminDash {
     border-radius: 4px;
-    box-shadow: 0 3px 7px rgb(0 0 0 / 0.25);
-    position: relative;
-    align-self: center;
-}
+    padding: 5% 2%;
+    display: grid;
+    gap: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+} */
+
+/* .main,
+.project {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+} */
+
+
 
 a.createUser {
     text-decoration: none;
@@ -376,6 +377,7 @@ a.crossButton {
 .submit_work:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
+
 /* .add-project {
     padding: 2rem;
     background-color: var(--top-nav-color);
@@ -384,17 +386,19 @@ tr.hover:hover {
     background-color: #f2f2f2;
     color: #172b4d;
 }
+
 .green {
     background-color: green !important;
 }
 
 .red {
-    background-color: red !important ;
+    background-color: red !important;
 }
 
 .yellow {
-    background-color: yellow !important ;
+    background-color: yellow !important;
 }
+
 .bigText {
     font-weight: bold;
     font-size: 1.2rem;

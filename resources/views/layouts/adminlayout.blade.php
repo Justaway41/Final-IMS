@@ -39,7 +39,7 @@
     <livewire:top-navbar-admin />
     <livewire:side-navbar-admin />
 
-    <div class="main">
+    <div class="admin_main">
         @yield('content')
     </div>
 

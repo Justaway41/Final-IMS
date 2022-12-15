@@ -5,7 +5,7 @@
     Interns
 </div>
 
-<div class="tableBG">
+<div class="tableBG" style="overflow-x:auto; width: 85vw">
     <table class="table">
         <thead>
             <tr>
