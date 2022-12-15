@@ -17,6 +17,13 @@
 
     {{-- admin css --}}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    {{-- nepali calender --}}
+    <script
+    src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
+    type="text/javascript"></script>
+    <link
+    href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
+    rel="stylesheet" type="text/css"/>
 
     {{-- fontawsome icons --}}
     <script src="https://kit.fontawesome.com/8d8b2b9a46.js" crossorigin="anonymous"></script>
@@ -48,6 +55,32 @@
     <livewire:footer />
 
     @livewireScripts
+    <script>
+        /* Select your element */
+    var elm = document.getElementById("nepali-datepicker");
+     
+     /* Initialize Datepicker with options */
+     elm.nepaliDatePicker({
+        language: "english",
+        onChange: function() {
+            let nepaliDate = $("input#nepali-datepicker").val();
+            let engdate = $("input#eng_date");
+            engdate.val(NepaliFunctions.BS2AD(nepaliDate));
+        }
+     });
+    
+     /* Select your element */
+    var elm2 = document.getElementById("nepali-datepicker2");
+     
+     /* Initialize Datepicker with options */
+     elm2.nepaliDatePicker({
+        language: "english",
+        onChange: function() {
+            let nepaliDate = $("input#nepali-datepicker2").val();
+            let engdate = $("input#eng_date2");
+            engdate.val(NepaliFunctions.BS2AD(nepaliDate));
+        }
+     });
+    </script>
 </body>
-
 </html>
