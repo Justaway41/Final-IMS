@@ -8,6 +8,25 @@
     </div>
     
     <div class="tableBG">
+        <form class="d-flex align-items-center justify-content-end gap-3" method="GET"
+        action="{{ route('totalhours') }}">
+        @csrf
+        <div class="form-group">
+            <label for="exampleInputEmail1">From</label>
+            <input type="text" id="nepali-datepicker" placeholder="Select Nepali Date"/>
+        </div>
+        <input type="hidden" id="eng_date" name="start_date" value="{{ old('start_date') }}"/>
+        <div class="form-group">
+            <label for="exampleInputEmail1">To</label>
+            <input type="text" id="nepali-datepicker2" placeholder="Select Nepali Date"/>
+        </div>
+        <input type="hidden" id="eng_date2" name="end_date" value="{{ old('end_date') }}/>
+
+        <div class="form-group align-self-end">
+
+            <button type="submit" class=" btn btn-primary">Submit</button>
+        </div>
+    </form>
         <table class="table" style="min-width:30vw">
             <thead>
                 <tr>
@@ -19,7 +38,16 @@
                 @foreach ($users as $user)
                 <tr class="hover">
                         <th scope="row">{{ $user->full_name }}</th>
-                        <td>{{ $user->MonthlyWorklogs->sum('hours_worked') }}</td>
+                        {{ 
+                        $startDate = Carbon::today();
+                        $endDate = Carbon::tomorrow(); }}
+                        @if($startDate != Carbon::today()){
+
+                            <td>{{ $user->ManualWorklog($startDate,$endDate)->sum('hours_worked') }}</td>
+                        }
+                        @else{
+                        <td>{{ $user->MonthlyWorklog()->sum('hours_worked') }}</td>}
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
