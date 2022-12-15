@@ -22,15 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 
-
-
-
 Route::middleware(['auth'])->group(function () {
-
 
     Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
     Route::resource('leaves', LeavesController::class);
@@ -46,18 +40,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/missedWorklog', [Work_logController::class, 'users'])->name('missedWorklog');
         Route::get('/totalHours', [Work_logController::class, 'total'])->name('totalhours');
     });
+
     Route::resource('videos', VideoController::class);
     Route::resource('Work_log', Work_logController::class);
-
-
-
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/view', [DepartmentController::class, 'view']);
 
-
-    // todo routes
-
-    // projects route
+    // projects & todo route
     Route::group([
         'prefix' => 'admin/projects',
         'middleware' => 'isAdmin',
@@ -114,15 +103,3 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [TodoAdminController::class, 'index']);
     });
 });
-
-
-
-
-
-
-// Mail template viewing
-// Route::get('/mailable', function () {
-//     $work_logs = Work_log::whereDate('created_at', Carbon::today())->get();
-
-//     return new App\Mail\worklogMail($work_logs);
-// });

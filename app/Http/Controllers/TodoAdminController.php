@@ -18,6 +18,7 @@ class TodoAdminController extends Controller
         $tasks = Task::where('user_id', auth()->user()->id)->get();
         return view('todo.intern.index', ['tasks' => $tasks]);
     }
+
     public function create($id)
     {
         TodoAdminController::abortIfNotAdmin();

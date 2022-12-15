@@ -43,10 +43,12 @@ class ProjectAdminController extends Controller
         Project::create($formFields);
         return redirect('/admin/projects/');
     }
+
     public function edit($id)
     {
         return view('todo.project.edit', ['project' => Project::find($id)]);
     }
+
     public function update(Request $req, $id)
     {
         $project = Project::find($id);
@@ -64,7 +66,6 @@ class ProjectAdminController extends Controller
             return redirect(route('admin.projects.index'));
         }
 
-
         $formFields = $req->validate([
             'name' => 'required',
             'start_date' => 'required',
@@ -73,13 +74,13 @@ class ProjectAdminController extends Controller
         $project->update($formFields);
         return redirect(route('admin.projects.index'));
     }
+
     public function destroy($id)
     {
         $project = Project::find($id);
         $task = Task::where('project_id', $id);
         $task->delete();
         $project->destroy($id);
-
         return back();
     }
 
