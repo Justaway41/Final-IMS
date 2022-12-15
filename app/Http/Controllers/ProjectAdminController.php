@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Project;
 use App\Models\Task;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 
 class ProjectAdminController extends Controller
 {

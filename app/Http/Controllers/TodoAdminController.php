@@ -53,7 +53,7 @@ class TodoAdminController extends Controller
 
     public function abortIfNotAdmin()
     {
-        if (auth()->user()->role->title != "Admin" || auth()->user()->role->title != "Manager") {
+        if (auth()->user()->role->title == "Intern") {
             abort(404);
         }
     }
