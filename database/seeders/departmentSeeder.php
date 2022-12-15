@@ -17,17 +17,21 @@ class departmentSeeder extends Seeder
     {
         $departments = [
             [
-                'department_name' => 'DDL'
+                'department_name' => 'DDL',
+                'department_email' => 'ddl@gmail.com'
             ],
 
             [
-                'department_name' => 'Library'
+                'department_name' => 'Library',
+                'department_email' => 'library@gmail.com'
             ],
             [
-                'department_name' => 'Biology'
+                'department_name' => 'Biology',
+                'department_email' => 'biology@gmail.com'
             ],
             [
-                'department_name' => 'IT'
+                'department_name' => 'IT',
+                'department_email' => 'it@gmail.com'
             ],
         ];
         foreach ($departments as $key => $value) {

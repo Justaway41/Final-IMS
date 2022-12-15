@@ -22,10 +22,12 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'department_name' => 'required',
+            'department_email' => 'required',
         ]);
 
         Department::create([
             'department_name' => $request->get('department_name'),
+            'department_email' => $request->get('department_email'),
         ]);
 
         return redirect()->route('departments.index')
@@ -51,11 +53,13 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'department_name' => 'required',
+            'department_email' => 'required',
         ]);
 
         $department = Department::find($id);
 
         $department->department_name = $request->get('department_name');
+        $department->department_email = $request->get('department_email');
 
         $department->save();
 

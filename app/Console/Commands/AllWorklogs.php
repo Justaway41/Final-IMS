@@ -39,26 +39,11 @@ class AllWorklogs extends Command
             $users = User::whereRelation('department', 'department_name', $department->department_name)->whereRelation('role', 'title', 'Intern')->get();
             $work_logs = Work_log::whereBelongsTo($users)->whereDate('created_at', Carbon::today())->get();
             $manager = User::whereRelation('department', 'department_name', $department->department_name)->whereRelation('role', 'title', 'Manager')->first();
-            switch ($department->department_name) {
-                case 'DDL':
-                    $students = "ddl@gmail.com";
-                    break;
-                case 'IT':
-                    $students = "it@gmail.com";
-                    break;
-                case 'Biology':
-                    $students = "bio@gmail.com";
-                    break;
-                case 'Library':
-                    $students = "library@gmail.com";
-                    break;
-            }
 
-            Mail::to("kritartha.sapkota@deerwalk.edu.np")
-                ->cc([$manager->email, $students, "ujjwal.poudel@sifal.deerwalk.edu.np"])
+            Mail::to("bijaya.shrestha@sifal.deerwalk.edu.np")
+                ->cc([$manager->email, $department->department_email, "ujjwal.poudel@sifal.deerwalk.edu.np"])
                 ->send(new worklogMail($work_logs, $department));
         }
-
         // $work_logs = Work_log;
         return 0;
     }
