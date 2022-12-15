@@ -14,6 +14,7 @@
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/totalTime.js') }}"></script>
+
     {{-- admin css --}}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     {{-- nepali calender --}}
@@ -39,6 +40,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
     @livewireStyles
 </head>
 

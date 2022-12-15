@@ -7,13 +7,13 @@
 
     <div class="sidelinks">
         <ul>
-            @if(Auth::user()->role->title != 'Manager')
-            <li>
-                <a href="/view">
-                    <i class="fa fa-sitemap fa-lg icons"></i>
-                    <span>Departments</span>
-                </a>
-            </li>
+            @if (Auth::user()->role->title != 'Manager')
+                <li>
+                    <a href="/view">
+                        <i class="fa fa-sitemap fa-lg icons"></i>
+                        <span>Departments</span>
+                    </a>
+                </li>
             @endif
             <li>
                 <a href="{{ route('users.index') }}">
@@ -33,12 +33,14 @@
                     <span>Leaves</span>
                 </a>
             </li>
-            <li>
-                <a href="{{route('admin.projects.index')}}">
-                    <i class="fa fa-pencil-square-o fa-lg icons"></i>
-                    <span>Projects</span>
-                </a>
-            </li>
+            @if (Auth::user()->role->title != 'Admin')
+                <li>
+                    <a href="{{ route('admin.projects.index') }}">
+                        <i class="fa fa-pencil-square-o fa-lg icons"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+            @endif
             <li>
 
                 <a href="/settings">
