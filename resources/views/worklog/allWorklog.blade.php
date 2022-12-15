@@ -14,6 +14,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
                     <select class="form-select" aria-label="Default select example" name="fullname">
+                        <option selected>Open this select menu</option>
                         @foreach ($users as $user)
                             <option value="{{ $user->full_name }}">{{ $user->full_name }}</option>
                         @endforeach
@@ -21,18 +22,22 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">From</label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        name="start_date">
+                    <input type="text" id="nepali-datepicker" placeholder="Select Nepali Date"/>
                 </div>
+                <input type="hidden" id="eng_date" name="start_date"/>
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">To</label>
-                    <input type="date" class="form-control" id="exampleInputPassword1" name="end_date">
+                    <input type="text" id="nepali-datepicker2" placeholder="Select Nepali Date"/>
                 </div>
+                <input type="hidden" id="eng_date2" name="end_date"/>
+
                 <div class="form-group align-self-end">
 
                     <button type="submit" class=" btn btn-primary">Submit</button>
                 </div>
             </form>
+            <p>Total Hours: {{ $work_logs->sum('hours_worked') }}</p>
             <table class="table mt-3">
                 <thead>
                     <tr>
