@@ -48,7 +48,6 @@ class Work_logController extends Controller
         if ($request->user()->cannot('create', "App\Models\Work_log")) {
             abort(403, "Only one worklog per day");
         }
-
         return view('worklog.index');
     }
 
@@ -70,8 +69,6 @@ class Work_logController extends Controller
             ]);
             return redirect(route('dashboard'));
         }
-
-
         return redirect()->route('Work_log.create')->with('message', 'Submit time exceeded. Please contact your manager.');
     }
 
@@ -83,7 +80,6 @@ class Work_logController extends Controller
         abort(404);
     }
 
-
     public function users()
     {
 
@@ -92,7 +88,6 @@ class Work_logController extends Controller
 
         return view('admin.interns', ['interns' => $interns]);
     }
-
 
     public function total()
     {

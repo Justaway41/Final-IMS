@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         if (Auth::user()->role->title == "Manager") {
@@ -24,15 +19,9 @@ class UserController extends Controller
         } else {
             $users = User::whereRelation('Role', 'Title', 'Intern')->paginate(10);
         }
-
         return view('user.index', ['users' => $users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $users = User::get();
@@ -41,16 +30,8 @@ class UserController extends Controller
         return view('user.create', ['users' => $users, 'roles' => $roles, 'departments' => $departments]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserFormRequest $request)
     {
-
-
         $request->validated();
         User::create([
             'full_name' => $request->full_name,
@@ -69,32 +50,18 @@ class UserController extends Controller
             'pan_number' => Crypt::encryptString($request->pan_number),
             'bank_name' => $request->bank_name,
             'bank_account' => Crypt::encryptString($request->bank_account),
-
         ]);
-
 
         Password::sendResetLink($request->only(['email']));
 
         return redirect(route('users.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('user.edit', ['users' => User::findOrFail($id)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $roles = Role::get();
@@ -102,29 +69,15 @@ class UserController extends Controller
         return view('user.edit', ['users' => User::findOrFail($id), 'roles' => $roles, 'departments' => $departments]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserFormRequest $request, $id)
     {
         $request->validated();
         User::where('id', $id)->update(
             $request->except(['_token', '_method'])
         );
-
         return redirect(route('users.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         User::destroy($id);

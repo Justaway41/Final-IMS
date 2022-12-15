@@ -11,8 +11,7 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('roles.index', compact('roles'))
-            ->with('i', (request()->input('page')));
+        return view('roles.index', compact('roles'));
     }
 
     public function create()
