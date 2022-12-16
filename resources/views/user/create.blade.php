@@ -144,7 +144,7 @@
                     <label for="exampleInputEmail1">Pan Number</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" value="{{ old('pan_number') }}"
                         name="pan_number">
-                    @error('hourly_rate')
+                    @error('pan_number')
                         <p class="text-danger small"><small>{{ $message }}</small></p>
                     @enderror
                 </div>
