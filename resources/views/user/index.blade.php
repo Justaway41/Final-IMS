@@ -6,6 +6,9 @@
     </div>
 
     <div class="tableBG" style="overflow-x:auto; width: 85vw">
+        @if ($message = Session::get('success'))
+            <p style="color: green; margin: 0">{{ $message }}</p>
+        @endif
         <table class="table">
             <thead>
                 <tr>

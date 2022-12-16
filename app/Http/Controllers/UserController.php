@@ -53,7 +53,8 @@ class UserController extends Controller
 
         Password::sendResetLink($request->only(['email']));
 
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))
+            ->with('success', 'User created successfully.');
     }
 
     public function show($id)
@@ -74,14 +75,16 @@ class UserController extends Controller
         User::where('id', $id)->update(
             $request->except(['_token', '_method'])
         );
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))
+            ->with('success', 'User updated successfully.');
     }
 
     public function destroy($id)
     {
         User::destroy($id);
 
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))
+            ->with('success', 'User deleted successfully.');
     }
 
     public function profile()
