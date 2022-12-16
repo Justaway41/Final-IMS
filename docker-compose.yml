@@ -29,22 +29,22 @@ services:
             - .:/var/www/html/
         depends_on:
             - mysql
-            - laravel-init
+    #         - laravel-init
 
-    laravel-init:
-        build:
-            context: .
-            target: php
-            args:
-                - APP_ENV=${APP_ENV}
-        environment:
-            - APP_ENV=${APP_ENV}
-            - CONTAINER_ROLE=app
-        command: Docker/entrypoint.sh
-        volumes:
-            - .:/var/www/html/
-        depends_on:
-            - mysql
+    # laravel-init:
+    #     build:
+    #         context: .
+    #         target: php
+    #         args:
+    #             - APP_ENV=${APP_ENV}
+    #     environment:
+    #         - APP_ENV=${APP_ENV}
+    #         - CONTAINER_ROLE=app
+    #     command: Docker/entrypoint.sh
+    #     volumes:
+    #         - .:/var/www/html/
+    #     depends_on:
+    #         - mysql
 
 volumes:
     intern_manager:
