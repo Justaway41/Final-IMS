@@ -142,6 +142,33 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="exampleInputEmail1">Pan Number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $users->pan_number }}"
+                        name="pan_number">
+                    @error('pan_number')
+                        <p class="text-danger small"><small>{{ $message }}</small></p>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1">Bank Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $users->bank_name }}"
+                        name="bank_name">
+                    @error('bank_name')
+                        <p class="text-danger small"><small>{{ $message }}</small></p>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1">Bank Account Number</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1"
+                        value="{{ $users->bank_account }}" name="bank_account">
+                    @error('bank_account')
+                        <p class="text-danger small"><small>{{ $message }}</small></p>
+                    @enderror
+                </div>
+
                 <div class="checkbox">
                     <input type="checkbox" class="form-check-input" id="checkbox" required>
                     <label class="form-check-label" for="checkbox">
