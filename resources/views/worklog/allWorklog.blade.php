@@ -49,7 +49,7 @@
                         <th scope="row">{{ $worklog->user->full_name }}</th>
                         <td>{{ $worklog->work }}</td>
                         <td>{{ $worklog->hours_worked }}</td>
-                        <td>{{ $worklog->created_at }}</td>
+                        <td>{{ NepaliCalendar::AD2BS($worklog->created_at->format('Y-m-d'))['BS_DATE'] }}</td>
                     </tr>
                 @endforeach
             </tbody>
