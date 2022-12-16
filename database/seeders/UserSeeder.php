@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
         $user = [
             [
                 'full_name' => 'Admin',
-                'email' => 'admin@gmail.com',
-                'password' => bcrypt('admin123'),
+                'email' => 'ims_admin@gmail.com',
+                'password' => bcrypt('ims@admin#'),
                 'gender' => 'male',
                 'birthday' => '2001-11-03',
                 'contact' => '9813706413',
