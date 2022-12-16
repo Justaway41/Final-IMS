@@ -1,13 +1,11 @@
 @extends('layouts.adminlayout')
 
 @section('content')
-<div class="main">
-
     <div class="head-over-display">
         {{ $department->department_name }}
     </div>
-    
-    <div class="tableBG">
+
+    <div class="tableBG" style="margin: -1rem 5vw 0">
         <table class="table">
             <thead>
                 <tr>
@@ -21,9 +19,9 @@
                 </tr>
             </thead>
             @foreach ($users as $user)
-            <tbody>
-                <tr class="hover">
-                    <th> {{ $user->full_name }} </th>
+                <tbody>
+                    <tr class="hover">
+                        <th> {{ $user->full_name }} </th>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->address }}</td>
                         <td>{{ $user->contact }}</td>
@@ -32,8 +30,7 @@
                         <td>{{ $user->role->title }}</td>
                     </tr>
                 </tbody>
-                @endforeach
-            </table>
-        </div>
+            @endforeach
+        </table>
     </div>
 @endsection

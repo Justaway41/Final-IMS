@@ -1,13 +1,12 @@
 @extends('layouts.adminlayout')
 
 @section('content')
-    <div class="main">
+    <div class="head-over-display">
+        Create New Department
+    </div>
 
-        <div class="head-over-display">
-            Create New Department
-        </div>
-
-        <form action="{{ route('departments.store') }}" method="POST" enctype="multipart/form-data" class="createUser">
+    <div class="tableBG" style="margin: -1rem 10vw 0">
+        <form action="{{ route('departments.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="createForm">
 
@@ -28,6 +27,7 @@
                         <p class="text-danger small"><small>{{ $message }}</small></p>
                     @enderror
                 </div>
+
             </div>
 
             <div>

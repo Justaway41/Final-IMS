@@ -216,7 +216,6 @@ footer {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
-/* 
 .createForm {
     padding: 1rem;
     display: grid;
@@ -239,17 +238,6 @@ button.submit {
 
 button.submit:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
-}
-
-.worklog {
-    color: #344563;
-    background-color: #d9d9d9;
-    border-radius: 4px;
-    text-align: left;
-    width: 70vw;
-    margin-top: -1.25rem;
-    padding: 1% 2%;
-    margin-bottom: 2%;
 }
 
 .worklog_scroll {
@@ -350,8 +338,3 @@ a.crossButton {
 .submit_work:hover {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
-
-/* .add-project {
-    padding: 2rem;
-    background-color: var(--top-nav-color);
-} */

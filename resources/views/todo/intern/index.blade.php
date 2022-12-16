@@ -16,8 +16,8 @@
     </div>
 
     <div class="worklog">
-        <div class="tableBG" style="min-width:40vw">
-            <table class="table" style="min-width:30vw">
+        <div class="tableBG">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Task</th>
