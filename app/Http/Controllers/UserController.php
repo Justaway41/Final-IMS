@@ -18,6 +18,7 @@ class UserController extends Controller
         if (Auth::user()->role->title == "Admin") {
             $users =  User::latest()->paginate(5);
         }
+
         return view('user.index', ['users' => $users]);
     }
 
@@ -75,6 +76,10 @@ class UserController extends Controller
         User::where('id', $id)->update(
             $request->except(['_token', '_method'])
         );
+        $model = User::findorFail($id);
+        $model->pan_number = Crypt::encryptString($request->pan_number);
+        $model->bank_account = Crypt::encryptString($request->bank_account);
+        $model->update(['pan_number', Crypt::encryptString($request->pan_number), 'bank_account', Crypt::encryptString($request->bank_account)]);
         return redirect(route('users.index'))
             ->with('success', 'User updated successfully.');
     }

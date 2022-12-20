@@ -33,16 +33,17 @@ class AllWorklogs extends Command
      */
     public function handle()
     {
-        $students = "";
         $departments = Department::get();
         foreach ($departments as $department) {
             $users = User::whereRelation('department', 'department_name', $department->department_name)->whereRelation('role', 'title', 'Intern')->get();
-            $work_logs = Work_log::whereBelongsTo($users)->whereDate('created_at', Carbon::today())->get();
             $manager = User::whereRelation('department', 'department_name', $department->department_name)->whereRelation('role', 'title', 'Manager')->first();
-
-            Mail::to("bijaya.shrestha@sifal.deerwalk.edu.np")
-                ->cc([$manager->email, $department->department_email, "ujjwal.poudel@sifal.deerwalk.edu.np"])
-                ->send(new worklogMail($work_logs, $department));
+            $noofInterns = sizeof($users);
+            if ($noofInterns != 0 && $manager != null) {
+                $work_logs = Work_log::whereBelongsTo($users)->whereDate('created_at', Carbon::today())->get();
+                Mail::to("bijaya.shrestha@sifal.deerwalk.edu.np")
+                    ->cc([$manager->email, $department->department_email, "ujjwal.poudel@sifal.deerwalk.edu.np"])
+                    ->send(new worklogMail($work_logs, $department));
+            }
         }
         // $work_logs = Work_log;
         return 0;
