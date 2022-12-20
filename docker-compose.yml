@@ -23,7 +23,7 @@ services:
             - APP_ENV=${APP_ENV}
             - CONTAINER_ROLE=app
         ports:
-            - 8000:80
+            - 8009:80
         volumes:
             - .:/var/www/html/
         depends_on:

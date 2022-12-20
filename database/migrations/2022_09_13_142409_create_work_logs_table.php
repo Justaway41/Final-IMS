@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('work_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->string('work');
+            $table->longText('work');
             $table->json('start_time');
             $table->json('end_time');
-            $table->integer('hours_worked');
+            $table->float('hours_worked');
             $table->timestamps();
         });
     }
