@@ -9,11 +9,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->ip());
+
         $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(5);
         if (Auth::user()->role->title == "Admin") {
             $users =  User::latest()->paginate(5);
