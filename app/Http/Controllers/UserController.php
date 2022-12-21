@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(5);
         if (Auth::user()->role->title == "Admin") {

@@ -18,12 +18,8 @@
     {{-- admin css --}}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     {{-- nepali calender --}}
-    <script
-    src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
-    type="text/javascript"></script>
-    <link
-    href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
-    rel="stylesheet" type="text/css"/>
+    <script src="{{ asset('js/nepali.datepicker.v4.0.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/nepali.datepicker.v4.0.min.css') }}">
 
     {{-- fontawsome icons --}}
     <script src="https://kit.fontawesome.com/8d8b2b9a46.js" crossorigin="anonymous"></script>
@@ -83,4 +79,5 @@
      });
     </script>
 </body>
+
 </html>
