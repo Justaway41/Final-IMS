@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class EnabledIpMiddleware
 {
 
-    public $enableIp = "110.44.116.42";
+    public $enableIp = "192.168.0.201";
 
     /**
      * Handle an incoming request.
