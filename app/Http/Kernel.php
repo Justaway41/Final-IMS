@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EnabledIpMiddleware;
 use App\Http\Middleware\isAdminMiddleWare;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,6 +68,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'ensure.role' => \App\Http\Middleware\EnsureRole::class,
         'isAdmin' => isAdminMiddleWare::class,
+        'enableIp' => EnabledIpMiddleware::class,
 
     ];
 }
