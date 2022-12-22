@@ -29,10 +29,15 @@ class Work_logController extends Controller
         } elseif (Auth::user()->role->title === 'Admin') {
             $users = User::whereRelation('role', 'title', 'Intern')->get();
             $work_log = [];
-            if ($request->start_date != null && $request->end_date != null) {
+            if ($request->start_date != null && $request->end_date != null && $request->fullname != "Select Intern Name") {
                 $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
                     $q->whereRelation('user', 'full_name', $request->fullname)
                         ->whereDate('created_at', '>=', $request->start_date)
+                        ->whereDate('created_at', '<=', $request->end_date);
+                })->get();
+            } elseif ($request->start_date != null && $request->end_date != null && $request->fullname == "Select Intern Name") {
+                $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
+                    $q->whereDate('created_at', '>=', $request->start_date)
                         ->whereDate('created_at', '<=', $request->end_date);
                 })->get();
             }
