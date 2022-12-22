@@ -23,7 +23,7 @@ class LeavesController extends Controller
         if (Auth::user()->role->title != 'Manager') {
             $users = User::has('leaves')->get();
         } else {
-            $users = User::whereRelation('department', 'department_name', Auth::user()->department->department_name)->has('leaves')->get();
+            $users = User::whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
         }
         return view('admin.leaves', ['users' => $users]);
     }
