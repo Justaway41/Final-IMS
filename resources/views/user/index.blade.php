@@ -38,7 +38,7 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->address }}</td>
                 <td>{{ $user->contact }}</td>
-                <td>{{ $user->gender }}</td>
+                <td>{{ ucfirst($user->gender) }}</td>
                 <td>{{ $user->birthday }}</td>
                 <td>{{ $user->department->department_name }}</td>
                 <td>{{ $user->role->title }}</td>

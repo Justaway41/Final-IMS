@@ -38,6 +38,7 @@ class UserController extends Controller
             'full_name' => $request->full_name,
             'email' => $request->email,
             'password' => bcrypt("nice"),
+            'gender' => $request->gender,
             'birthday' => $request->birthday,
             'contact' => $request->contact,
             'address' => $request->address,

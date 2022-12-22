@@ -27,6 +27,7 @@ class   UserFormRequest extends FormRequest
         $rules = [
             'full_name' => 'required',
             'email' => ['required', 'email'],
+            'gender' => 'required', 
             'birthday' => 'required',
             'contact' => 'required',
             'address' => 'required',
