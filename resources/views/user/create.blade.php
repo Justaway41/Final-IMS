@@ -5,7 +5,7 @@
         Create User
     </div>
 
-    <div class="tableBG" style="margin: -1rem 5vw 0; height: 80vh; overflow-y: auto">
+    <div class="tableBG" style="margin: -1rem 10vw 0; height: 80vh; overflow-y: auto">
         <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -50,7 +50,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1">Gender</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="gender">
-                        <option>-Select One-</option>
+                        <option value="">-Select-</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -70,10 +70,15 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Department</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="department_id">
-                        <option>-Select One-</option>
-                        @foreach ($departments as $department)
-                            <option value={{ $department->id }}>{{ $department->department_name }}</option>
-                        @endforeach
+                        @if (Auth::user()->role->title == 'Manager')
+                            <option value="{{ Auth::user()->department_id }}">
+                                {{ Auth::user()->department->department_name }}</option>
+                        @else
+                            <option value="">-Select-</option>
+                            @foreach ($departments as $department)
+                                <option value={{ $department->id }}>{{ $department->department_name }}</option>
+                            @endforeach
+                        @endif
                     </select>
                     @error('department_id')
                         <p class="text-danger small"><small>{{ $message }}</small></p>
@@ -83,7 +88,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Role</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="role_id">
-                        <option>-Select One-</option>
+                        <option value="">-Select-</option>
                         @foreach ($roles as $role)
                             <option value={{ $role->id }}>{{ $role->title }}</option>
                         @endforeach
@@ -104,7 +109,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1">Contract Status</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="contract_status">
-                        <option>-Select One-</option>
+                        <option value="">-Select-</option>
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
@@ -141,7 +146,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleInputEmail1">Pan Number</label>
+                    <label for="exampleInputEmail1">PAN Number</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" value="{{ old('pan_number') }}"
                         name="pan_number">
                     @error('pan_number')

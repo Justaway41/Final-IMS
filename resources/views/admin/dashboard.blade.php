@@ -2,24 +2,24 @@
 
 @section('content')
     <div class="boxmain">
-        <div class="box" style="margin-right: 1em">
-            <h1>{{ $totalinterns }}</h1>
+        <div class="box-interns">
+            <h2>{{ $totalinterns }}</h2>
+            <h2>Intern</h2>
             <span>
-                <i class="fa fa-users fa-5x"></i>
+                <i class="fa fa-users fa-4x"></i>
             </span>
-            <h1>Intern</h1>
         </div>
 
-        <div class="box" style="margin-left: 1em">
-            <h1 class="total">{{ $projectCount }}</h1>
+        <div class="box-projects">
+            <h2>{{ $projectCount }}</h2>
+            <h2>Projects</h2>
             <span>
-                <i class="fa fa-pencil-square-o fa-5x"></i>
+                <i class="fa fa-pencil-square-o fa-4x"></i>
             </span>
-            <h1>Projects</h1>
         </div>
 
         <div class="bigBox">
-            <h1 style="text-align: center">Recent Projects</h1>
+            <h2 style="text-align: center">Recent Projects</h2>
             <div class="block">
                 <table class="table">
                     <thead>
