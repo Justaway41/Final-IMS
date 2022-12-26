@@ -28,32 +28,36 @@
 </head>
 
 <body>
-    <p style="color: black;">This is the todays worklog of interns of {{ $department->department_name }}</p>
+    <p style="color: black;">This is today's worklog of interns of {{ $department->department_name }}.</p>
     <table>
-        <tr class="toprow">
-            <th>
-                <font color="white">Name</font>
-            </th>
-            <th>
-                <font color="white">Work Done</font>
-            </th>
-            <th>
-                <font color="white">Hours Worked</font>
-            </th>
-        </tr>
+        <thead>
+            <tr class="toprow">
+                <th>
+                    <font color="white">Name</font>
+                </th>
+                <th>
+                    <font color="white">Work Done</font>
+                </th>
+                <th>
+                    <font color="white">Hours Worked</font>
+                </th>
+            </tr>
         </thead>
         <tbody>
             @foreach ($work_logs as $worklog)
-            <tr>
-                <td>{{ $worklog->user->full_name }}</td>
-                <td>{{ $worklog->work }}</td>
-                <td>{{ $worklog->hours_worked }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $worklog->user->full_name }}</td>
+                    <td>{{ $worklog->work }}</td>
+                    <td>{{ $worklog->hours_worked }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>
+    <br><br>
+    <div style="color: black">
+        Regards,<br>
+        Intern Manager
     </div>
-
 </body>
 
 </html>
