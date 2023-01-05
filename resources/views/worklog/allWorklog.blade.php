@@ -41,6 +41,7 @@
                 <th scope="col">Work Done</th>
                 <th scope="col">Hours worked</th>
                 <th scope="col">Date</th>
+                <th scope="col">Filled Time</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@
                 <td>{{ $worklog->work }}</td>
                 <td>{{ $worklog->hours_worked }}</td>
                 <td>{{ NepaliCalendar::AD2BS($worklog->created_at->format('Y-m-d'))['BS_DATE'] }}</td>
+                <td>{{ $worklog->created_at->format("H:m")}}</td>
             </tr>
             @endforeach
         </tbody>

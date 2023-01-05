@@ -379,3 +379,10 @@ a.crossButton {
     border-radius: 0.25rem;
     color: white;
 }
+
+.contetn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20rem;
+}
