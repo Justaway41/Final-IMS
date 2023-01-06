@@ -1,5 +1,8 @@
 <div class="topnav">
-    <div class="contetn">
+    <div class="contetn" style="display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20rem;">
         <strong>
             <div class="role">Welcome, {{ auth()->user()->full_name }}</div>
         </strong>
