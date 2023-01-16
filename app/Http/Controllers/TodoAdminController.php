@@ -73,26 +73,16 @@ class TodoAdminController extends Controller
         if ($task->todo != $req->get('todo')) {
             $task->todo = $req->get('todo');
             $task->save();
-            return redirect(route('admin.projects.show', ['id' => $task->project_id]));
-        } else if ($task->assign_to != $req->get('assign_to')) {
-
+        }
+        if ($task->assign_to != $req->get('assign_to')) {
             $task->assign_to = $req->get('assign_to');
             $task->save();
-            return redirect(route('admin.projects.show', ['id' => $task->project_id]));
-        } else if ($task->deadline != $req->get('deadline')) {
+        }
+        if ($task->deadline != $req->get('deadline')) {
             $task->deadline = $req->get('deadline');
             $task->save();
-            return redirect(route('admin.projects.show', ['id' => $task->project_id]));
         }
-        $formFields = $req->validate([
-            'todo' => '',
-            'assign_to' => '',
-            'deadline' => ' | date_format:m/d/Y',
-        ]);
-
-        $task->update($formFields);
         return redirect(route('admin.projects.show', ['id' => $task->project_id]));
-        // return redirect(route('admin.projects.show', ['id' =>$task->project_id]));
     }
 
     public function destroy($id)
