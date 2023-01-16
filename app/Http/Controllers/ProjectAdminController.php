@@ -55,23 +55,15 @@ class ProjectAdminController extends Controller
         if ($project->name != $req->get('name')) {
             $project->name = $req->get('name');
             $project->save();
-            return redirect(route('admin.projects.index'));
-        } else if ($project->start_date != $req->get('start_date')) {
+        }
+        if ($project->start_date != $req->get('start_date')) {
             $project->start_date = $req->get('start_date');
             $project->save();
-            return redirect(route('admin.projects.index'));
-        } else if ($project->deadline != $req->get('deadline')) {
-            $project->deadline = $req->get('deadline');
-            $project->save();
-            return redirect(route('admin.projects.index'));
         }
-
-        $formFields = $req->validate([
-            'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-        ]);
-        $project->update($formFields);
+        if ($project->end_date != $req->get('end_date')) {
+            $project->end_date = $req->get('end_date');
+            $project->save();
+        }
         return redirect(route('admin.projects.index'));
     }
 
