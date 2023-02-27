@@ -29,6 +29,7 @@
                         </td>
                         <td>
                             <select class="form-select" name="assign_to">
+                                <option value="{{ $task->assign_to }}" selected>{{ $task->assign_to }}</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->full_name }}">
                                         {{ $user->full_name }}

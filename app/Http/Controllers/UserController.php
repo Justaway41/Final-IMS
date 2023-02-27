@@ -69,6 +69,7 @@ class UserController extends Controller
     {
         $roles = Role::get();
         $departments = Department::get();
+        // dd(User::findorFail($id));
         return view('user.edit', ['users' => User::findOrFail($id), 'roles' => $roles, 'departments' => $departments]);
     }
 
@@ -81,6 +82,10 @@ class UserController extends Controller
         $model = User::findorFail($id);
         $model->pan_number = Crypt::encryptString($request->pan_number);
         $model->bank_account = Crypt::encryptString($request->bank_account);
+        if ($request->photo) {
+
+            $model->photo = $this->storeImage($request);
+        }
         $model->update(['pan_number', Crypt::encryptString($request->pan_number), 'bank_account', Crypt::encryptString($request->bank_account)]);
         return redirect(route('users.index'))
             ->with('success', 'User updated successfully.');

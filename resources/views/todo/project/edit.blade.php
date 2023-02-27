@@ -29,7 +29,7 @@
                             <input type="date" name="start_date" autocomplete="off" value="{{ $project->start_date }}">
                         </td>
                         <td>
-                            <input type="date" name="deadline" autocomplete="off" value="{{ $project->end_date }}">
+                            <input type="date" name="end_date" autocomplete="off" value="{{ $project->end_date }}">
                         </td>
                     </tr>
                 </tbody>
