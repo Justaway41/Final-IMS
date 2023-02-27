@@ -53,8 +53,8 @@
                     <label for="exampleFormControlSelect1">Gender</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="gender" value="{{ $users->gender }}">
                         <option disabled>-Select One-</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="{{ $users->gender }}" selected>{{ ucfirst($users->gender) }}</option>
+                        <option value="{{ $users->gender == "male" ? "female" : "male" }}">{{ $users->gender == "male" ? "Female" : "Male" }}</option>
                     </select>
                     @error('gender')
                         <p class="text-danger small"><small>{{ $message }}</small></p>
