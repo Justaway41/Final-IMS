@@ -6,7 +6,7 @@
     </div>
 
     <div class="tableBG" style="margin: -1rem 10vw 0; height: 80vh; overflow-y: auto">
-        <form action="{{ route('users.update', $users->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('users.update', $users->id) }}" method="POST" enctype="multipart/form-data" >
             @csrf
 
             @method('PATCH')
@@ -51,8 +51,8 @@
 
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1">Gender</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="gender">
-                        <option>-Select One-</option>
+                    <select class="form-control" id="exampleFormControlSelect1" name="gender" value="{{ $users->gender }}">
+                        <option disabled>-Select One-</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -71,8 +71,8 @@
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Department</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="department_id">
-                        <option>-Select One-</option>
+                    <select class="form-control" id="exampleFormControlSelect1" name="department_id" >
+                        <option value="{{ $users->department->id }}" selected>{{ $users->department->department_name }}</option>
                         @foreach ($departments as $department)
                             <option value={{ $department->id }}>{{ $department->department_name }}</option>
                         @endforeach
@@ -85,7 +85,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1">Role</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="role_id">
-                        <option>-Select One-</option>
+                        <option value="{{ $users->role->id }}" selected>{{ $users->role->title }}</option>
                         @foreach ($roles as $role)
                             <option value={{ $role->id }}>{{ $role->title }}</option>
                         @endforeach
@@ -98,18 +98,20 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1">Photo</label>
                     <input type="file" class="form-control" id="exampleInputPassword1" name="photo"
-                        value="{{ $users->photo }}">
+                        value="{{asset( 'storage/'.$users->photo) }}">
                     @error('photo')
                         <p class="text-danger small"><small>{{ $message }}</small></p>
                     @enderror
+                    <img src="{{asset('storage/'.$users->photo) }}" alt="" height="100" width="100">
+
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1">Contract Status</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="contract_status">
+                    <select class="form-control" id="exampleFormControlSelect1" name="contract_status" value="{{ $users->contract_status }}">
                         <option>-Select One-</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
+                        <option value="{{ $users->contract_status }}" selected>{{ ucfirst($users->contract_status) }}</option>
+                        <option value="{{ $users->contract_status == "active" ? "inactive" : "active" }}">{{ $users->contract_status == "active" ? "Inactive" : "Active" }}</option>
                     </select>
                     @error('contract_status')
                         <p class="text-danger small"><small>{{ $message }}</small></p>
@@ -180,7 +182,7 @@
             </div>
 
             <div>
-                <button type="submit" class="submit">Submit</button>
+                <button type="submit" class="submit" id="prevent-multiple-work" >Submit</button>
             </div>
 
         </form>
