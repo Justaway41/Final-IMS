@@ -21,6 +21,8 @@ class dashboard extends Controller
 
             $interns = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
             return view('admin.dashboard', ["totalinterns" => sizeof($interns), 'projects' => $projects, 'projectCount' => ProjectAdminController::getProjectCount()]);
+        } else if (Auth::user()->contract_status === "inactive") {
+            abort(403, "Your account is inactive");
         } else {
             return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
         }
