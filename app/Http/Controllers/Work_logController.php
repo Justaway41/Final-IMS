@@ -56,8 +56,12 @@ class Work_logController extends Controller
     {
         if ($request->user()->cannot('create', "App\Models\Work_log")) {
             abort(403, "Only one worklog per day");
+        } else if (Auth::user()->contract_status === "inactive") {
+            abort(403, "Your account is inactive");
+        } else {
+
+            return view('worklog.index');
         }
-        return view('worklog.index');
     }
 
     public function store(worklogFormRequest $request)
