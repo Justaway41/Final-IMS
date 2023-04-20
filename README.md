@@ -3,7 +3,7 @@
 ## ! under_deployment
 
 
-setup .env from .env.example
+setup .env from .env.example\n
 Open the console and cd your project root directory
 Run composer install or php composer.phar install
 Run php artisan key:generate
