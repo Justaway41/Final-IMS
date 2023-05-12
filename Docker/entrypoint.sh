@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ../
 
 if [ ! -f "vendor/autoload.php" ]; then
     composer install --no-interaction

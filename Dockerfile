@@ -26,6 +26,6 @@ RUN docker-php-ext-install\
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY composer.lock composer.json /var/www/html/
 
-RUN chmod +x Docker/entrypoint.sh
+#RUN chmod +x Docker/entrypoint.sh
 COPY . .
 ENV PORT=8000
