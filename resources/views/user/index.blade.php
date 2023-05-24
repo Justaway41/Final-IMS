@@ -69,8 +69,10 @@
                     </tbody>
                 @endforeach
             </table>
-            {{ $users->links() }}
-            <a href="{{ route('users.create') }}" class="createUser">Create User</a>
+            <a href="{{ route('users.create') }}" class="createUser ">Create User</a>
+            <div class="mt-3">
+                {{ $users->links() }}
+            </div>
         </div>
     </div>
 @endsection
