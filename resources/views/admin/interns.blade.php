@@ -26,6 +26,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                {{ $interns->links() }}
+            </div>
         </div>
     </div>
 @endsection
