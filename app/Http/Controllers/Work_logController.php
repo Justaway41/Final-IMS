@@ -96,10 +96,10 @@ class Work_logController extends Controller
     public function users()
     {
         if (Auth::user()->role->title == "Manager") {
-            //to view interns to add worklog after 8 
-            $interns = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
+            //to view interns to add worklog after 8
+            $interns = User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(7);
         } else {
-            $interns = User::whereRelation('role', 'title', 'Intern')->get();
+            $interns = User::whereRelation('role', 'title', 'Intern')->paginate(7);
         }
         return view('admin.interns', ['interns' => $interns]);
     }
