@@ -36,7 +36,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    @import "tailwindcss/base";
 
+    @import "tailwindcss/components";
+
+    @import "tailwindcss/utilities";
     @livewireStyles
 </head>
 
@@ -53,30 +57,30 @@
     @livewireScripts
     <script>
         /* Select your element */
-    var elm = document.getElementById("nepali-datepicker");
-     
-     /* Initialize Datepicker with options */
-     elm.nepaliDatePicker({
-        language: "english",
-        onChange: function() {
-            let nepaliDate = $("input#nepali-datepicker").val();
-            let engdate = $("input#eng_date");
-            engdate.val(NepaliFunctions.BS2AD(nepaliDate));
-        }
-     });
-    
-     /* Select your element */
-    var elm2 = document.getElementById("nepali-datepicker2");
-     
-     /* Initialize Datepicker with options */
-     elm2.nepaliDatePicker({
-        language: "english",
-        onChange: function() {
-            let nepaliDate = $("input#nepali-datepicker2").val();
-            let engdate = $("input#eng_date2");
-            engdate.val(NepaliFunctions.BS2AD(nepaliDate));
-        }
-     });
+        var elm = document.getElementById("nepali-datepicker");
+
+        /* Initialize Datepicker with options */
+        elm.nepaliDatePicker({
+            language: "english",
+            onChange: function() {
+                let nepaliDate = $("input#nepali-datepicker").val();
+                let engdate = $("input#eng_date");
+                engdate.val(NepaliFunctions.BS2AD(nepaliDate));
+            }
+        });
+
+        /* Select your element */
+        var elm2 = document.getElementById("nepali-datepicker2");
+
+        /* Initialize Datepicker with options */
+        elm2.nepaliDatePicker({
+            language: "english",
+            onChange: function() {
+                let nepaliDate = $("input#nepali-datepicker2").val();
+                let engdate = $("input#eng_date2");
+                engdate.val(NepaliFunctions.BS2AD(nepaliDate));
+            }
+        });
     </script>
 </body>
 
