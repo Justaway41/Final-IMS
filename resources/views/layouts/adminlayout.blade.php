@@ -48,7 +48,7 @@
     <livewire:top-navbar-admin />
     <livewire:side-navbar-admin />
 
-    <div class="admin_main">
+    <div class="admin_main" style="overflow-y: scroll">
         @yield('content')
     </div>
 

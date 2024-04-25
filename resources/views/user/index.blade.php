@@ -17,19 +17,19 @@
                         <th scope="col">Email</th>
                         <th scope="col">Address</th>
                         <th scope="col">Phone No</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Birthday</th>
+                        {{-- <th scope="col">Gender</th>
+                        <th scope="col">Birthday</th> --}}
                         @if (Auth::user()->role->title == 'Admin')
-                            <th scope="col">Department</th>
-                            <th scope="col">Role</th>
+                            {{-- <th scope="col">Department</th>
+                            <th scope="col">Role</th> --}}
                             <th scope="col">Contract Status</th>
                         @endif
-                        <th scope="col">Contract Start Date</th>
+                        {{-- <th scope="col">Contract Start Date</th>
                         <th scope="col">Contract End Date</th>
-                        <th scope="col">Hourly Rate</th>
-                        <th scope="col">PAN Number</th>
+                        <th scope="col">Hourly Rate</th> --}}
+                        {{-- <th scope="col">PAN Number</th>
                         <th scope="col">Bank Name</th>
-                        <th scope="col">Bank Account</th>
+                        <th scope="col">Bank Account</th> --}}
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -41,21 +41,21 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->address }}</td>
                             <td>{{ $user->contact }}</td>
-                            <td>{{ ucfirst($user->gender) }}</td>
-                            <td>{{ $user->birthday }}</td>
+                            {{-- <td>{{ ucfirst($user->gender) }}</td>
+                            <td>{{ $user->birthday }}</td> --}}
                             @if (Auth::user()->role->title == 'Admin')
-                                <td>{{ $user->department->department_name }}</td>
-                                <td>{{ $user->role->title }}</td>
+                                {{-- <td>{{ $user->department->department_name }}</td>
+                                <td>{{ $user->role->title }}</td> --}}
                                 <td>{{ $user->contract_status }}</td>
                             @endif
-                            <td>{{ $user->contract_start_date }}</td>
+                            {{-- <td>{{ $user->contract_start_date }}</td>
                             <td>{{ $user->contract_end_date }}</td>
-                            <td>{{ $user->hourly_rate }}</td>
-                            @if ($user->pan_number != null)
+                            <td>{{ $user->hourly_rate }}</td> --}}
+                            {{-- @if ($user->pan_number != null)
                                 <td>{{ Crypt::decryptString($user->pan_number) }}</td>
                                 <td>{{ $user->bank_name }}</td>
                                 <td>{{ Crypt::decryptString($user->bank_account) }}</td>
-                            @endif
+                            @endif --}}
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     @csrf
@@ -70,9 +70,9 @@
                 @endforeach
             </table>
             <a href="{{ route('users.create') }}" class="createUser ">Create User</a>
-            <div class="mt-3">
+            {{-- <div class="mt-3">
                 {{ $users->links() }}
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

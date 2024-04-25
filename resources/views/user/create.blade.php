@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="checkbox" style="align-self: center">
-                    <input type="checkbox" class="form-check-input" id="checkbox" required>
+                    <input type="checkbox" class="form-check-input" id="checkbox">
                     <label class="form-check-label" for="checkbox">
                         I confirm that all information provided above is true and complete.
                     </label>
