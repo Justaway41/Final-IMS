@@ -1,12 +1,21 @@
-{{-- <style>
+<style>
     nav ul li a {
         color: #172B4D !important;
     }
 
-    .hoverr:hover {
-        color: red !important;
+    #hoverr{
+        color:white !important;
     }
-</style> --}}
+    #hoverrr{
+        color:white !important;
+    }
+    #hoverr:hover {
+        color: #172B4D !important;
+    }
+    #hoverrr:hover {
+        color: #172B4D !important;
+    }
+</style>
 <header>
     <nav>
         @auth
@@ -16,8 +25,8 @@
                 </a>
             </div>
             <ul class="mx-5">
-                <li><a href="/dashboard" class="hoverr" style="color:white !important">Dashboard</a></li>
-                <li><a href="{{ route('Work_log.create') }}" class="hoverr" style="color:white !important; " class="">Worklog</a></li>
+                <li><a href="/dashboard" id="hoverrr" style="color:white">Dashboard</a></li>
+                <li><a href="{{ route('Work_log.create') }}" id="hoverr" style="color:white " class="">Worklog</a></li>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
