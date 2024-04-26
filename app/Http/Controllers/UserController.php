@@ -6,6 +6,7 @@ use App\Http\Requests\UserFormRequest;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Password;
@@ -15,9 +16,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->paginate(5);
+        $users =  User::whereRelation('role', 'title', 'Intern')->whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
         if (Auth::user()->role->title == "Admin") {
-            $users =  User::latest()->paginate(5);
+            $users =  User::latest()->get();
         }
 
         return view('user.index', ['users' => $users]);
@@ -37,7 +38,7 @@ class UserController extends Controller
         User::create([
             'full_name' => $request->full_name,
             'email' => $request->email,
-            'password' => bcrypt("nice"),
+            'password' => bcrypt("password"),
             'gender' => $request->gender,
             'birthday' => $request->birthday,
             'contact' => $request->contact,
@@ -93,10 +94,15 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        User::destroy($id);
+        try{
+            User::destroy($id);
 
-        return redirect(route('users.index'))
-            ->with('success', 'User deleted successfully.');
+            return redirect(route('users.index'))
+                ->with('success', 'User deleted successfully.');
+        }
+        catch(Exception $e){
+            return redirect()->back()->with('error','User has related data in database.');
+        }
     }
 
     public function profile()

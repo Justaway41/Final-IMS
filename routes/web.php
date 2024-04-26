@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeavesController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Work_logController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,14 +22,17 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
+    
     Route::resource('leaves', LeavesController::class);
+    Route::get('/change-password', [ChangePasswordController::class, 'changePassword'])->name('changePassword');
+    Route::post('/change-password', [ChangePasswordController::class, 'changePasswordSave'])->name('postChangePassword');
 
     Route::middleware("can:create,App\Models\User")->group(function () {
         Route::resource('departments', DepartmentController::class);
@@ -50,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group([
         'prefix' => 'admin/projects',
         'middleware' => 'isAdmin',
-        'as' => 'admin.projects.'
+        'as' => 'admin.projects.',
     ], function () {
         Route::get('/', [ProjectAdminController::class, 'index'])
             ->name('index');
@@ -72,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group([
         'prefix' => 'admin/todo',
         'midddleware' => 'isAdmin',
-        'as' => 'admin.todo.'
+        'as' => 'admin.todo.',
     ], function () {
         Route::get('/create/{id}', [TodoAdminController::class, 'create'])
             ->name('create');
@@ -80,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
             ->name('store');
         Route::group([
             'prefix' => 'tasks',
-            'as' => 'tasks.'
+            'as' => 'tasks.',
         ], function () {
             Route::get('/', [TodoAdminController::class, 'show'])
                 ->name('show');
@@ -98,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
     // intern todo panel
     Route::group([
         'prefix' => 'todo',
-        'as' => 'todo.'
+        'as' => 'todo.',
     ], function () {
         Route::get('/', [TodoAdminController::class, 'index']);
     });
