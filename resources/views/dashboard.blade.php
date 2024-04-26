@@ -71,7 +71,7 @@
                     <div class="singleWorklog">
                         <p class="work">{{ $worklog->created_at->format('M d') }}</p>
                         <p class="work">{{ $worklog->work }}</p>
-                        <p class="work">{{ $worklog->hours_worked }}</p>
+                        <p class="work">{{ $worklog->hours_worked }} hours</p>
                     </div>
                 @endforeach
             </section>
