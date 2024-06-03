@@ -72,15 +72,26 @@ class Work_logController extends Controller
         if ($currentTime < $timeLimit || Auth::user()->role->title !== 'Intern') {
 
             $request->validated();
-
-            Work_log::create([
-                'user_id' => $request->user_id,
-                'work' => $request->work,
-                'start_time' => $request->start_time,
-                'end_time' => $request->end_time,
-                'hours_worked' => $request->hours_worked
-            ]);
-            return redirect(route('dashboard'));
+            if(Auth::user()->role->title == 'Intern'){
+                Work_log::create([
+                    'user_id' => $request->user_id,
+                    'work' => $request->work,
+                    'start_time' => $request->start_time,
+                    'end_time' => $request->end_time,
+                    'hours_worked' => $request->hours_worked,
+                ]);
+            }
+            else{
+                Work_log::create([
+                    'user_id' => $request->user_id,
+                    'work' => $request->work,
+                    'start_time' => $request->start_time,
+                    'end_time' => $request->end_time,
+                    'hours_worked' => $request->hours_worked,
+                    'created_at'=>$request->created_at
+                ]);
+            }
+            return redirect()->route('dashboard')->with('message', 'Submitted Sucessfully.');
         }
         return redirect()->route('Work_log.create')->with('message', 'Submit time exceeded. Please contact your manager.');
     }
