@@ -15,7 +15,8 @@ class Work_log extends Model
         'work',
         'start_time',
         'end_time',
-        'hours_worked'
+        'hours_worked',
+        'created_at',
     ];
 
     protected $casts = [

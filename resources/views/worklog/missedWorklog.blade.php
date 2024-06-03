@@ -37,6 +37,14 @@
                 </div>
             </div>
 
+            <div class="mb-3">
+                <label for="created_at">Date</label>
+                <input type="date" id="created_at" class="form-control created_at" aria-describedby="emailHelp" name="created_at">
+                @error('created_at')
+                <p class="text-danger small"><small>{{ $message }}</small></p>
+                @enderror
+            </div>
+
             <div>
                 <button class="add_timing">
                     <a href="#" class="add_timing" onclick="addTiming();">Add Timing</a>
