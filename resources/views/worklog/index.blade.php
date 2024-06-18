@@ -40,12 +40,12 @@
 
             <div>
                 <button class="add_timing">
-                    <a href="#" class="add_timing" onclick="addTiming();">Add Timing</a>
+                    <a href="#" class="add_timing" name="add_timing" onclick="addTiming();">Add Timing</a>
                 </button>
             </div>
 
             <div>
-                <button class="time_calculate" onclick="timeCalculator()">Calculate Hours</button>
+                <button class="time_calculate" name="timeCaliculator" onclick="timeCalculator()">Calculate Hours</button>
             </div>
 
             <div class="mb-3">

@@ -12,6 +12,7 @@
             <div class="form-group">
                 <select class="form-select" aria-label="Default select example" name="fullname">
                     <option selected>Select Intern Name</option>
+                    {{-- {{dd($users)}} --}}
                     @foreach ($users as $user)
                         <option value="{{ $user->full_name }}">{{ $user->full_name }}</option>
                     @endforeach
@@ -47,13 +48,23 @@
                 </thead>
                 <tbody>
                     @foreach ($work_logs as $worklog)
-                        <tr class="hover">
-                            <th scope="row">{{ $worklog->user->full_name }}</th>
-                            <td>{{ $worklog->work }}</td>
-                            <td>{{ $worklog->hours_worked }}</td>
-                            <td>{{ NepaliCalendar::AD2BS($worklog->created_at->format('Y-m-d'))['BS_DATE'] }}</td>
-                            <td>{{ $worklog->created_at->format('h:i A') }}</td>
-                        </tr>
+                    <tr class="hover">
+                        <th scope="row">{{ $worklog->user->full_name }}</th>
+                        <td>{{ $worklog->work }}</td>
+                        <td>{{ $worklog->hours_worked }}</td>
+                        <td>
+                            <?php
+                            $nepaliDate = NepaliCalendar::AD2BS($worklog->created_at->format('Y-m-d'))['BS_DATE'];
+                            $englishDigits = array('0','1','2','3','4','5','6','7','8','9');
+                            $nepaliDigits = array('०','१','२','३','४','५','६','७','८','९');
+                    
+                            $englishDate = str_replace($nepaliDigits, $englishDigits, $nepaliDate);
+                            echo $englishDate;
+                            ?>
+                        </td>
+                        <td>{{ $worklog->created_at->format('h:i A') }}</td>
+                    </tr>
+                    
                     @endforeach
                 </tbody>
             </table>
