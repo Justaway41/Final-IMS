@@ -39,7 +39,7 @@
 
             <div class="mb-3">
                 <label for="created_at">Date</label>
-                <input type="date" id="created_at" class="form-control created_at" aria-describedby="emailHelp" name="created_at">
+                <input id="nepali-datepicker" class="form-control created_at" aria-describedby="emailHelp" name="created_at">
                 @error('created_at')
                 <p class="text-danger small"><small>{{ $message }}</small></p>
                 @enderror

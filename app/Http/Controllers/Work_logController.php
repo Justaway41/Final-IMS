@@ -6,9 +6,10 @@ use App\Http\Requests\worklogFormRequest;
 use App\Models\User;
 use App\Models\Work_log;
 use Carbon\Carbon;
-
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MilanTarami\NepaliCalendar\Facades\NepaliCalendar;
 
 class Work_logController extends Controller
 {
@@ -38,12 +39,14 @@ class Work_logController extends Controller
                 $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
                     $q->whereRelation('user', 'full_name', $request->fullname)
                         ->whereDate('created_at', '>=', $request->start_date)
-                        ->whereDate('created_at', '<=', $request->end_date);
+                        ->whereDate('created_at', '<=', $request->end_date)
+                        ->orderBy('created_at','desc');
                 })->get();
             } elseif ($request->start_date != null && $request->end_date != null && $request->fullname == "Select Intern Name") {
                 $work_log = Work_log::when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
                     $q->whereDate('created_at', '>=', $request->start_date)
-                        ->whereDate('created_at', '<=', $request->end_date);
+                        ->whereDate('created_at', '<=', $request->end_date)
+                        ->orderBy('created_at','desc');
                 })->get();
             }
             return view('worklog.allWorklog', ['users' => $users, 'work_logs' => $work_log]);
@@ -66,7 +69,8 @@ class Work_logController extends Controller
 
     public function store(worklogFormRequest $request)
     {
-        $currentTime = Carbon::now()->toTimeString();
+        try{
+ $currentTime = Carbon::now()->toTimeString();
         $timeLimit = Carbon::createFromTime(20, 30, 00)->toTimeString();
 
         if ($currentTime < $timeLimit || Auth::user()->role->title !== 'Intern') {
@@ -82,18 +86,26 @@ class Work_logController extends Controller
                 ]);
             }
             else{
+                
+                    $created_at = NepaliCalendar::BS2AD($request->created_at)['AD_DATE'];
+                
                 Work_log::create([
                     'user_id' => $request->user_id,
                     'work' => $request->work,
                     'start_time' => $request->start_time,
                     'end_time' => $request->end_time,
                     'hours_worked' => $request->hours_worked,
-                    'created_at'=>$request->created_at
+                    'created_at'=>$created_at
                 ]);
             }
             return redirect()->route('dashboard')->with('message', 'Submitted Sucessfully.');
         }
         return redirect()->route('Work_log.create')->with('message', 'Submit time exceeded. Please contact your manager.');
+    }
+    catch(Exception $e){
+        dd($e);
+    }
+
     }
 
     public function show($id)
@@ -113,7 +125,9 @@ class Work_logController extends Controller
             $interns = User::whereRelation('role', 'title', 'Intern')->paginate(7);
         }
         return view('admin.interns', ['interns' => $interns]);
-    }
+        }
+    
+    
 
     public function total(Request $request)
     {

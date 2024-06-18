@@ -51,21 +51,29 @@
             <div class="topView d-flex align-items-center justify-content-between">
                 <h2>Total Hours: {{ $worklogs->sum('hours_worked') }}</h2>
             </div>
-            <form class="d-flex align-items-center justify-content-end gap-3" method="GET" action="{{ route('dashboard') }}">
+            <form class="d-flex align-items-center justify-content-end gap-3" method="GET"
+                action="{{ route('dashboard') }}">
                 @csrf
-                <div class="form-group">
-                    <label for="start_date">From</label>
-                    <input type="date" id="start_date" name="start_date" placeholder="Select English Date" value="{{ isset($_GET['start_date']) ? $_GET['start_date'] : '' }}" />
-                </div>
-                <div class="form-group">
-                    <label for="end_date">To</label>
-                    <input type="date" id="end_date" name="end_date" placeholder="Select English Date" value="{{ isset($_GET['end_date']) ? $_GET['end_date'] : '' }}" />
+                <div class="d-flex gap-3">
+<div>
+    <label for="start_date">From</label>
+    <input id="nepali-datepicker" name="start_date" placeholder="Select Nepali Date"
+        value="{{ isset($_GET['start_date']) ? $_GET['start_date'] : '' }}" />
+
+</div>
+                    <div>
+                        <label for="end_date">To</label>
+                        <input id="nepali-datepicker2" name="end_date" placeholder="Select Nepali Date"
+                            value="{{ isset($_GET['end_date']) ? $_GET['end_date'] : '' }}" />
+                    </div>
+                    
                 </div>
                 <div class="form-group align-self-end">
-                    <button type="submit" class="createUser btn btn-primary" style="background-color:#172B4D">Submit</button>
+                    <button type="submit" class="createUser btn btn-primary"
+                        style="background-color:#172B4D">Submit</button>
                 </div>
             </form>
-            
+
             <section class="dashboard_scroll pb-5">
                 @foreach ($worklogs as $worklog)
                     <div class="singleWorklog">

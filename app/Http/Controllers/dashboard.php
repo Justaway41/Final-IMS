@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Work_log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MilanTarami\NepaliCalendar\Facades\NepaliCalendar;
 
 class dashboard extends Controller
 {
@@ -25,18 +26,30 @@ class dashboard extends Controller
         } elseif (Auth::user()->contract_status === "inactive") {
             abort(403, "Your account is inactive");
         } else {
+
             if ($request->start_date == null && $request->end_date == null) {
+                $worklogs = Work_log::where('user_id', Auth::id())->get();
+                $leaves = []; // Fetch or define your leaves data
                 return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
-            } elseif ($request->start_date != null && $request->end_date != null) {
+            }
+        
+            // If both dates are provided
+            if ($request->start_date != null && $request->end_date != null) {
+                // Convert Nepali dates to Gregorian dates
+                $start_date = NepaliCalendar::BS2AD($request->start_date)['AD_DATE'];
+                $end_date = NepaliCalendar::BS2AD($request->end_date)['AD_DATE'];
+        
+                // Fetch work logs based on the converted dates
                 $worklogs = Work_log::where('user_id', Auth::id())
-                    ->when($request->start_date != null && $request->end_date != null, function ($q) use ($request) {
-                        $q->whereDate('created_at', '>=', $request->start_date)
-                            ->whereDate('created_at', '<=', $request->end_date);
+                    ->when($start_date != null && $end_date != null, function ($q) use ($start_date, $end_date) {
+                        $q->whereDate('created_at', '>=', $start_date)
+                          ->whereDate('created_at', '<=', $end_date);
                     })
                     ->get();
-
+        
+                $leaves = []; // Fetch or define your leaves data
+                return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
             }
-            return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
         }
     }
 
