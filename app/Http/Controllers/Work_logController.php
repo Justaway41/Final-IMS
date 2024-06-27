@@ -31,7 +31,7 @@ class Work_logController extends Controller
                         ->whereDate('created_at', '<=', $request->end_date);
                 })->get();
             }
-            return view('worklog.allWorklog', ['users' => $users, 'work_logs' => $work_log]);
+            return view('manager.dashboard', ['users' => $users, 'work_logs' => $work_log]);
         } elseif (Auth::user()->role->title === 'Admin') {
             $users = User::whereRelation('role', 'title', 'Intern')->get();
             $work_log = [];

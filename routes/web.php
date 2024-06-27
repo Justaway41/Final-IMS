@@ -29,6 +29,7 @@ Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [dashboard::class, 'index'])->name('dashboard');
+    Route::get('/dashboard',[Work_logController::class,'index'])->name('Work_log.index');
     
     Route::resource('leaves', LeavesController::class);
     Route::get('/change-password', [ChangePasswordController::class, 'changePassword'])->name('changePassword');

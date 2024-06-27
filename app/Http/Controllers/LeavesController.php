@@ -21,6 +21,10 @@ class LeavesController extends Controller
 
     public function create(User $users)
     {
+        if(Auth::user()->role->title == 'Manager'){
+            $users = User::whereRelation('department', 'department_name', Auth::user()->department->department_name)->get();
+            return view('manager.leaves',['users'=>$users]);
+        }
         if (Auth::user()->role->title != 'Manager') {
             $users = User::has('leaves')->get();
         } else if (Auth::user()->contract_status === "inactive") {
