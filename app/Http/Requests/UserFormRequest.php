@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Models\User;
 
 class   UserFormRequest extends FormRequest
 {
@@ -23,29 +24,41 @@ class   UserFormRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
-        $rules = [
-            'full_name' => 'required',
-            'email' => ['required', 'email'],
-            'gender' => 'required', 
-            'birthday' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
-            'department_id' => 'required',
-            'role_id' => 'required',
-            'contract_status' => 'required',
-            'contract_start_date' => 'required',
-            'contract_end_date' => 'required',
-            'hourly_rate' => 'required',
-            'gender' => 'required'
-        ];
-        if (in_array($this->method(), ['POST'])) {
-            $rules['email'] = ['required', 'email', Rule::unique('users', 'email')];
-            // $rules['pan_number'] = ['required', Rule::unique('users', 'pan_number')];
-            // $rules['bank_account'] = ['required',  Rule::unique('users', 'bank_account')];
-            $rules['photo'] = 'required';
-        }
+{
+    $managerRoleId = 3;
 
-        return $rules;
+    $rules = [
+        'full_name' => 'required',
+        'email' => ['required', 'email'],
+        'gender' => 'required',
+        'birthday' => 'required',
+        'contact' => 'required',
+        'address' => 'required',
+        'department_id' => 'required',
+        'role_id' => 'required',
+        'contract_status' => 'required',
+        'contract_start_date' => 'required',
+        'contract_end_date' => 'required',
+        'hourly_rate' => 'required',
+        'photo' => 'required', 
+    ];
+
+    if ($this->isMethod('POST')) {
+        $rules['email'][] = Rule::unique('users', 'email');
     }
+    $rules['department_id'] = [
+        'required',
+        Rule::unique('users', 'department_id')->where(function ($query) use ($managerRoleId) {
+            return $query->where('role_id', $managerRoleId);
+        })->ignore($this->user),
+    ];
+
+    return $rules;
+}
+public function messages()
+{
+    return [
+        'department_id.unique' => 'The department has already been assigned to another manager.',
+    ];
+}
 }

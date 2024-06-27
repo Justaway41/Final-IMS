@@ -42,7 +42,7 @@ class AllWorklogs extends Command
                 $work_logs = Work_log::whereBelongsTo($users)->whereDate('created_at', Carbon::today())->get();
                 if (count($work_logs) > 0) {
                     Mail::to("bijaya.shrestha@sifal.deerwalk.edu.np")
-                    ->cc(["ujjwal.poudel@sifal.deerwalk.edu.np","_ddl@sifal.deerwalk.edu.np","aakancha.thapa@deerwalk.edu.np"])
+                    ->cc(["ujjwal.poudel@sifal.deerwalk.edu.np","saurav.dhakal@deerwalk.edu.np","_ddl@sifal.deerwalk.edu.np","aakancha.thapa@deerwalk.edu.np","alisha.shakya@sifal.deerwalk.edu.np",$manager->email])
                         // ->cc([$manager->email, $department->department_email, "ujjwal.poudel@sifal.deerwalk.edu.np"])
                         ->send(new worklogMail($work_logs, $department));
                 }
