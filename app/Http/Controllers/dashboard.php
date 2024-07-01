@@ -52,7 +52,7 @@ class dashboard extends Controller
             }
         }
         catch(Exception $e){
-            dd($e);
+            return redirect()->back()->with('error','Something went wrong.');
         }
         }
         
