@@ -29,7 +29,6 @@ class dashboard extends Controller
                 abort(403, "Your account is inactive");
             } else {
                 if ($request->start_date == null && $request->end_date == null) {
-                    dd($worklogs);
                     $worklogs = Work_log::where('user_id', Auth::id())->get();
                     $leaves = []; // Fetch or define your leaves data
                     return view('dashboard', ['worklogs' => $worklogs, 'leaves' => $leaves]);
