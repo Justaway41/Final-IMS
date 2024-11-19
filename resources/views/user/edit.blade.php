@@ -109,8 +109,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1">Contract Status</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="contract_status" value="{{ $users->contract_status }}">
-                        <option>-Select One-</option>
-                        <option value="{{ $users->contract_status }}" selected>{{ ucfirst($users->contract_status) }}</option>
+                        <option value="{{ $users->contract_status == "active" ? "active" : "inactive" }}">{{ $users->contract_status == "active" ? "Active" : "Inactive" }}</option>
                         <option value="{{ $users->contract_status == "active" ? "inactive" : "active" }}">{{ $users->contract_status == "active" ? "Inactive" : "Active" }}</option>
                     </select>
                     @error('contract_status')
@@ -146,7 +145,7 @@
                 </div>
  <div class="mb-3">
     <label for="exampleInputEmail1">PAN Number</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="pan_number">
+    <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $users->pan_number }}" name="pan_number">
     @error('pan_number')
         <p class="text-danger small"><small>{{ $message }}</small></p>
     @enderror
@@ -162,14 +161,14 @@
 
 <div class="mb-3">
     <label for="exampleInputEmail1">Bank Account Number</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="bank_account">
+    <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $users->bank_account }}" name="bank_account">
     @error('bank_account')
         <p class="text-danger small"><small>{{ $message }}</small></p>
     @enderror
 </div>
 
                 <div class="checkbox">
-                    <input type="checkbox" class="form-check-input" id="checkbox" required>
+                    <input type="checkbox" class="form-check-input" id="checkbox" checked required>
                     <label class="form-check-label" for="checkbox">
                         I confirm that all information provided above is true and complete.
                     </label>

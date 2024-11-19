@@ -40,12 +40,15 @@ class   UserFormRequest extends FormRequest
         'contract_start_date' => 'required',
         'contract_end_date' => 'required',
         'hourly_rate' => 'required',
-        'photo' => 'required', 
+        'photo' => [
+            $this->isMethod('post') ? 'required' : 'sometimes'
+        ],
     ];
 
     if ($this->isMethod('POST')) {
         $rules['email'][] = Rule::unique('users', 'email');
     }
+    
     $rules['department_id'] = [
         'required',
         Rule::unique('users', 'department_id')->where(function ($query) use ($managerRoleId) {
